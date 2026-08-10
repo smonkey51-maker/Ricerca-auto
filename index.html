@@ -153,6 +153,61 @@
     cursor: pointer; text-decoration: underline; padding: 4px 2px;
   }
 
+  .filter-dropdown { position: relative; }
+  .filter-dropdown summary {
+    list-style: none; cursor: pointer; padding: 8px 12px; border: 1px solid var(--border);
+    border-radius: 8px; background: var(--surface-2); font-size: 0.88rem; color: var(--text-primary);
+    display: flex; align-items: center; gap: 6px; white-space: nowrap;
+  }
+  .filter-dropdown summary::-webkit-details-marker { display: none; }
+  .filter-dropdown summary::after { content: "▾"; color: var(--text-muted); font-size: 0.7rem; }
+  .filter-dropdown[open] summary::after { content: "▴"; }
+  .filter-dropdown .panel {
+    position: absolute; top: calc(100% + 6px); left: 0; z-index: 20;
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 10px;
+    padding: 8px; min-width: 220px; max-height: 280px; overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  .filter-dropdown .panel label {
+    display: flex; align-items: center; gap: 8px; padding: 5px 6px; font-size: 0.86rem;
+    cursor: pointer; border-radius: 6px;
+  }
+  .filter-dropdown .panel label:hover { background: var(--surface-1); }
+  .filter-dropdown .panel-actions {
+    display: flex; justify-content: space-between; padding: 8px 6px 2px;
+    margin-top: 4px; border-top: 1px solid var(--gridline);
+  }
+  .filter-dropdown .panel-actions button {
+    border: none; background: none; color: var(--series-1); font-size: 0.78rem; cursor: pointer;
+  }
+
+  .range-filters {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px 28px;
+    margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--gridline);
+  }
+  .range-filter label {
+    font-size: 0.84rem; color: var(--text-secondary); display: flex; justify-content: space-between; gap: 8px;
+  }
+  .range-filter .range-value { color: var(--text-primary); font-variant-numeric: tabular-nums; font-weight: 600; }
+  .dual-range { position: relative; height: 30px; margin-top: 8px; }
+  .dual-range .track { position: absolute; top: 13px; left: 0; right: 0; height: 4px; background: var(--gridline); border-radius: 2px; }
+  .dual-range .track-fill { position: absolute; top: 13px; height: 4px; background: var(--series-1); border-radius: 2px; }
+  .dual-range input[type="range"] {
+    position: absolute; width: 100%; top: 9px; height: 12px; margin: 0;
+    background: transparent; pointer-events: none; -webkit-appearance: none; appearance: none;
+  }
+  .dual-range input[type="range"]::-webkit-slider-runnable-track { height: 4px; background: transparent; }
+  .dual-range input[type="range"]::-webkit-slider-thumb {
+    pointer-events: auto; -webkit-appearance: none; appearance: none;
+    width: 16px; height: 16px; border-radius: 50%; background: var(--series-1);
+    cursor: pointer; margin-top: -6px; border: 2px solid var(--surface-2);
+  }
+  .dual-range input[type="range"]::-moz-range-track { height: 4px; background: transparent; }
+  .dual-range input[type="range"]::-moz-range-thumb {
+    pointer-events: auto; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--series-1); cursor: pointer; border: 2px solid var(--surface-2);
+  }
+
   .result-count { color: var(--text-secondary); font-size: 0.85rem; margin: 12px 0 14px; }
 
   .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
@@ -222,7 +277,13 @@
     <h2>Filtra le offerte</h2>
     <div class="controls">
       <input type="search" id="search" placeholder="Cerca marca o modello (es. Panda, Clio, Kamiq)…">
-      <div class="chip-group" id="chips"></div>
+      <details class="filter-dropdown" id="brand-filter">
+        <summary>Marca <span id="brand-count-label"></span></summary>
+        <div class="panel" id="brand-panel"></div>
+      </details>
+      <select id="durata-filter">
+        <option value="">Qualsiasi durata</option>
+      </select>
       <select id="sort">
         <option value="rata-asc">Rata: crescente</option>
         <option value="rata-desc">Rata: decrescente</option>
@@ -230,6 +291,27 @@
         <option value="marca-asc">Marca: A-Z</option>
       </select>
       <button class="clear-btn" id="clear-filters">Azzera filtri</button>
+    </div>
+    <div class="chip-group" id="chips"></div>
+    <div class="range-filters">
+      <div class="range-filter" id="rata-range-filter">
+        <label>Rata mensile <span class="range-value" id="rata-range-value"></span></label>
+        <div class="dual-range">
+          <div class="track"></div>
+          <div class="track-fill" id="rata-track-fill"></div>
+          <input type="range" id="rata-min">
+          <input type="range" id="rata-max">
+        </div>
+      </div>
+      <div class="range-filter" id="prezzo-range-filter">
+        <label>Prezzo veicolo <span class="range-value" id="prezzo-range-value"></span></label>
+        <div class="dual-range">
+          <div class="track"></div>
+          <div class="track-fill" id="prezzo-track-fill"></div>
+          <input type="range" id="prezzo-min">
+          <input type="range" id="prezzo-max">
+        </div>
+      </div>
     </div>
   </section>
 
@@ -283,16 +365,110 @@ const CATEGORIES = [
   { id: "maxirata-zero", label: "Maxirata Finale Zero" }
 ];
 
-const state = { search: "", tags: new Set(), sort: "rata-asc" };
+const state = {
+  search: "", tags: new Set(), sort: "rata-asc",
+  brands: new Set(), durata: "",
+  rataRange: null, prezzoRange: null
+};
+const rangeSliders = {};
 
 const eur = (n) => n === null || n === undefined ? null :
-  new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR", maximumFractionDigits: 2 }).format(n);
+  new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(n);
 
 function loadData(offers) {
   document.getElementById("disclaimer").textContent =
     `Ultimo aggiornamento dati: ${DATA.aggiornato_al}. ${DATA.note_generale}`;
   renderChips();
+  renderBrandPanel(offers);
+  renderDurataFilter(offers);
+  setupRangeSlider("rata", computeBounds(offers, "rata"), eur);
+  setupRangeSlider("prezzo", computeBounds(offers, "prezzo"), eur);
   renderAll(offers);
+}
+
+function computeBounds(offers, field) {
+  const vals = offers.map(o => o[field]).filter(v => typeof v === "number");
+  if (!vals.length) return null;
+  return { min: Math.floor(Math.min(...vals)), max: Math.ceil(Math.max(...vals)) };
+}
+
+function renderBrandPanel(offers) {
+  const brands = [...new Set(offers.map(o => o.marca))].sort((a, b) => a.localeCompare(b, "it"));
+  const panel = document.getElementById("brand-panel");
+  panel.innerHTML = brands.map(b =>
+    `<label><input type="checkbox" value="${b}" class="brand-checkbox"> ${b}</label>`
+  ).join("") + `<div class="panel-actions">
+      <button type="button" id="brand-select-all">Seleziona tutte</button>
+      <button type="button" id="brand-clear">Deseleziona</button>
+    </div>`;
+
+  panel.querySelectorAll(".brand-checkbox").forEach(cb => {
+    cb.addEventListener("change", () => {
+      if (cb.checked) state.brands.add(cb.value); else state.brands.delete(cb.value);
+      updateBrandSummary();
+      renderAll(DATA.offerte);
+    });
+  });
+  document.getElementById("brand-select-all").addEventListener("click", () => {
+    panel.querySelectorAll(".brand-checkbox").forEach(cb => { cb.checked = true; state.brands.add(cb.value); });
+    updateBrandSummary();
+    renderAll(DATA.offerte);
+  });
+  document.getElementById("brand-clear").addEventListener("click", () => {
+    panel.querySelectorAll(".brand-checkbox").forEach(cb => { cb.checked = false; });
+    state.brands.clear();
+    updateBrandSummary();
+    renderAll(DATA.offerte);
+  });
+}
+
+function updateBrandSummary() {
+  document.getElementById("brand-count-label").textContent = state.brands.size ? `(${state.brands.size})` : "";
+}
+
+function renderDurataFilter(offers) {
+  const values = [...new Set(offers.map(o => o.rate_numero).filter(v => typeof v === "number"))].sort((a, b) => a - b);
+  const sel = document.getElementById("durata-filter");
+  sel.innerHTML = `<option value="">Qualsiasi durata</option>` +
+    values.map(v => `<option value="${v}">${v} mesi</option>`).join("");
+  sel.addEventListener("change", (e) => { state.durata = e.target.value; renderAll(DATA.offerte); });
+}
+
+function setupRangeSlider(prefix, bounds, formatter) {
+  const wrap = document.getElementById(`${prefix}-range-filter`);
+  if (!bounds || bounds.min === bounds.max) { wrap.style.display = "none"; return; }
+  const minInput = document.getElementById(`${prefix}-min`);
+  const maxInput = document.getElementById(`${prefix}-max`);
+  const fill = document.getElementById(`${prefix}-track-fill`);
+  const valueLabel = document.getElementById(`${prefix}-range-value`);
+
+  [minInput, maxInput].forEach(i => { i.min = bounds.min; i.max = bounds.max; i.step = 1; });
+  minInput.value = bounds.min;
+  maxInput.value = bounds.max;
+
+  function update(triggerRender) {
+    let lo = parseFloat(minInput.value), hi = parseFloat(maxInput.value);
+    if (lo > hi) { minInput.value = hi; lo = hi; }
+    const pctLo = ((lo - bounds.min) / (bounds.max - bounds.min)) * 100;
+    const pctHi = ((hi - bounds.min) / (bounds.max - bounds.min)) * 100;
+    fill.style.left = `${pctLo}%`;
+    fill.style.right = `${100 - pctHi}%`;
+    valueLabel.textContent = `${formatter(lo)} – ${formatter(hi)}`;
+    state[`${prefix}Range`] = { min: lo, max: hi, bounds };
+    if (triggerRender) renderAll(DATA.offerte);
+  }
+
+  minInput.addEventListener("input", () => {
+    if (parseFloat(minInput.value) > parseFloat(maxInput.value)) minInput.value = maxInput.value;
+    update(true);
+  });
+  maxInput.addEventListener("input", () => {
+    if (parseFloat(maxInput.value) < parseFloat(minInput.value)) maxInput.value = minInput.value;
+    update(true);
+  });
+
+  rangeSliders[prefix] = { minInput, maxInput, bounds, reset: () => { minInput.value = bounds.min; maxInput.value = bounds.max; update(false); } };
+  update(false);
 }
 
 function renderChips() {
@@ -312,12 +488,24 @@ function renderChips() {
   });
 }
 
+function rangeIsActive(range) {
+  return range && (range.min > range.bounds.min || range.max < range.bounds.max);
+}
+
 function filterOffers(offers) {
   const q = state.search.trim().toLowerCase();
   return offers.filter(o => {
     if (q && !(`${o.marca} ${o.modello}`.toLowerCase().includes(q))) return false;
     if (state.tags.size > 0) {
       for (const t of state.tags) if (!o.tags.includes(t)) return false;
+    }
+    if (state.brands.size > 0 && !state.brands.has(o.marca)) return false;
+    if (state.durata !== "" && String(o.rate_numero) !== state.durata) return false;
+    if (rangeIsActive(state.rataRange)) {
+      if (typeof o.rata !== "number" || o.rata < state.rataRange.min || o.rata > state.rataRange.max) return false;
+    }
+    if (rangeIsActive(state.prezzoRange)) {
+      if (typeof o.prezzo !== "number" || o.prezzo < state.prezzoRange.min || o.prezzo > state.prezzoRange.max) return false;
     }
     return true;
   });
@@ -433,9 +621,21 @@ document.getElementById("sort").addEventListener("change", (e) => {
 document.getElementById("clear-filters").addEventListener("click", () => {
   state.search = "";
   state.tags.clear();
+  state.brands.clear();
+  state.durata = "";
   document.getElementById("search").value = "";
   document.querySelectorAll(".chip.active").forEach(c => c.classList.remove("active"));
+  document.querySelectorAll(".brand-checkbox").forEach(cb => { cb.checked = false; });
+  updateBrandSummary();
+  document.getElementById("durata-filter").value = "";
+  Object.values(rangeSliders).forEach(s => s.reset());
   renderAll(DATA.offerte);
+});
+
+// Chiude il pannello marca cliccando fuori
+document.addEventListener("click", (e) => {
+  const dd = document.getElementById("brand-filter");
+  if (dd.open && !dd.contains(e.target)) dd.removeAttribute("open");
 });
 
 // Prova a caricare i dati esterni (data/offerte.json); usa i dati incorporati come fallback

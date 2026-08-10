@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard Finanziamenti Auto</title>
+<meta name="description" content="Dashboard di offerte reali di finanziamento auto: nuove, usate, per neopatentati, anticipo zero, maxirata finale zero.">
+<style>
+  :root {
+    color-scheme: light;
+    --surface-0: #f9f9f7;
+    --surface-1: #fcfcfb;
+    --surface-2: #ffffff;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --gridline: #e1e0d9;
+    --border: rgba(11,11,11,0.10);
+    --series-1: #2a78d6; /* Nuova */
+    --series-2: #eb6834; /* Usata */
+    --series-3: #1baf7a; /* Neopatentati */
+    --series-4: #eda100; /* Anticipo zero */
+    --series-5: #e87ba4; /* Maxirata zero */
+    --series-1-soft: #2a78d61a;
+    --series-2-soft: #eb68341a;
+    --series-3-soft: #1baf7a1a;
+    --series-4-soft: #eda1001a;
+    --series-5-soft: #e87ba41a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface-0: #0d0d0d;
+      --surface-1: #1a1a19;
+      --surface-2: #201f1e;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #898781;
+      --gridline: #2c2c2a;
+      --border: rgba(255,255,255,0.10);
+      --series-1: #3987e5;
+      --series-2: #d95926;
+      --series-3: #199e70;
+      --series-4: #c98500;
+      --series-5: #d55181;
+      --series-1-soft: #3987e526;
+      --series-2-soft: #d9592626;
+      --series-3-soft: #199e7026;
+      --series-4-soft: #c9850026;
+      --series-5-soft: #d5518126;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-0: #0d0d0d;
+    --surface-1: #1a1a19;
+    --surface-2: #201f1e;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted: #898781;
+    --gridline: #2c2c2a;
+    --border: rgba(255,255,255,0.10);
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-3: #199e70;
+    --series-4: #c98500;
+    --series-5: #d55181;
+    --series-1-soft: #3987e526;
+    --series-2-soft: #d9592626;
+    --series-3-soft: #199e7026;
+    --series-4-soft: #c9850026;
+    --series-5-soft: #d5518126;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--surface-0);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.45;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 24px 20px 64px; }
+
+  header.page { padding: 8px 0 20px; border-bottom: 1px solid var(--gridline); margin-bottom: 24px; }
+  header.page h1 { margin: 0 0 6px; font-size: 1.65rem; letter-spacing: -0.01em; }
+  header.page p.sub { margin: 0; color: var(--text-secondary); font-size: 0.98rem; }
+  .disclaimer {
+    margin-top: 14px; padding: 10px 14px; border-radius: 8px;
+    background: var(--surface-1); border: 1px solid var(--border);
+    color: var(--text-secondary); font-size: 0.85rem;
+  }
+
+  section { margin-bottom: 32px; }
+  h2 { font-size: 1.05rem; margin: 0 0 14px; color: var(--text-primary); }
+
+  .stat-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+  }
+  .stat-tile {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .stat-tile .value {
+    font-size: 1.6rem; font-weight: 600; font-variant-numeric: proportional-nums;
+    letter-spacing: -0.01em;
+  }
+  .stat-tile .label { color: var(--text-secondary); font-size: 0.82rem; margin-top: 2px; }
+
+  .chart-card {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .bar-row { display: flex; align-items: center; gap: 12px; margin: 10px 0; }
+  .bar-row .bar-label { width: 168px; flex: none; font-size: 0.86rem; color: var(--text-secondary); }
+  .bar-row .bar-track { flex: 1; background: var(--surface-2); border-radius: 4px; height: 20px; position: relative; }
+  .bar-row .bar-fill { height: 100%; border-radius: 4px; min-width: 3px; }
+  .bar-row .bar-value {
+    width: 34px; flex: none; text-align: right; font-size: 0.86rem;
+    font-variant-numeric: tabular-nums; color: var(--text-primary);
+  }
+
+  .controls {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .controls input[type="search"] {
+    flex: 1 1 220px; min-width: 180px; padding: 8px 12px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--surface-2); color: var(--text-primary);
+    font-size: 0.9rem;
+  }
+  .controls select {
+    padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--surface-2); color: var(--text-primary); font-size: 0.88rem;
+  }
+  .chip-group { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    border: 1px solid var(--border); background: var(--surface-2); color: var(--text-secondary);
+    border-radius: 999px; padding: 6px 13px; font-size: 0.84rem; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px; user-select: none;
+  }
+  .chip .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .chip.active { color: var(--text-primary); border-color: currentColor; font-weight: 600; }
+  .chip[data-tag="nuova"].active { background: var(--series-1-soft); border-color: var(--series-1); }
+  .chip[data-tag="usata"].active { background: var(--series-2-soft); border-color: var(--series-2); }
+  .chip[data-tag="neopatentati"].active { background: var(--series-3-soft); border-color: var(--series-3); }
+  .chip[data-tag="anticipo-zero"].active { background: var(--series-4-soft); border-color: var(--series-4); }
+  .chip[data-tag="maxirata-zero"].active { background: var(--series-5-soft); border-color: var(--series-5); }
+  .clear-btn {
+    border: none; background: none; color: var(--text-muted); font-size: 0.82rem;
+    cursor: pointer; text-decoration: underline; padding: 4px 2px;
+  }
+
+  .result-count { color: var(--text-secondary); font-size: 0.85rem; margin: 12px 0 14px; }
+
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+  .card {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 18px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .card .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .card h3 { margin: 0; font-size: 1.0rem; line-height: 1.3; }
+  .card h3 .brand { color: var(--text-secondary); font-weight: 500; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag-pill {
+    font-size: 0.72rem; padding: 2px 8px; border-radius: 999px; color: var(--text-primary);
+    border: 1px solid var(--border); white-space: nowrap;
+  }
+  .tag-pill.nuova { background: var(--series-1-soft); }
+  .tag-pill.usata { background: var(--series-2-soft); }
+  .tag-pill.neopatentati { background: var(--series-3-soft); }
+  .tag-pill.anticipo-zero { background: var(--series-4-soft); }
+  .tag-pill.maxirata-zero { background: var(--series-5-soft); }
+
+  .fig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; font-size: 0.85rem; margin-top: 4px; }
+  .fig-grid .fig-label { color: var(--text-muted); }
+  .fig-grid .fig-value { font-variant-numeric: tabular-nums; color: var(--text-primary); }
+
+  .card .note { font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px; }
+  .card .source {
+    margin-top: auto; padding-top: 8px; border-top: 1px solid var(--gridline);
+    font-size: 0.78rem; display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  }
+  .card .source a { color: var(--series-1); text-decoration: none; }
+  .card .source a:hover { text-decoration: underline; }
+
+  .empty-state {
+    text-align: center; color: var(--text-secondary); padding: 40px 20px;
+    background: var(--surface-1); border: 1px dashed var(--border); border-radius: 10px;
+  }
+
+  footer.page {
+    margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--gridline);
+    color: var(--text-muted); font-size: 0.8rem;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page">
+    <h1>Dashboard Finanziamenti Auto</h1>
+    <p class="sub">Auto nuove &middot; usate &middot; per neopatentati &middot; anticipo zero &middot; maxirata finale zero — offerte reali raccolte dal web</p>
+    <div class="disclaimer" id="disclaimer"></div>
+  </header>
+
+  <section id="stats-section">
+    <h2>Panoramica</h2>
+    <div class="stat-grid" id="stats"></div>
+  </section>
+
+  <section id="chart-section">
+    <h2>Offerte per categoria</h2>
+    <div class="chart-card">
+      <div id="chart"></div>
+    </div>
+  </section>
+
+  <section id="controls-section">
+    <h2>Filtra le offerte</h2>
+    <div class="controls">
+      <input type="search" id="search" placeholder="Cerca marca o modello (es. Panda, Clio, Kamiq)…">
+      <div class="chip-group" id="chips"></div>
+      <select id="sort">
+        <option value="rata-asc">Rata: crescente</option>
+        <option value="rata-desc">Rata: decrescente</option>
+        <option value="anticipo-asc">Anticipo: crescente</option>
+        <option value="marca-asc">Marca: A-Z</option>
+      </select>
+      <button class="clear-btn" id="clear-filters">Azzera filtri</button>
+    </div>
+  </section>
+
+  <section id="results-section">
+    <div class="result-count" id="result-count"></div>
+    <div class="card-grid" id="cards"></div>
+  </section>
+
+  <footer class="page">
+    <p>Dati raccolti da fonti pubbliche (siti di case automobilistiche, concessionarie e testate di settore) tramite ricerca web, aggiornati indicativamente ad agosto 2026. Prezzi, rate e condizioni di finanziamento cambiano mensilmente e variano per allestimento, provincia e concessionario: verificare sempre l'offerta effettiva (documenti IEBCC/SECCI) prima di firmare un contratto.</p>
+  </footer>
+
+</div>
+
+<script>
+const DATA = {
+  "aggiornato_al": "2026-08-10",
+  "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
+  "offerte": [
+    { "marca": "Jeep", "modello": "Compass Altitude 1.2 e-Hybrid", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 14239, "rata": 428, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": null, "note": "Finanziamento tasso zero 48 mesi, senza maxirata finale.", "fonte_nome": "Motorbox", "fonte_url": "https://www.motorbox.com/auto/magazine/vivere-auto/auto-anticipo-zero-promozioni-fiat-dacia-opel-skoda-vw" },
+    { "marca": "Alfa Romeo", "modello": "Tonale (turbodiesel)", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 15431, "rata": 399, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": null, "note": "Finanziamento tasso zero, senza maxirata finale.", "fonte_nome": "Motorbox", "fonte_url": "https://www.motorbox.com/auto/magazine/vivere-auto/auto-anticipo-zero-promozioni-fiat-dacia-opel-skoda-vw" },
+    { "marca": "Dacia", "modello": "Sandero Streetway 1.0 TCe Expression", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 6890, "rata": 220, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": null, "note": "Lotto limitato di pronta consegna, tasso zero senza maxirata finale.", "fonte_nome": "Motorbox / alVolante", "fonte_url": "https://www.alvolante.it/news/offerte-promozioni-auto-luglio-2026-con-tasso-zero416083" },
+    { "marca": "Lancia", "modello": "Ypsilon", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": null, "rata": null, "rate_numero": null, "maxirata": null, "tan": "0%", "taeg": null, "note": "Formula \"Zero Interessi / Zero Maxirata\" a piano lineare, pensata per uso cittadino. Importi rata non pubblicati dalla fonte: verificare in concessionaria.", "fonte_nome": "CalcolaCostoAuto", "fonte_url": "https://calcolacostoauto.it/blog/auto-anticipo-zero-2026" },
+    { "marca": "Fiat", "modello": "Pandina Hybrid Pop (promo Under 30 / Neopatentati)", "tags": ["nuova", "neopatentati"], "prezzo": null, "anticipo": 3200, "rata": 99, "rate_numero": 35, "maxirata": 8431.50, "tan": "2.99%", "taeg": null, "note": "Importo finanziato 9.813,40€. Include Service Care Plus, Furto e Incendio Plus, Identicar 12 mesi. Valida per contratti firmati entro il 31/07/2026.", "fonte_nome": "NewsAuto / Il Giornale Digitale", "fonte_url": "https://www.newsauto.it/fiat/offerte-fiat-giugno-under-30-neopatentati-2026-623570/" },
+    { "marca": "Fiat", "modello": "Grande Panda / 500 / 600 / Qubo L", "tags": ["nuova", "neopatentati"], "prezzo": null, "anticipo": null, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Intera gamma certificata per neopatentati su tutte le motorizzazioni. Rata specifica variabile per allestimento: verificare in concessionaria.", "fonte_nome": "Motorbox", "fonte_url": "https://www.motorbox.com/auto/magazine/fiat-pandina-500-grande-panda-600-e-qubo-l-promo-neopatentati" },
+    { "marca": "Citroën", "modello": "C3 Turbo 100 YOU", "tags": ["nuova"], "prezzo": 15300, "anticipo": 6161, "rata": 49, "rate_numero": 35, "maxirata": 9409.10, "tan": "3.99%", "taeg": "7.50%", "note": "Promo SimplyDrive riservata a chi rottama/permuta. Prezzo scontato di 1.600€.", "fonte_nome": "ClubAlfa", "fonte_url": "https://www.clubalfa.it/596012-citroen-c3-rata-da-appena-49-euro-ad-agosto-2026-costa-1-600-euro-in-meno" },
+    { "marca": "Citroën", "modello": "ë-C3 (elettrica, leasing Easy Go)", "tags": ["nuova"], "prezzo": null, "anticipo": null, "rata": 139, "rate_numero": 35, "maxirata": null, "tan": "0%", "taeg": "2.41%", "note": "Formula di leasing Citroën Easy Go.", "fonte_nome": "Citroën IT", "fonte_url": "https://www.citroen.it/acquista/offerte-privati/e-c3-finanziamento.html" },
+    { "marca": "Toyota", "modello": "Aygo X Hybrid", "tags": ["nuova", "neopatentati"], "prezzo": 17950, "anticipo": 6340, "rata": 118.91, "rate_numero": 47, "maxirata": 9550.01, "tan": "7.25%", "taeg": "9.22%", "note": "Valore Futuro Garantito valido per 10.000 km/anno. Offerta valida fino al 31/08/2026.", "fonte_nome": "Everyeye Auto", "fonte_url": "https://auto.everyeye.it/notizie/toyota-aygo-x-offerta-aprile-2026-17-950-euro-costa-davvero-finanziamento-872345.html" },
+    { "marca": "Renault", "modello": "Clio ECO-G 120cv", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 6850, "rata": 158.87, "rate_numero": 84, "maxirata": null, "tan": "0%", "taeg": null, "note": "Finanziamento a tasso zero, piano lineare 84 rate senza maxirata finale.", "fonte_nome": "Autoappassionati / Tirloni", "fonte_url": "https://www.tirloni.it/offerta-renault-clio-2026-benzina-tasso-0-concessionaria-tirloni/" },
+    { "marca": "Renault", "modello": "Clio Full Hybrid E-Tech 160cv", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 8110, "rata": 128.99, "rate_numero": 84, "maxirata": null, "tan": "0%", "taeg": null, "note": "Finanziamento a tasso zero, piano lineare 84 rate senza maxirata finale.", "fonte_nome": "Autoappassionati / Tirloni", "fonte_url": "https://www.tirloni.it/offerta-renault-clio-2026-benzina-tasso-0-concessionaria-tirloni/" },
+    { "marca": "Dacia", "modello": "Sandero Streetway Essential SCe 65", "tags": ["nuova"], "prezzo": 15800, "anticipo": 4000, "rata": 152, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Importo totale del credito 12.195€. Durata rate non specificata dalla fonte.", "fonte_nome": "NewsAuto", "fonte_url": "https://www.newsauto.it/dacia/dacia-sandero-offerte-prezzi-finanziamenti-2026-593124/" },
+    { "marca": "Dacia", "modello": "Sandero Stepway Essential Eco-G 120", "tags": ["nuova"], "prezzo": 16500, "anticipo": 5000, "rata": 112, "rate_numero": 36, "maxirata": 10065, "tan": null, "taeg": null, "note": "Rata finale corrispondente al Valore Futuro Garantito.", "fonte_nome": "Dacia IT", "fonte_url": "https://www.dacia.it/gamma/sandero-stepway/offerta.html" },
+    { "marca": "Hyundai", "modello": "i10 (\"Hyundai Plus 0%\")", "tags": ["nuova", "neopatentati"], "prezzo": 18500, "anticipo": null, "rata": 84, "rata_label": "79 – 89", "rate_numero": null, "maxirata": null, "tan": "0%", "taeg": null, "note": "Prezzo di listino di partenza; rata indicativa 79-89€/mese secondo allestimento. Idonea a neopatentati in tutte le versioni.", "fonte_nome": "AutoPromoNews", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13627-hyundai-i10-offerte-e-promozioni-agosto-2026-guida-all%E2%80%99acquisto-intelligente" },
+    { "marca": "Kia", "modello": "Picanto 1.0 GDi Urban", "tags": ["nuova", "neopatentati"], "prezzo": 14800, "anticipo": null, "rata": 79, "rate_numero": 35, "maxirata": null, "tan": "3.95%", "taeg": "5.87%", "note": "Prezzo promozionale (listino 17.800€) con finanziamento Scelta Kia e contributo Kia di 1.000-2.000€ per contratti agosto 2026. Idonea a neopatentati.", "fonte_nome": "Everyeye Auto / Campello Motors", "fonte_url": "https://auto.everyeye.it/notizie/offerta-kia-picanto-city-car-svenduta-aprile-2026-costa-fiat-panda-870560.html" },
+    { "marca": "Peugeot", "modello": "208 Turbo Benzina 100 Style", "tags": ["nuova", "neopatentati"], "prezzo": null, "anticipo": 4376, "rata": 99, "rate_numero": 35, "maxirata": 10499, "tan": null, "taeg": null, "note": "Versione consigliata per neopatentati: Peugeot 208 Sole 100cv.", "fonte_nome": "Automoto.it", "fonte_url": "https://www.automoto.it/promozioni/volkswagen-polo-l-offerta-pensata-per-i-neopatentati.html" },
+    { "marca": "Škoda", "modello": "Kamiq Black Dots 1.0 TSI 95cv", "tags": ["nuova", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 165, "rate_numero": 35, "maxirata": null, "tan": "0%", "taeg": null, "note": "Promo estate: anticipo zero, TAN zero, Bonus Carburante 1.000€ incluso. Rata variabile per allestimento (fino a 199€/mese in altre versioni).", "fonte_nome": "Automoto.it / Amicar", "fonte_url": "https://www.automoto.it/promozioni/l-offerta-skoda-per-l-estate-su-fabia-e-kamiq-e-anticipo-e-tan-zero.html" },
+    { "marca": "Škoda", "modello": "Kamiq (finanziamento Clever Value)", "tags": ["nuova", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 269, "rate_numero": 35, "maxirata": null, "tan": "0%", "taeg": "0.94%", "note": "Importo finanziato 25.190€. Prevista maxirata finale (Valore Futuro Garantito) non specificata dalla fonte; manutenzione ordinaria 3 anni inclusa.", "fonte_nome": "AutoVega", "fonte_url": "https://www.autovega.com/content-nuovo-koda-kamiq-tuo-da-90-al-mese_44.cshtml" },
+    { "marca": "MG", "modello": "MG5 S5 EV", "tags": ["nuova", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Una delle poche elettriche con finanziamento anticipo zero nel 2026. Importi rata non pubblicati dalla fonte.", "fonte_nome": "CalcolaCostoAuto", "fonte_url": "https://calcolacostoauto.it/blog/auto-anticipo-zero-2026" },
+    { "marca": "Alfa Romeo", "modello": "Junior Elettrica", "tags": ["nuova"], "prezzo": null, "anticipo": null, "rata": 199, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Rata indicativa mensile; condizioni complete non pubblicate dalla fonte.", "fonte_nome": "alVolante", "fonte_url": "https://www.alvolante.it/listino_auto/offerte-auto-del-mese" },
+    { "marca": "Eurotoscar (multimarca)", "modello": "Pronta consegna – 200 auto", "tags": ["usata", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 29, "rata_label": "da 29", "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Stock di 200 veicoli in pronta consegna (nuovo e usato) con anticipo zero, rate a partire da 29€/mese.", "fonte_nome": "Eurotoscar", "fonte_url": "https://www.autoeurotoscar.it/blog/200-auto-pronta-consegna-anticipo-zero-rate-da-29%E2%82%AC-al-mese" },
+    { "marca": "Multimarca (noleggio)", "modello": "Usato garantito – Noleggio Lungo Termine senza anticipo", "tags": ["usata", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Canone mensile fisso con assicurazione, manutenzione ordinaria/straordinaria e assistenza stradale incluse. Importo del canone variabile per veicolo.", "fonte_nome": "Facile.it", "fonte_url": "https://www.facile.it/noleggio-lungo-termine/news/auto-noleggio-lungo-termine-senza-anticipo-giugno-2026.html" },
+    { "marca": "Multimarca (usato garantito)", "modello": "Usato garantito con anticipo zero", "tags": ["usata", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 187.5, "rata_label": "125 – 250", "rate_numero": 60, "maxirata": null, "tan": null, "taeg": null, "note": "Range indicativo aggregato di offerte usato garantito (1 anno di garanzia), piano tipico 60 mesi senza anticipo.", "fonte_nome": "CalcolaCostoAuto / aggregatori di settore", "fonte_url": "https://calcolacostoauto.it/blog/auto-anticipo-zero-2026" }
+  ]
+};
+
+const CATEGORIES = [
+  { id: "nuova", label: "Auto Nuove" },
+  { id: "usata", label: "Auto Usate / Km0" },
+  { id: "neopatentati", label: "Neopatentati" },
+  { id: "anticipo-zero", label: "Anticipo Zero" },
+  { id: "maxirata-zero", label: "Maxirata Finale Zero" }
+];
+
+const state = { search: "", tags: new Set(), sort: "rata-asc" };
+
+const eur = (n) => n === null || n === undefined ? null :
+  new Intl.NumberFormat("it-IT", { style: "currency", currency: "EUR", maximumFractionDigits: 2 }).format(n);
+
+function loadData(offers) {
+  document.getElementById("disclaimer").textContent =
+    `Ultimo aggiornamento dati: ${DATA.aggiornato_al}. ${DATA.note_generale}`;
+  renderChips();
+  renderAll(offers);
+}
+
+function renderChips() {
+  const box = document.getElementById("chips");
+  box.innerHTML = "";
+  CATEGORIES.forEach((c, i) => {
+    const chip = document.createElement("button");
+    chip.className = "chip";
+    chip.dataset.tag = c.id;
+    chip.innerHTML = `<span class="dot" style="background:var(--series-${i + 1})"></span>${c.label}`;
+    chip.addEventListener("click", () => {
+      if (state.tags.has(c.id)) state.tags.delete(c.id); else state.tags.add(c.id);
+      chip.classList.toggle("active");
+      renderAll(DATA.offerte);
+    });
+    box.appendChild(chip);
+  });
+}
+
+function filterOffers(offers) {
+  const q = state.search.trim().toLowerCase();
+  return offers.filter(o => {
+    if (q && !(`${o.marca} ${o.modello}`.toLowerCase().includes(q))) return false;
+    if (state.tags.size > 0) {
+      for (const t of state.tags) if (!o.tags.includes(t)) return false;
+    }
+    return true;
+  });
+}
+
+function sortOffers(offers) {
+  const arr = [...offers];
+  const rataOf = (o) => o.rata === null || o.rata === undefined ? Infinity : o.rata;
+  const anticipoOf = (o) => o.anticipo === null || o.anticipo === undefined ? Infinity : o.anticipo;
+  switch (state.sort) {
+    case "rata-asc": arr.sort((a, b) => rataOf(a) - rataOf(b)); break;
+    case "rata-desc": arr.sort((a, b) => (b.rata ?? -1) - (a.rata ?? -1)); break;
+    case "anticipo-asc": arr.sort((a, b) => anticipoOf(a) - anticipoOf(b)); break;
+    case "marca-asc": arr.sort((a, b) => a.marca.localeCompare(b.marca, "it")); break;
+  }
+  return arr;
+}
+
+function renderStats(offers) {
+  const box = document.getElementById("stats");
+  const brands = new Set(offers.map(o => o.marca));
+  const withRata = offers.filter(o => typeof o.rata === "number");
+  const minRata = withRata.length ? withRata.reduce((m, o) => o.rata < m.rata ? o : m) : null;
+  const count = (tag) => offers.filter(o => o.tags.includes(tag)).length;
+
+  const tiles = [
+    { value: offers.length, label: "Offerte raccolte" },
+    { value: brands.size, label: "Marche coperte" },
+    { value: minRata ? `${eur(minRata.rata)}/mese` : "n.d.", label: `Rata più bassa${minRata ? " — " + minRata.marca + " " + minRata.modello : ""}` },
+    { value: count("neopatentati"), label: "Offerte per neopatentati" },
+    { value: count("anticipo-zero"), label: "Offerte anticipo zero" },
+    { value: count("maxirata-zero"), label: "Offerte senza maxirata finale" }
+  ];
+  box.innerHTML = tiles.map(t => `
+    <div class="stat-tile">
+      <div class="value">${t.value}</div>
+      <div class="label">${t.label}</div>
+    </div>`).join("");
+}
+
+function renderChart(offers) {
+  const box = document.getElementById("chart");
+  const max = Math.max(1, ...CATEGORIES.map(c => offers.filter(o => o.tags.includes(c.id)).length));
+  box.innerHTML = CATEGORIES.map((c, i) => {
+    const n = offers.filter(o => o.tags.includes(c.id)).length;
+    const pct = Math.round((n / max) * 100);
+    return `
+      <div class="bar-row">
+        <div class="bar-label">${c.label}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:var(--series-${i + 1})"></div></div>
+        <div class="bar-value">${n}</div>
+      </div>`;
+  }).join("");
+}
+
+function tagLabel(id) { return (CATEGORIES.find(c => c.id === id) || {}).label || id; }
+
+function renderCards(offers) {
+  const grid = document.getElementById("cards");
+  const countEl = document.getElementById("result-count");
+  countEl.textContent = offers.length === 1 ? "1 offerta trovata" : `${offers.length} offerte trovate`;
+
+  if (offers.length === 0) {
+    grid.innerHTML = "";
+    grid.parentElement.insertAdjacentHTML("beforeend", "");
+    grid.innerHTML = `<div class="empty-state">Nessuna offerta corrisponde ai filtri selezionati. Prova ad azzerare i filtri.</div>`;
+    return;
+  }
+
+  grid.innerHTML = offers.map(o => {
+    const rata = o.rata_label ? `${o.rata_label} €` : (o.rata !== null ? eur(o.rata) : "n.d.");
+    const rateN = o.rate_numero ? ` &times; ${o.rate_numero} rate` : "";
+    const maxirata = o.tags.includes("maxirata-zero") ? "Nessuna" : (o.maxirata ? eur(o.maxirata) : "n.d.");
+    return `
+    <article class="card">
+      <div class="card-head">
+        <h3><span class="brand">${o.marca}</span><br>${o.modello}</h3>
+      </div>
+      <div class="tag-row">
+        ${o.tags.map(t => `<span class="tag-pill ${t}">${tagLabel(t)}</span>`).join("")}
+      </div>
+      <div class="fig-grid">
+        <div class="fig-label">Prezzo</div><div class="fig-value">${o.prezzo ? eur(o.prezzo) : "n.d."}</div>
+        <div class="fig-label">Anticipo</div><div class="fig-value">${o.anticipo === 0 ? "0 €" : (o.anticipo ? eur(o.anticipo) : "n.d.")}</div>
+        <div class="fig-label">Rata mensile</div><div class="fig-value">${rata}${rateN}</div>
+        <div class="fig-label">Maxirata finale</div><div class="fig-value">${maxirata}</div>
+        <div class="fig-label">TAN / TAEG</div><div class="fig-value">${o.tan || "n.d."} / ${o.taeg || "n.d."}</div>
+      </div>
+      ${o.note ? `<div class="note">${o.note}</div>` : ""}
+      <div class="source">
+        <span>Fonte: ${o.fonte_nome}</span>
+        <a href="${o.fonte_url}" target="_blank" rel="noopener noreferrer">Apri &rarr;</a>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+function renderAll(allOffers) {
+  const filtered = sortOffers(filterOffers(allOffers));
+  renderStats(allOffers);
+  renderChart(allOffers);
+  renderCards(filtered);
+}
+
+document.getElementById("search").addEventListener("input", (e) => {
+  state.search = e.target.value;
+  renderAll(DATA.offerte);
+});
+document.getElementById("sort").addEventListener("change", (e) => {
+  state.sort = e.target.value;
+  renderAll(DATA.offerte);
+});
+document.getElementById("clear-filters").addEventListener("click", () => {
+  state.search = "";
+  state.tags.clear();
+  document.getElementById("search").value = "";
+  document.querySelectorAll(".chip.active").forEach(c => c.classList.remove("active"));
+  renderAll(DATA.offerte);
+});
+
+// Prova a caricare i dati esterni (data/offerte.json); usa i dati incorporati come fallback
+fetch("data/offerte.json")
+  .then(r => r.ok ? r.json() : Promise.reject())
+  .then(json => { DATA.aggiornato_al = json.aggiornato_al; DATA.note_generale = json.note_generale; DATA.offerte = json.offerte; loadData(DATA.offerte); })
+  .catch(() => { loadData(DATA.offerte); });
+</script>
+</body>
+</html>

@@ -307,13 +307,13 @@
         "nuova"
       ],
       "prezzo": null,
-      "anticipo": null,
+      "anticipo": 9107,
       "rata": 139,
       "rate_numero": 35,
-      "maxirata": null,
+      "maxirata": 10835,
       "tan": "0%",
       "taeg": "2.41%",
-      "note": "Formula di leasing Citroën Easy Go.",
+      "note": "Formula di leasing Citroën Easy Go, finanziamento a tasso zero. Valido fino a fine agosto 2026.",
       "fonte_nome": "Citroën IT",
       "fonte_url": "https://www.citroen.it/acquista/offerte-privati/e-c3-finanziamento.html",
       "tipo": "Utilitaria"
@@ -785,6 +785,42 @@
       "note": "Listino 34.900€, vantaggio cliente 3.500€. Rata finale corrispondente al Valore Futuro Garantito. Finanziamento agevolato disponibile su tutte le motorizzazioni Tucson, senza obbligo di permuta/rottamazione.",
       "fonte_nome": "Automoto.it",
       "fonte_url": "https://www.automoto.it/promozioni/promozione-hyundai-tucson-tasso-zero-e-anticipo-zero.html",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "Hyundai",
+      "modello": "i20 MY26 Dark Line 1.0 T-GDI MT",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": null,
+      "anticipo": 5846,
+      "rata": 74.91,
+      "rate_numero": 35,
+      "maxirata": 10746,
+      "tan": "7.45%",
+      "taeg": "9.81%",
+      "note": "Finanziamento Hyundai Plus con Valore Futuro Garantito: a fine contratto si può tenere, restituire o sostituire il veicolo.",
+      "fonte_nome": "Hyundai IT",
+      "fonte_url": "https://www.hyundai.com/it/it/promozioni-offerte/Promozioni/gamma-dark-line/promozione-i20-my26.html",
+      "tipo": "Utilitaria"
+    },
+    {
+      "marca": "Hyundai",
+      "modello": "Bayon MY26 Dark Line 1.0 T-GDI MT",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": null,
+      "anticipo": 7242,
+      "rata": 84.91,
+      "rate_numero": 35,
+      "maxirata": 11233,
+      "tan": "7.45%",
+      "taeg": "9.70%",
+      "note": "Vantaggio cliente complessivo di 5.400€. Finanziamento Hyundai Plus con Valore Futuro Garantito, valido dall'1 al 31/08/2026.",
+      "fonte_nome": "De Bona Motors / Hyundai IT",
+      "fonte_url": "https://www.debona.it/hyundai/promo/nuova-hyundai-bayon-dark-line-tua-da-eur-85-al-mese/",
       "tipo": "SUV"
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-08-10",
+  "aggiornato_al": "2026-08-13",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -79,25 +79,6 @@
       "tipo": "Utilitaria"
     },
     {
-      "marca": "DS",
-      "modello": "3 Hybrid Pallas",
-      "tags": [
-        "nuova",
-        "maxirata-zero"
-      ],
-      "prezzo": 25947,
-      "anticipo": 10030,
-      "rata": 350,
-      "rate_numero": 48,
-      "maxirata": null,
-      "tan": "0%",
-      "taeg": "2.68%",
-      "note": "Listino 34.350€. Finanziamento StyleDrive a zero interessi, senza rata finale. Valido fino al 30/06/2026 (verificare proroghe).",
-      "fonte_nome": "MotoriMagazine",
-      "fonte_url": "https://www.motorimagazine.it/ds-3-hybrid-pallas-in-promozione-tutto-sul-finanziamento-styledrive-e-i-costi-reali/",
-      "tipo": "SUV"
-    },
-    {
       "marca": "EVO",
       "modello": "EVO5 Essential 1.5 Turbo",
       "tags": [
@@ -112,7 +93,7 @@
       "maxirata": null,
       "tan": "0%",
       "taeg": "4.59%",
-      "note": "Importo finanziato 17.405,07€ (incl. furto/incendio e spese pratica). Totale da rimborsare 17.779,80€, zero interessi, nessuna maxirata. Valida fino al 30/06/2026 (verificare proroghe). Combinazione reale di anticipo zero + maxirata zero, rara sul mercato.",
+      "note": "Importo finanziato 17.405,07€ (incl. furto/incendio e spese pratica). Totale da rimborsare 17.779,80€, zero interessi, nessuna maxirata. Struttura di finanziamento a tasso 0% fino a 60 mesi della rete concessionari EVO, confermata nel corso del 2026. Combinazione reale di anticipo zero + maxirata zero, rara sul mercato: verificare importi aggiornati in concessionaria.",
       "fonte_nome": "Rete concessionari EVO",
       "fonte_url": "https://www.auto-evo.com/finanziamenti/",
       "tipo": "SUV"
@@ -130,7 +111,7 @@
       "maxirata": 13600,
       "tan": "6.35%",
       "taeg": "7.81%",
-      "note": "Promo con permuta o rottamazione, valida fino al 30/04/2026 (verificare proroghe).",
+      "note": "Promo ricorrente Suzuki (anticipo zero/tasso zero su Vitara e Ignis) confermata nel corso del 2026: verificare condizioni e importi aggiornati in concessionaria.",
       "fonte_nome": "Motor1 Italia",
       "fonte_url": "https://it.motor1.com/news/793996/offerta-promozione-suzuki-vitara-aprile-2026/",
       "tipo": "SUV"
@@ -271,15 +252,15 @@
         "neopatentati"
       ],
       "prezzo": null,
-      "anticipo": 3200,
+      "anticipo": 3647,
       "rata": 99,
       "rate_numero": 35,
-      "maxirata": 8431.5,
+      "maxirata": 8011,
       "tan": "2.99%",
-      "taeg": null,
-      "note": "Importo finanziato 9.813,40€. Include Service Care Plus, Furto e Incendio Plus, Identicar 12 mesi. Valida per contratti firmati entro il 31/07/2026.",
-      "fonte_nome": "NewsAuto / Il Giornale Digitale",
-      "fonte_url": "https://www.newsauto.it/fiat/offerte-fiat-giugno-under-30-neopatentati-2026-623570/",
+      "taeg": "6.67%",
+      "note": "Importo finanziato aggiornato. Include Service Care Plus, Furto e Incendio Plus. Valida per contratti firmati entro il 27/08/2026 (verificare proroghe).",
+      "fonte_nome": "Fiat IT / Automoto.it",
+      "fonte_url": "https://www.fiat.it/lp/promo-offerta-neopatentati",
       "tipo": "Utilitaria"
     },
     {
@@ -624,25 +605,6 @@
     },
     {
       "marca": "Ford",
-      "modello": "Puma Gen-E (Ford Go! Neopatentati)",
-      "tags": [
-        "nuova",
-        "neopatentati"
-      ],
-      "prezzo": 24250,
-      "anticipo": 6000,
-      "rata": 112.82,
-      "rate_numero": 24,
-      "maxirata": 16292.5,
-      "tan": "0.99%",
-      "taeg": "2.60%",
-      "note": "Promo valida per contratti fino al 31/05/2026 e immatricolazione entro il 30/06/2026 (verificare proroghe). Costi di incasso 5€/rata esclusi dalla rata indicata.",
-      "fonte_nome": "Gruppo Automarca",
-      "fonte_url": "https://www.gruppoautomarca.it/ford-puma-gen-e-neopatentati/",
-      "tipo": "SUV"
-    },
-    {
-      "marca": "Ford",
       "modello": "Puma Titanium 1.0 EcoBoost Hybrid 125cv",
       "tags": [
         "nuova"
@@ -651,12 +613,12 @@
       "anticipo": 4500,
       "rata": 136.31,
       "rate_numero": 48,
-      "maxirata": null,
+      "maxirata": 13842.5,
       "tan": "3.95%",
-      "taeg": null,
-      "note": "Richiede permuta o rottamazione di un veicolo posseduto da almeno 6 mesi. Finanziamento Ford Go!. Valido fino al 31/07/2026 (verificare proroghe).",
+      "taeg": "5.19%",
+      "note": "Richiede permuta o rottamazione. Finanziamento Ford Go! confermato ad agosto 2026 con Valore Futuro Garantito incluso.",
       "fonte_nome": "HDmotori",
-      "fonte_url": "https://www.hdmotori.it/offerta-ford-puma-sconto-finanziamento-rate-interessi/",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13672-ford-puma-prezzi,-offerte-e-sconti-reali-ad-agosto-2026",
       "tipo": "SUV"
     },
     {
@@ -667,14 +629,14 @@
         "neopatentati",
         "anticipo-zero"
       ],
-      "prezzo": null,
+      "prezzo": 19813.2,
       "anticipo": 0,
       "rata": 199,
       "rate_numero": 35,
       "maxirata": 14237,
       "tan": "1.95%",
       "taeg": "3.11%",
-      "note": "Limite 30.000 km, rata finale corrispondente al Valore Futuro Garantito. Idonea a neopatentati. Valida fino al 31/03/2026 (verificare proroghe).",
+      "note": "Prezzo chiavi in mano, importo finanziato 20.193,20€. Rata finale corrispondente al Valore Futuro Garantito. Idonea a neopatentati. Confermata ad agosto 2026.",
       "fonte_nome": "Verdana",
       "fonte_url": "https://www.verdana.it/seat-ibiza-in-promo-fino-al-31-marzo-2026-anticipo-zero-e-rate-da-199-euro-al-mese/",
       "tipo": "Utilitaria"
@@ -785,6 +747,44 @@
       "note": "Veicolo a km0, programma Primafila. Anticipo e maxirata non specificati dalla fonte.",
       "fonte_nome": "Gruppo Farina",
       "fonte_url": "https://www.gruppofarina.com/ricerca-auto/km0/",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "DS",
+      "modello": "N°4 Hybrid 145cv",
+      "tags": [
+        "nuova",
+        "maxirata-zero"
+      ],
+      "prezzo": 33428,
+      "anticipo": 17031,
+      "rata": 360,
+      "rate_numero": 48,
+      "maxirata": null,
+      "tan": "0%",
+      "taeg": null,
+      "note": "Listino 39.000€. Finanziamento a zero interessi, senza maxirata finale. Disponibile anche in versione turbodiesel BlueHDi 131cv a condizioni analoghe.",
+      "fonte_nome": "AutoPromoNews",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13679-finanziamenti-auto-agosto-2026-perch%C3%A9-il-tasso-zero-rischia-di-costarti-migliaia-di-euro-in-pi%C3%B9",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "Hyundai",
+      "modello": "Tucson Dark Line MY26 1.6 T-GDI 150cv",
+      "tags": [
+        "nuova",
+        "anticipo-zero"
+      ],
+      "prezzo": 31400,
+      "anticipo": 0,
+      "rata": 330,
+      "rate_numero": 35,
+      "maxirata": 20242,
+      "tan": "0%",
+      "taeg": "0.80%",
+      "note": "Listino 34.900€, vantaggio cliente 3.500€. Rata finale corrispondente al Valore Futuro Garantito. Finanziamento agevolato disponibile su tutte le motorizzazioni Tucson, senza obbligo di permuta/rottamazione.",
+      "fonte_nome": "Automoto.it",
+      "fonte_url": "https://www.automoto.it/promozioni/promozione-hyundai-tucson-tasso-zero-e-anticipo-zero.html",
       "tipo": "SUV"
     }
   ]

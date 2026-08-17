@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-08-15",
+  "aggiornato_al": "2026-08-17",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -877,6 +877,24 @@
       "fonte_nome": "Auto.it",
       "fonte_url": "https://www.auto.it/news/attualita/2025/09/19-8399389/renault-4-5-elettriche-incentivi-2025-offerta",
       "tipo": "SUV"
+    },
+    {
+      "marca": "Lancia",
+      "modello": "Ypsilon Turbo 100",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 15950,
+      "anticipo": 4268,
+      "rata": 99,
+      "rate_numero": 35,
+      "maxirata": 11961,
+      "tan": "7.99%",
+      "taeg": "11.13%",
+      "note": "Motore 1.2 turbo benzina 100cv, cambio manuale 6 marce. Richiede rottamazione o permuta. Finanziamento Stellantis Financial Services, valido fino al 31/08/2026.",
+      "fonte_nome": "ClubAlfa",
+      "fonte_url": "https://www.clubalfa.it/595684-lancia-ypsilon-turbo-100-ad-agosto-2026-il-prezzo-scende-a-15-950-euro-bastano-99-euro-al-mese",
+      "tipo": "Utilitaria"
     }
   ]
 }

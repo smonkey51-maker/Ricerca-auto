@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-08-17",
+  "aggiornato_al": "2026-08-19",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -895,6 +895,25 @@
       "fonte_nome": "ClubAlfa",
       "fonte_url": "https://www.clubalfa.it/595684-lancia-ypsilon-turbo-100-ad-agosto-2026-il-prezzo-scende-a-15-950-euro-bastano-99-euro-al-mese",
       "tipo": "Utilitaria"
+    },
+    {
+      "marca": "Kia",
+      "modello": "Sportage 1.6 T-GDi 150cv Business",
+      "tags": [
+        "nuova",
+        "anticipo-zero"
+      ],
+      "prezzo": 30200,
+      "anticipo": 0,
+      "rata": 299,
+      "rate_numero": 35,
+      "maxirata": 20587,
+      "tan": "0%",
+      "taeg": "0.82%",
+      "note": "Listino 33.750€. Importo totale dovuto dal consumatore 31.259,09€ (anticipo escluso). Include furto/incendio base 12 mesi. Finanziamento Scelta Kia, promo confermata ad agosto 2026.",
+      "fonte_nome": "Kia Italia",
+      "fonte_url": "https://www.kia.com/it/guida-all-acquisto/promozioni/kia-sportage-benzina/",
+      "tipo": "SUV"
     }
   ]
 }

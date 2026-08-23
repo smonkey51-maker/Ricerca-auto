@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-08-21",
+  "aggiornato_al": "2026-08-23",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -932,6 +932,25 @@
       "note": "Listino 20.400€, prezzo promo 18.100€, ulteriore sconto con finanziamento SimplyDrive D. Cambio manuale. Valido fino al 31/08/2026.",
       "fonte_nome": "ClubAlfa",
       "fonte_url": "https://www.clubalfa.it/596277-citroen-c3-aircross-you-turbo-100-ad-agosto-sconto-di-3-300-euro-e-rate-da-99-euro",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "Toyota",
+      "modello": "Yaris Cross 1.5 Hybrid 115 Active FWD e-CVT",
+      "tags": [
+        "nuova",
+        "neopatentati"
+      ],
+      "prezzo": 24450,
+      "anticipo": 7880,
+      "rata": 158.62,
+      "rate_numero": 47,
+      "maxirata": null,
+      "tan": null,
+      "taeg": null,
+      "note": "Esempio di finanziamento Toyota Easy dedicato ai neopatentati. Rata finale (Valore Futuro Garantito) e TAN/TAEG non specificati dalla fonte per questa variante. Valido per contratti firmati entro il 31/08/2026.",
+      "fonte_nome": "NewsAuto",
+      "fonte_url": "https://www.newsauto.it/notizie/toyota-yaris-hybrid-offerte-prezzi-finanziamenti-2026-593140/",
       "tipo": "SUV"
     }
   ]

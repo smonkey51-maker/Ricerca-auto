@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-08-23",
+  "aggiornato_al": "2026-08-25",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -951,6 +951,25 @@
       "note": "Esempio di finanziamento Toyota Easy dedicato ai neopatentati. Rata finale (Valore Futuro Garantito) e TAN/TAEG non specificati dalla fonte per questa variante. Valido per contratti firmati entro il 31/08/2026.",
       "fonte_nome": "NewsAuto",
       "fonte_url": "https://www.newsauto.it/notizie/toyota-yaris-hybrid-offerte-prezzi-finanziamenti-2026-593140/",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "DR",
+      "modello": "5 1.5 Benzina 116cv",
+      "tags": [
+        "nuova",
+        "maxirata-zero"
+      ],
+      "prezzo": null,
+      "anticipo": 11040,
+      "rata": 399,
+      "rate_numero": 36,
+      "maxirata": null,
+      "tan": "0%",
+      "taeg": null,
+      "note": "Campagna tasso zero in collaborazione con CA Auto Bank, piano lineare senza rata finale/Valore Futuro Garantito. Anticipo indicativo (tratto da un'offerta DR5 di un mese vicino): verificare l'importo esatto della campagna corrente in concessionaria.",
+      "fonte_nome": "AutoPromoNews",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13759-offerte-dr5-settembre-2026-costi-reali-e-analisi-finanziaria-tasso-zero",
       "tipo": "SUV"
     }
   ]

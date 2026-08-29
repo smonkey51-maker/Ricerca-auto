@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-08-27",
+  "aggiornato_al": "2026-08-29",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -1026,6 +1026,24 @@
       "note": "Finanziamento tasso zero su 48 rate senza rata finale, riservato ai veicoli in pronta consegna. Valido fino al 31/08/2026.",
       "fonte_nome": "HDmotori",
       "fonte_url": "https://www.hdmotori.it/offerta-jeep-avenger-benzina-tasso-zero-finanziamento-rate/",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "Hyundai",
+      "modello": "Kona Electric Exclusive (con Ecobonus statale)",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 23450,
+      "anticipo": null,
+      "rata": 299,
+      "rate_numero": 35,
+      "maxirata": null,
+      "tan": "4.95%",
+      "taeg": "6.25%",
+      "note": "Vantaggio cliente fino a 18.000€ combinando rottamazione, Ecobonus statale 2025 (veicolo Euro 0-5, listino sotto 35.000€ + IVA) e finanziamento Hyundai Plus. Dopo 3 anni si può sostituire, riscattare o restituire il veicolo. Anticipo e rata finale non specificati dalla fonte.",
+      "fonte_nome": "Hyundai IT",
+      "fonte_url": "https://www.hyundai.com/it/it/promozioni-offerte/Promozioni/promozione-hyundai-kona-ev-ecobonus.html",
       "tipo": "SUV"
     }
   ]

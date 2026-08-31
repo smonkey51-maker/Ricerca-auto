@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-08-29",
+  "aggiornato_al": "2026-08-31",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -462,8 +462,8 @@
       "rata": 99,
       "rate_numero": 35,
       "maxirata": 10499,
-      "tan": null,
-      "taeg": null,
+      "tan": "6.99%",
+      "taeg": "10.42%",
       "note": "Versione consigliata per neopatentati: Peugeot 208 Sole 100cv.",
       "fonte_nome": "Automoto.it",
       "fonte_url": "https://www.automoto.it/promozioni/volkswagen-polo-l-offerta-pensata-per-i-neopatentati.html",
@@ -1045,6 +1045,25 @@
       "fonte_nome": "Hyundai IT",
       "fonte_url": "https://www.hyundai.com/it/it/promozioni-offerte/Promozioni/promozione-hyundai-kona-ev-ecobonus.html",
       "tipo": "SUV"
+    },
+    {
+      "marca": "Peugeot",
+      "modello": "208 Turbo Benzina 100 Style (tasso agevolato)",
+      "tags": [
+        "nuova",
+        "neopatentati"
+      ],
+      "prezzo": null,
+      "anticipo": 3554,
+      "rata": 88,
+      "rate_numero": 35,
+      "maxirata": 11414,
+      "tan": "0.8%",
+      "taeg": "3.09%",
+      "note": "Formula alternativa a tasso agevolato rispetto alla versione standard (anticipo 4.376€/rata 99€): rata mensile più bassa ma rata finale più alta. Versione consigliata per neopatentati.",
+      "fonte_nome": "NewsAuto",
+      "fonte_url": "https://www.newsauto.it/notizie/peugeot-208-offerte-con-finanziamenti-sconti-promozioni-2026-597529/",
+      "tipo": "Utilitaria"
     }
   ]
 }

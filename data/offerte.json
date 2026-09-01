@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-08-31",
+  "aggiornato_al": "2026-09-01",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -35,7 +35,7 @@
       "maxirata": null,
       "tan": "0%",
       "taeg": null,
-      "note": "Finanziamento tasso zero, senza maxirata finale. Riservata alle vetture in pronta consegna, valida fino al 31/08/2026.",
+      "note": "Finanziamento tasso zero, senza maxirata finale. Riservata alle vetture in pronta consegna, (verificare condizioni aggiornate in concessionaria per il mese corrente).",
       "fonte_nome": "ClubAlfa",
       "fonte_url": "https://www.clubalfa.it/595847-nuova-alfa-romeo-tonale-a-399-euro-al-mese-interessi-zero-e-nessuna-maxirata-finale-ad-agosto-2026",
       "tipo": "SUV"
@@ -179,13 +179,13 @@
         "nuova"
       ],
       "prezzo": 13750,
-      "anticipo": 4033,
+      "anticipo": 3098,
       "rata": 99,
       "rate_numero": 33,
-      "maxirata": 9704.88,
-      "tan": null,
-      "taeg": null,
-      "note": "Sconto fino a 7.600€ con rottamazione. Finanziamento Scelta Opel, prima rata novembre 2026. Valido fino al 31/08/2026.",
+      "maxirata": 10701.67,
+      "tan": "7.99%",
+      "taeg": "11.34%",
+      "note": "Prima rata a settembre 2026. Le versioni termiche/Mild Hybrid beneficiano di un contributo statale di circa 2.000€ con rottamazione obbligatoria; la versione Electric fino a 5.000€.",
       "fonte_nome": "AutoPromoNews / Autouno Group",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13648-occasioni-opel-corsa-agosto-2026-sconti-shock-e-rate-da-139-euro",
       "tipo": "Utilitaria"
@@ -197,13 +197,13 @@
         "nuova"
       ],
       "prezzo": 23450,
-      "anticipo": 6712,
+      "anticipo": 6648,
       "rata": 189,
       "rate_numero": 33,
-      "maxirata": 15288.7,
-      "tan": null,
-      "taeg": null,
-      "note": "Finanziamento Scelta Opel, prima rata ottobre 2026. Valido fino al 31/08/2026, salvo approvazione Stellantis Financial Services.",
+      "maxirata": 15319.65,
+      "tan": "7.99%",
+      "taeg": "10.33%",
+      "note": "Finanziamento Scelta Opel Plus, prima rata a settembre 2026, limite 30.000 km.",
       "fonte_nome": "Autouno Group",
       "fonte_url": "https://www.gruppoautouno.it/promozione/opel-astra-finanziamento/",
       "tipo": "Berlina"
@@ -326,13 +326,13 @@
         "neopatentati"
       ],
       "prezzo": 17950,
-      "anticipo": 6340,
+      "anticipo": 6250,
       "rata": 118.91,
       "rate_numero": 47,
       "maxirata": 9550.01,
-      "tan": "7.25%",
-      "taeg": "9.22%",
-      "note": "Valore Futuro Garantito valido per 10.000 km/anno. Offerta valida fino al 31/08/2026.",
+      "tan": "6.99%",
+      "taeg": "8.93%",
+      "note": "Valore Futuro Garantito valido per 10.000 km/anno. Richiede rottamazione/permuta di un veicolo posseduto da almeno 5 mesi. Campagna confermata anche a settembre 2026 con condizioni analoghe.",
       "fonte_nome": "Everyeye Auto",
       "fonte_url": "https://auto.everyeye.it/notizie/toyota-aygo-x-offerta-aprile-2026-17-950-euro-costa-davvero-finanziamento-872345.html",
       "tipo": "Utilitaria"
@@ -672,7 +672,7 @@
       "maxirata": 13570,
       "tan": null,
       "taeg": null,
-      "note": "Finanziamento Intelligent Buy Nissan, durata personalizzabile da 2 a 5 anni. Rata mensile non specificata dalla fonte. Promo valida fino al 31/08/2026.",
+      "note": "Finanziamento Intelligent Buy Nissan, durata personalizzabile da 2 a 5 anni. Rata mensile non specificata dalla fonte. Promo (verificare condizioni aggiornate in concessionaria per il mese corrente).",
       "fonte_nome": "Nissan IT",
       "fonte_url": "https://www.nissan.it/veicoli/veicoli-nuovi/micra/offerte.html",
       "tipo": "Utilitaria"
@@ -726,7 +726,7 @@
       "maxirata": 8896,
       "tan": "5.99%",
       "taeg": "9.19%",
-      "note": "Listino 23.900€. Richiede rottamazione di un veicolo omologato fino a Euro 4 e finanziamento Stellantis Financial Services. Include Identicar 12 mesi. Valida fino al 31/08/2026.",
+      "note": "Listino 23.900€. Richiede rottamazione di un veicolo omologato fino a Euro 4 e finanziamento Stellantis Financial Services. Include Identicar 12 mesi. Verificare condizioni aggiornate in concessionaria per il mese corrente.",
       "fonte_nome": "ClubAlfa",
       "fonte_url": "https://www.clubalfa.it/596008-fiat-500e-quasi-4-000-euro-di-sconto-ad-agosto-2026-il-prezzo-scende-a-19-950-euro",
       "tipo": "Utilitaria"
@@ -836,7 +836,7 @@
       "maxirata": 8113.9,
       "tan": "5.99%",
       "taeg": "9.63%",
-      "note": "Listino 19.790€. Leasing privati disponibile solo tramite Santander Consumer Bank. Importo totale dovuto dal consumatore 11.050,59€. Valido fino al 31/08/2026.",
+      "note": "Listino 19.790€. Leasing privati disponibile solo tramite Santander Consumer Bank. Importo totale dovuto dal consumatore 11.050,59€. Verificare condizioni aggiornate in concessionaria per il mese corrente.",
       "fonte_nome": "Theorema / Autouno Group",
       "fonte_url": "https://www.theoremaonline.com/promozioni/dettaglio/19/",
       "tipo": "Utilitaria"
@@ -929,7 +929,7 @@
       "maxirata": 12062,
       "tan": "7.99%",
       "taeg": "11.23%",
-      "note": "Listino 20.400€, prezzo promo 18.100€, ulteriore sconto con finanziamento SimplyDrive D. Cambio manuale. Valido fino al 31/08/2026.",
+      "note": "Listino 20.400€, prezzo promo 18.100€, ulteriore sconto con finanziamento SimplyDrive D. Cambio manuale. Verificare condizioni aggiornate in concessionaria per il mese corrente.",
       "fonte_nome": "ClubAlfa",
       "fonte_url": "https://www.clubalfa.it/596277-citroen-c3-aircross-you-turbo-100-ad-agosto-sconto-di-3-300-euro-e-rate-da-99-euro",
       "tipo": "SUV"
@@ -985,7 +985,7 @@
       "maxirata": null,
       "tan": "7.25%",
       "taeg": "8.90%",
-      "note": "Rata finale non specificata dalla fonte. Valido fino al 31/08/2026.",
+      "note": "Rata finale non specificata dalla fonte. Verificare condizioni aggiornate in concessionaria per il mese corrente.",
       "fonte_nome": "Renault IT",
       "fonte_url": "https://www.renault.it/veicoli-ibridi/captur/offerta-captur.html",
       "tipo": "SUV"
@@ -1004,26 +1004,26 @@
       "maxirata": null,
       "tan": "0%",
       "taeg": "3.33%",
-      "note": "Listino 25.950€. Finanziamento tasso zero su 48 rate senza rata finale. Valido fino al 31/08/2026.",
+      "note": "Listino 25.950€. Finanziamento tasso zero su 48 rate senza rata finale, con Stellantis Financial Services. Incentivi Jeep prenotabili fino al 26/09/2026.",
       "fonte_nome": "AutoPromoNews",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13697-suv-jeep-in-sconto-tassi-a-0-e-rate-da-149-euro-sulle-offerte-di-agosto-2026",
       "tipo": "SUV"
     },
     {
       "marca": "Jeep",
-      "modello": "Avenger 4xe (pronta consegna)",
+      "modello": "Avenger 4xe Upland 1.2 145cv (trazione integrale)",
       "tags": [
         "nuova",
         "maxirata-zero"
       ],
-      "prezzo": null,
+      "prezzo": 28700,
       "anticipo": 14271,
       "rata": 319,
       "rate_numero": 48,
       "maxirata": null,
       "tan": "0%",
       "taeg": "3.12%",
-      "note": "Finanziamento tasso zero su 48 rate senza rata finale, riservato ai veicoli in pronta consegna. Valido fino al 31/08/2026.",
+      "note": "Finanziamento tasso zero su 48 rate senza rata finale, con Stellantis Financial Services. Incentivi Jeep prenotabili fino al 26/09/2026.",
       "fonte_nome": "HDmotori",
       "fonte_url": "https://www.hdmotori.it/offerta-jeep-avenger-benzina-tasso-zero-finanziamento-rate/",
       "tipo": "SUV"
@@ -1064,6 +1064,24 @@
       "fonte_nome": "NewsAuto",
       "fonte_url": "https://www.newsauto.it/notizie/peugeot-208-offerte-con-finanziamenti-sconti-promozioni-2026-597529/",
       "tipo": "Utilitaria"
+    },
+    {
+      "marca": "Jeep",
+      "modello": "Avenger Summit Full-Electric",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 31400,
+      "anticipo": 12002,
+      "rata": 149,
+      "rate_numero": 35,
+      "maxirata": null,
+      "tan": null,
+      "taeg": null,
+      "note": "Rata finale non specificata dalla fonte. Incentivi Jeep prenotabili fino al 26/09/2026.",
+      "fonte_nome": "AutoPromoNews",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13795-jeep-avenger-offerte,-sconti-e-promozioni-settembre-2026-guida-aggiornata",
+      "tipo": "SUV"
     }
   ]
 }

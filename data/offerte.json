@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-09-01",
+  "aggiornato_al": "2026-09-03",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -9,14 +9,14 @@
         "nuova",
         "maxirata-zero"
       ],
-      "prezzo": null,
+      "prezzo": 33900,
       "anticipo": 14239,
       "rata": 428,
       "rate_numero": 48,
       "maxirata": null,
       "tan": "0%",
-      "taeg": null,
-      "note": "Finanziamento tasso zero 48 mesi, senza maxirata finale.",
+      "taeg": "2.32%",
+      "note": "Listino 40.900€. Importo totale del credito 19.932€ (incl. Identicar 12 mesi). Finanziamento tasso zero 48 mesi, senza maxirata finale. Confermata a settembre 2026.",
       "fonte_nome": "Motorbox",
       "fonte_url": "https://www.motorbox.com/auto/magazine/vivere-auto/auto-anticipo-zero-promozioni-fiat-dacia-opel-skoda-vw",
       "tipo": "SUV"

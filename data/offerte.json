@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-09-03",
+  "aggiornato_al": "2026-09-05",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -1082,6 +1082,62 @@
       "fonte_nome": "AutoPromoNews",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13795-jeep-avenger-offerte,-sconti-e-promozioni-settembre-2026-guida-aggiornata",
       "tipo": "SUV"
+    },
+    {
+      "marca": "MG",
+      "modello": "MG3 Benzina Standard",
+      "tags": [
+        "nuova",
+        "neopatentati"
+      ],
+      "prezzo": 13990,
+      "anticipo": 5920,
+      "rata": 89,
+      "rate_numero": 36,
+      "maxirata": 7645.5,
+      "tan": "7.45%",
+      "taeg": "11.01%",
+      "note": "Listino 16.990€. Spese di istruttoria, incasso rate e altre commissioni incluse nel costo totale del credito. Motore 1.0/1.5 benzina idoneo neopatentati. Offerta valida presso i dealer aderenti fino al 30/09/2026.",
+      "fonte_nome": "MG Motor Italy",
+      "fonte_url": "https://www.mgmotor.it/campaign/nuova-mg3-benzina-standard",
+      "tipo": "Utilitaria"
+    },
+    {
+      "marca": "MG",
+      "modello": "MG3 1.5 Hybrid+ Comfort",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 16990,
+      "anticipo": 5610,
+      "rata": 95,
+      "rate_numero": 35,
+      "maxirata": 11819.5,
+      "tan": "7.45%",
+      "taeg": "10.02%",
+      "note": "Listino 21.490€. Spese di istruttoria, incasso rate e altre commissioni incluse nel costo totale del credito. Offerta valida presso i dealer aderenti fino al 30/09/2026.",
+      "fonte_nome": "MG Motor Italy",
+      "fonte_url": "https://www.mgmotor.it/campaign/mg3-promo",
+      "tipo": "Utilitaria"
+    },
+    {
+      "marca": "Fiat",
+      "modello": "500 Hybrid Pop 1.0 65cv",
+      "tags": [
+        "nuova",
+        "anticipo-zero"
+      ],
+      "prezzo": 16450,
+      "anticipo": 0,
+      "rata": 149,
+      "rate_numero": 35,
+      "maxirata": 12073.6,
+      "tan": "0%",
+      "taeg": "2.07%",
+      "note": "Listino 19.990€, sconto 3.450€ con promo Fiat e rottamazione di un veicolo omologato fino a Euro 4. Valida a settembre 2026.",
+      "fonte_nome": "ClubAlfa",
+      "fonte_url": "https://www.clubalfa.it/598471-fiat-500-hybrid-a-149-euro-al-mese-e-senza-anticipo-a-settembre-2026-torna-lofferta-a-tasso-zero",
+      "tipo": "Utilitaria"
     }
   ]
 }

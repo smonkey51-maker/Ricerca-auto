@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-09-07",
+  "aggiornato_al": "2026-09-09",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -344,14 +344,14 @@
         "nuova",
         "maxirata-zero"
       ],
-      "prezzo": null,
+      "prezzo": 19800,
       "anticipo": 6850,
       "rata": 158.87,
       "rate_numero": 84,
       "maxirata": null,
       "tan": "0%",
       "taeg": null,
-      "note": "Finanziamento a tasso zero, piano lineare 84 rate senza maxirata finale.",
+      "note": "Finanziamento a tasso zero, piano lineare 84 rate senza maxirata finale. Valido fino al 30/09/2026.",
       "fonte_nome": "Autoappassionati / Tirloni",
       "fonte_url": "https://www.tirloni.it/offerta-renault-clio-2026-benzina-tasso-0-concessionaria-tirloni/",
       "tipo": "Utilitaria"
@@ -364,13 +364,13 @@
         "maxirata-zero"
       ],
       "prezzo": null,
-      "anticipo": 8110,
-      "rata": 128.99,
-      "rate_numero": 84,
+      "anticipo": 8605,
+      "rata": 259,
+      "rate_numero": 60,
       "maxirata": null,
       "tan": "0%",
-      "taeg": null,
-      "note": "Finanziamento a tasso zero, piano lineare 84 rate senza maxirata finale.",
+      "taeg": "1.61%",
+      "note": "Finanziamento a tasso zero, piano lineare 60 rate senza maxirata finale. Valido fino al 30/09/2026.",
       "fonte_nome": "Autoappassionati / Tirloni",
       "fonte_url": "https://www.tirloni.it/offerta-renault-clio-2026-benzina-tasso-0-concessionaria-tirloni/",
       "tipo": "Utilitaria"

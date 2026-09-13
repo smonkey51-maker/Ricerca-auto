@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-09-11",
+  "aggiornato_al": "2026-09-13",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -1193,6 +1193,42 @@
       "note": "Listino 34.300€. Richiede permuta o rottamazione. Chilometraggio incluso 40.000 km in 4 anni (eccedenza 0,20€/km). Valida fino al 30/09/2026.",
       "fonte_nome": "AutoPromoNews",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13833-volkswagen-t-roc-settembre-2026-prezzo-promozione-finanziamento-fregature",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "BYD",
+      "modello": "Seal 6 Boost 184cv",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 30400,
+      "anticipo": 5850,
+      "rata": 249,
+      "rate_numero": 35,
+      "maxirata": 19826,
+      "tan": "5.99%",
+      "taeg": "8.30%",
+      "note": "Listino 38.200€ (sconto 20%). Richiede permuta di un veicolo con almeno 150.000 km. Valida dall'1 al 30/09/2026.",
+      "fonte_nome": "AutoPromoNews / Il Giornale Digitale",
+      "fonte_url": "https://www.ilgiornaledigitale.it/byd-decreto-bonus-permuta-settembre-2026-89682.html",
+      "tipo": "Berlina"
+    },
+    {
+      "marca": "Nissan",
+      "modello": "Juke Hybrid Acenta",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 25200,
+      "anticipo": 3902,
+      "rata": 249,
+      "rate_numero": 36,
+      "maxirata": 16968,
+      "tan": "5.75%",
+      "taeg": "7.01%",
+      "note": "Listino 30.300€ (sconto 20%). Limite 30.000 km totali. Spese di istruttoria 395€ e bollo 51,96€ addebitati sulla prima rata.",
+      "fonte_nome": "AutoPromoNews",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13765-offerte-nissan-juke-settembre-2026-prezzi,-sconti,-promozioni-e-finanziamenti",
       "tipo": "SUV"
     }
   ]

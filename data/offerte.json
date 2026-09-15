@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-09-13",
+  "aggiornato_al": "2026-09-15",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -1230,6 +1230,24 @@
       "fonte_nome": "AutoPromoNews",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13765-offerte-nissan-juke-settembre-2026-prezzi,-sconti,-promozioni-e-finanziamenti",
       "tipo": "SUV"
+    },
+    {
+      "marca": "Renault",
+      "modello": "Twingo E-Tech Electric",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 19500,
+      "anticipo": 4853,
+      "rata": 309,
+      "rate_numero": 47,
+      "maxirata": 5528,
+      "tan": "5.00%",
+      "taeg": "7.23%",
+      "note": "Include fino a 30.000 km di ricarica a casa con Enel. Finanziamento Mobilize Financial Services. Valida fino al 30/09/2026.",
+      "fonte_nome": "Motorbox",
+      "fonte_url": "https://www.motorbox.com/auto/magazine/renault-twingo-electric-evolution-prezzo-promo-e-rata-mensile",
+      "tipo": "Utilitaria"
     }
   ]
 }

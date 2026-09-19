@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-09-15",
+  "aggiornato_al": "2026-09-19",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -48,13 +48,13 @@
         "maxirata-zero"
       ],
       "prezzo": null,
-      "anticipo": 6890,
-      "rata": 220,
+      "anticipo": 6650,
+      "rata": 199,
       "rate_numero": 48,
       "maxirata": null,
       "tan": "0%",
       "taeg": null,
-      "note": "Lotto limitato di pronta consegna, tasso zero senza maxirata finale.",
+      "note": "Lotto limitato di pronta consegna, tasso zero senza maxirata finale. Confermata a settembre 2026.",
       "fonte_nome": "Motorbox / alVolante",
       "fonte_url": "https://www.alvolante.it/news/offerte-promozioni-auto-luglio-2026-con-tasso-zero416083",
       "tipo": "Utilitaria"
@@ -1247,6 +1247,24 @@
       "note": "Include fino a 30.000 km di ricarica a casa con Enel. Finanziamento Mobilize Financial Services. Valida fino al 30/09/2026.",
       "fonte_nome": "Motorbox",
       "fonte_url": "https://www.motorbox.com/auto/magazine/renault-twingo-electric-evolution-prezzo-promo-e-rata-mensile",
+      "tipo": "Utilitaria"
+    },
+    {
+      "marca": "Toyota",
+      "modello": "Yaris Hybrid",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 19950,
+      "anticipo": 6600,
+      "rata": 129,
+      "rate_numero": 47,
+      "maxirata": null,
+      "tan": null,
+      "taeg": null,
+      "note": "Sconto del 19% sul listino. Rata finale (Valore Futuro Garantito) e TAN/TAEG non specificati dalla fonte.",
+      "fonte_nome": "AlVolante / Motori Magazine",
+      "fonte_url": "https://www.motorimagazine.it/auto-a-tasso-zero-e-sconti-fino-al-38-le-migliori-promozioni-di-settembre-2026/",
       "tipo": "Utilitaria"
     }
   ]

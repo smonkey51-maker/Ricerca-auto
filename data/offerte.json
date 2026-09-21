@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-09-19",
+  "aggiornato_al": "2026-09-21",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -54,7 +54,7 @@
       "maxirata": null,
       "tan": "0%",
       "taeg": null,
-      "note": "Lotto limitato di pronta consegna, tasso zero senza maxirata finale. Confermata a settembre 2026.",
+      "note": "Lotto limitato di pronta consegna, tasso zero senza maxirata finale. Valida fino al 5/10/2026.",
       "fonte_nome": "Motorbox / alVolante",
       "fonte_url": "https://www.alvolante.it/news/offerte-promozioni-auto-luglio-2026-con-tasso-zero416083",
       "tipo": "Utilitaria"
@@ -1266,6 +1266,43 @@
       "fonte_nome": "AlVolante / Motori Magazine",
       "fonte_url": "https://www.motorimagazine.it/auto-a-tasso-zero-e-sconti-fino-al-38-le-migliori-promozioni-di-settembre-2026/",
       "tipo": "Utilitaria"
+    },
+    {
+      "marca": "Peugeot",
+      "modello": "2008 Turbo Benzina 100 Style",
+      "tags": [
+        "nuova",
+        "neopatentati"
+      ],
+      "prezzo": 19950,
+      "anticipo": 6261,
+      "rata": 109,
+      "rate_numero": 35,
+      "maxirata": 13641,
+      "tan": "6.99%",
+      "taeg": "9.73%",
+      "note": "Richiede permuta/rottamazione, vetture in pronta consegna. Valida fino al 30/09/2026.",
+      "fonte_nome": "Autoblog / AutoPromoNews",
+      "fonte_url": "https://www.autoblog.it/post/peugeot-2008-sconto-a-settembre-il-suv-parte-da-19-950-euro-e-109-euro-al-mese",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "Peugeot",
+      "modello": "3008 Hybrid 145 e-DCS6 Allure",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": null,
+      "anticipo": 5286,
+      "rata": 249,
+      "rate_numero": 35,
+      "maxirata": 23260,
+      "tan": "6.99%",
+      "taeg": "8.64%",
+      "note": "Richiede permuta/rottamazione, vetture in pronta consegna. Disponibile anche in versione Plug-in Hybrid (anticipo 9.090€, TAN 3.75%) ed elettrica E-3008 (anticipo 12.636€, TAN 2.99%) a parità di rata da 249€. Valida fino al 30/09/2026.",
+      "fonte_nome": "ClubAlfa",
+      "fonte_url": "https://www.clubalfa.it/598806-peugeot-3008-sconti-fino-a-8-000-euro-a-settembre-2026-hybrid-plug-in-ed-elettrica-in-offerta",
+      "tipo": "SUV"
     }
   ]
 }

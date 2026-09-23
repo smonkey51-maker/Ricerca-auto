@@ -228,6 +228,7 @@
   .tag-pill.neopatentati { background: var(--series-3-soft); }
   .tag-pill.anticipo-zero { background: var(--series-4-soft); }
   .tag-pill.maxirata-zero { background: var(--series-5-soft); }
+  .tag-pill.tipo { background: var(--surface-2); color: var(--text-secondary); font-weight: 600; }
 
   .fig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; font-size: 0.85rem; margin-top: 4px; }
   .fig-grid .fig-label { color: var(--text-muted); }
@@ -250,9 +251,56 @@
     margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--gridline);
     color: var(--text-muted); font-size: 0.8rem;
   }
+
+  .skip-link {
+    position: absolute; left: 8px; top: -48px; z-index: 100;
+    background: var(--series-1); color: #fff; padding: 10px 16px; border-radius: 8px;
+    font-size: 0.9rem; text-decoration: none; transition: top 0.15s ease;
+  }
+  .skip-link:focus { top: 8px; }
+
+  :focus-visible { outline: 3px solid var(--series-1); outline-offset: 2px; border-radius: 4px; }
+
+  .glossary {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 4px 16px; margin-bottom: 24px;
+  }
+  .glossary summary {
+    cursor: pointer; padding: 12px 0; font-size: 0.92rem; font-weight: 600; color: var(--text-primary);
+    list-style: none; display: flex; align-items: center; gap: 8px;
+  }
+  .glossary summary::-webkit-details-marker { display: none; }
+  .glossary summary::before { content: "?"; display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%; background:var(--series-1-soft); color:var(--series-1); font-size:0.8rem; font-weight:700; flex:none; }
+  .glossary[open] summary { border-bottom: 1px solid var(--gridline); }
+  .glossary dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; padding: 14px 0 16px; margin: 0; font-size: 0.88rem; }
+  .glossary dt { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+  .glossary dd { margin: 0; color: var(--text-secondary); }
+
+  .highlight-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+  .highlight-card {
+    background: var(--surface-1); border: 1px solid var(--border); border-top: 3px solid var(--series-3);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .highlight-card .hc-rank { font-size: 0.72rem; color: var(--series-3); font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+  .highlight-card h4 { margin: 4px 0 2px; font-size: 0.95rem; }
+  .highlight-card h4 .brand { color: var(--text-secondary); font-weight: 500; }
+  .highlight-card .hc-rata { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-top: 6px; }
+  .highlight-card .hc-rata span { font-size: 0.78rem; font-weight: 500; color: var(--text-muted); }
+  .highlight-card .hc-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 16px 14px 48px; }
+    header.page h1 { font-size: 1.4rem; }
+    .controls { flex-direction: column; align-items: stretch; }
+    .controls input[type="search"], .controls select, .filter-dropdown, .filter-dropdown summary {
+      width: 100%; flex: none;
+    }
+    .filter-dropdown .panel { left: 0; right: 0; min-width: 0; }
+  }
 </style>
 </head>
 <body>
+<a href="#main" class="skip-link">Salta al contenuto</a>
 <div class="wrap">
 
   <header class="page">
@@ -261,9 +309,27 @@
     <div class="disclaimer" id="disclaimer"></div>
   </header>
 
+  <details class="glossary">
+    <summary>Cosa significano questi termini?</summary>
+    <dl>
+      <dt>Anticipo</dt><dd>La somma che paghi subito, al momento della firma. "Anticipo zero" vuol dire che non paghi nulla all'inizio.</dd>
+      <dt>Rata mensile</dt><dd>Quanto paghi ogni mese per tutta la durata del finanziamento.</dd>
+      <dt>Maxirata finale</dt><dd>Un pagamento extra, più grande delle rate normali, dovuto all'ultimo mese se vuoi tenere l'auto. "Maxirata zero" vuol dire che non c'è: paghi solo le rate mensili.</dd>
+      <dt>TAN</dt><dd>Il tasso di interesse puro del finanziamento, in percentuale annua. "TAN 0%" vuol dire che non paghi interessi.</dd>
+      <dt>TAEG</dt><dd>Il costo totale annuo del finanziamento in percentuale, comprese le spese aggiuntive (pratica, assicurazioni, ecc.). È il numero più utile per confrontare due offerte tra loro.</dd>
+    </dl>
+  </details>
+
+  <main id="main">
+
   <section id="stats-section">
     <h2>Panoramica</h2>
     <div class="stat-grid" id="stats"></div>
+  </section>
+
+  <section id="cheapest-section">
+    <h2>Le offerte con la rata più bassa</h2>
+    <div class="highlight-grid" id="cheapest"></div>
   </section>
 
   <section id="chart-section">
@@ -276,15 +342,19 @@
   <section id="controls-section">
     <h2>Filtra le offerte</h2>
     <div class="controls">
-      <input type="search" id="search" placeholder="Cerca marca o modello (es. Panda, Clio, Kamiq)…">
+      <input type="search" id="search" aria-label="Cerca per marca o modello" placeholder="Cerca marca o modello (es. Panda, Clio, Kamiq)…">
       <details class="filter-dropdown" id="brand-filter">
         <summary>Marca <span id="brand-count-label"></span></summary>
         <div class="panel" id="brand-panel"></div>
       </details>
-      <select id="durata-filter">
+      <details class="filter-dropdown" id="tipo-filter">
+        <summary>Tipo auto <span id="tipo-count-label"></span></summary>
+        <div class="panel" id="tipo-panel"></div>
+      </details>
+      <select id="durata-filter" aria-label="Filtra per durata del finanziamento">
         <option value="">Qualsiasi durata</option>
       </select>
-      <select id="sort">
+      <select id="sort" aria-label="Ordina i risultati">
         <option value="rata-asc">Rata: crescente</option>
         <option value="rata-desc">Rata: decrescente</option>
         <option value="anticipo-asc">Anticipo: crescente</option>
@@ -295,30 +365,32 @@
     <div class="chip-group" id="chips"></div>
     <div class="range-filters">
       <div class="range-filter" id="rata-range-filter">
-        <label>Rata mensile <span class="range-value" id="rata-range-value"></span></label>
+        <label id="rata-range-label">Rata mensile <span class="range-value" id="rata-range-value" aria-live="polite"></span></label>
         <div class="dual-range">
           <div class="track"></div>
           <div class="track-fill" id="rata-track-fill"></div>
-          <input type="range" id="rata-min">
-          <input type="range" id="rata-max">
+          <input type="range" id="rata-min" aria-label="Rata mensile minima">
+          <input type="range" id="rata-max" aria-label="Rata mensile massima">
         </div>
       </div>
       <div class="range-filter" id="prezzo-range-filter">
-        <label>Prezzo veicolo <span class="range-value" id="prezzo-range-value"></span></label>
+        <label id="prezzo-range-label">Prezzo veicolo <span class="range-value" id="prezzo-range-value" aria-live="polite"></span></label>
         <div class="dual-range">
           <div class="track"></div>
           <div class="track-fill" id="prezzo-track-fill"></div>
-          <input type="range" id="prezzo-min">
-          <input type="range" id="prezzo-max">
+          <input type="range" id="prezzo-min" aria-label="Prezzo veicolo minimo">
+          <input type="range" id="prezzo-max" aria-label="Prezzo veicolo massimo">
         </div>
       </div>
     </div>
   </section>
 
   <section id="results-section">
-    <div class="result-count" id="result-count"></div>
+    <div class="result-count" id="result-count" aria-live="polite"></div>
     <div class="card-grid" id="cards"></div>
   </section>
+
+  </main>
 
   <footer class="page">
     <p>Dati raccolti da fonti pubbliche (siti di case automobilistiche, concessionarie e testate di settore) tramite ricerca web, aggiornati indicativamente ad agosto 2026. Prezzi, rate e condizioni di finanziamento cambiano mensilmente e variano per allestimento, provincia e concessionario: verificare sempre l'offerta effettiva (documenti IEBCC/SECCI) prima di firmare un contratto.</p>
@@ -328,42 +400,79 @@
 
 <script>
 const DATA = {
-  "aggiornato_al": "2026-08-10",
+  "aggiornato_al": "2026-09-23",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
-    { "marca": "Jeep", "modello": "Compass Altitude 1.2 e-Hybrid", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 14239, "rata": 428, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": null, "note": "Finanziamento tasso zero 48 mesi, senza maxirata finale.", "fonte_nome": "Motorbox", "fonte_url": "https://www.motorbox.com/auto/magazine/vivere-auto/auto-anticipo-zero-promozioni-fiat-dacia-opel-skoda-vw" },
-    { "marca": "Alfa Romeo", "modello": "Tonale (turbodiesel)", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 15431, "rata": 399, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": null, "note": "Finanziamento tasso zero, senza maxirata finale.", "fonte_nome": "Motorbox", "fonte_url": "https://www.motorbox.com/auto/magazine/vivere-auto/auto-anticipo-zero-promozioni-fiat-dacia-opel-skoda-vw" },
-    { "marca": "Dacia", "modello": "Sandero Streetway 1.0 TCe Expression", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 6890, "rata": 220, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": null, "note": "Lotto limitato di pronta consegna, tasso zero senza maxirata finale.", "fonte_nome": "Motorbox / alVolante", "fonte_url": "https://www.alvolante.it/news/offerte-promozioni-auto-luglio-2026-con-tasso-zero416083" },
-    { "marca": "Lancia", "modello": "Ypsilon Ibrida 1.2", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 9071, "rata": 269, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": null, "note": "Formula \"Zero Interessi / Zero Maxirata\" a piano lineare, pensata per uso cittadino.", "fonte_nome": "AutoPromoNews", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13600-guida-completa-finanziamenti-auto-offerte-luglio-2026,-anticipo-zero-e-tassi-zero" },
-    { "marca": "DS", "modello": "3 Hybrid Pallas", "tags": ["nuova", "maxirata-zero"], "prezzo": 25947, "anticipo": 10030, "rata": 350, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": "2.68%", "note": "Listino 34.350€. Finanziamento StyleDrive a zero interessi, senza rata finale. Valido fino al 30/06/2026 (verificare proroghe).", "fonte_nome": "MotoriMagazine", "fonte_url": "https://www.motorimagazine.it/ds-3-hybrid-pallas-in-promozione-tutto-sul-finanziamento-styledrive-e-i-costi-reali/" },
-    { "marca": "EVO", "modello": "EVO5 Essential 1.5 Turbo", "tags": ["nuova", "anticipo-zero", "maxirata-zero"], "prezzo": 15900, "anticipo": 0, "rata": 297, "rate_numero": 60, "maxirata": null, "tan": "0%", "taeg": "4.59%", "note": "Importo finanziato 17.405,07€ (incl. furto/incendio e spese pratica). Totale da rimborsare 17.779,80€, zero interessi, nessuna maxirata. Valida fino al 30/06/2026 (verificare proroghe). Combinazione reale di anticipo zero + maxirata zero, rara sul mercato.", "fonte_nome": "Rete concessionari EVO", "fonte_url": "https://www.auto-evo.com/finanziamenti/" },
-    { "marca": "Suzuki", "modello": "Vitara Hybrid 1.4 48V 2WD", "tags": ["nuova"], "prezzo": 25850, "anticipo": 6025, "rata": 199, "rate_numero": 36, "maxirata": 13600, "tan": "6.35%", "taeg": "7.81%", "note": "Promo con permuta o rottamazione, valida fino al 30/04/2026 (verificare proroghe).", "fonte_nome": "Motor1 Italia", "fonte_url": "https://it.motor1.com/news/793996/offerta-promozione-suzuki-vitara-aprile-2026/" },
-    { "marca": "Suzuki", "modello": "Ignis 1.2 Hybrid TOP", "tags": ["nuova", "neopatentati"], "prezzo": 19400, "anticipo": null, "rata": 89, "rate_numero": 35, "maxirata": null, "tan": null, "taeg": null, "note": "Listino 21.400€, sconto 2.000€. Importo finanziato 11.890€; anticipo e rata finale non specificati dalla fonte. Idonea a neopatentati.", "fonte_nome": "Gruppo Farina / Autoimport", "fonte_url": "https://www.gruppofarina.com/suzuki/promozioni/gamma-hybrid-suzuki/" },
-    { "marca": "Audi", "modello": "A1 Sportback", "tags": ["nuova"], "prezzo": 31930, "anticipo": 5197.71, "rata": 299, "rate_numero": 35, "maxirata": null, "tan": "4.45%", "taeg": "5.54%", "note": "Esempio di finanziamento presso concessionaria; rata finale non specificata dalla fonte.", "fonte_nome": "FinanziamentoImmediato.com", "fonte_url": "https://www.finanziamentoimmediato.com/finanziamento-audi-tasso-zero/" },
-    { "marca": "Opel", "modello": "Corsa (promo anticipo zero)", "tags": ["nuova", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 229, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Promo agosto 2026 con anticipo zero; durata ed eventuale maxirata non specificate dalla fonte.", "fonte_nome": "Motorionline", "fonte_url": "https://www.motorionline.com/opel-corsa-ad-agosto-in-promozione-da-229-euro-al-mese-e-anticipo-zero/" },
-    { "marca": "Opel", "modello": "Corsa Edition 1.2 Benzina 100cv", "tags": ["nuova"], "prezzo": 13750, "anticipo": 4033, "rata": 99, "rate_numero": 33, "maxirata": 9704.88, "tan": null, "taeg": null, "note": "Sconto fino a 7.600€ con rottamazione. Finanziamento Scelta Opel, prima rata novembre 2026. Valido fino al 31/08/2026.", "fonte_nome": "AutoPromoNews / Autouno Group", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13648-occasioni-opel-corsa-agosto-2026-sconti-shock-e-rate-da-139-euro" },
-    { "marca": "Opel", "modello": "Astra Edition 1.2 Hybrid 145cv", "tags": ["nuova"], "prezzo": 23450, "anticipo": 6712, "rata": 189, "rate_numero": 33, "maxirata": 15288.70, "tan": null, "taeg": null, "note": "Finanziamento Scelta Opel, prima rata ottobre 2026. Valido fino al 31/08/2026, salvo approvazione Stellantis Financial Services.", "fonte_nome": "Autouno Group", "fonte_url": "https://www.gruppoautouno.it/promozione/opel-astra-finanziamento/" },
-    { "marca": "Mazda", "modello": "3 2.0 M-Hybrid 140cv Prime Line", "tags": ["nuova"], "prezzo": 24950, "anticipo": null, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Prezzo promozionale con permuta/rottamazione e finanziamento Mazda Advantage. Rata non specificata dalla fonte. Valido fino al 30/06/2026 (verificare proroghe).", "fonte_nome": "Motorbox", "fonte_url": "https://www.motorbox.com/auto/magazine/vivere-auto/offerte-auto-nuove-le-promozioni-fiat-volkswagen-ford-renault" },
-    { "marca": "Mazda", "modello": "CX-30", "tags": ["nuova"], "prezzo": 24700, "anticipo": null, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Prezzo promozionale con permuta/rottamazione. Rata non specificata dalla fonte.", "fonte_nome": "Motorbox", "fonte_url": "https://www.motorbox.com/auto/magazine/vivere-auto/offerte-auto-nuove-le-promozioni-fiat-volkswagen-ford-renault" },
-    { "marca": "Fiat", "modello": "Pandina Hybrid Pop (promo Under 30 / Neopatentati)", "tags": ["nuova", "neopatentati"], "prezzo": null, "anticipo": 3200, "rata": 99, "rate_numero": 35, "maxirata": 8431.50, "tan": "2.99%", "taeg": null, "note": "Importo finanziato 9.813,40€. Include Service Care Plus, Furto e Incendio Plus, Identicar 12 mesi. Valida per contratti firmati entro il 31/07/2026.", "fonte_nome": "NewsAuto / Il Giornale Digitale", "fonte_url": "https://www.newsauto.it/fiat/offerte-fiat-giugno-under-30-neopatentati-2026-623570/" },
-    { "marca": "Fiat", "modello": "Grande Panda / 500 / 600 / Qubo L", "tags": ["nuova", "neopatentati"], "prezzo": null, "anticipo": null, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Intera gamma certificata per neopatentati su tutte le motorizzazioni. Rata specifica variabile per allestimento: verificare in concessionaria.", "fonte_nome": "Motorbox", "fonte_url": "https://www.motorbox.com/auto/magazine/fiat-pandina-500-grande-panda-600-e-qubo-l-promo-neopatentati" },
-    { "marca": "Citroën", "modello": "C3 Turbo 100 YOU", "tags": ["nuova"], "prezzo": 15300, "anticipo": 6161, "rata": 49, "rate_numero": 35, "maxirata": 9409.10, "tan": "3.99%", "taeg": "7.50%", "note": "Promo SimplyDrive riservata a chi rottama/permuta. Prezzo scontato di 1.600€.", "fonte_nome": "ClubAlfa", "fonte_url": "https://www.clubalfa.it/596012-citroen-c3-rata-da-appena-49-euro-ad-agosto-2026-costa-1-600-euro-in-meno" },
-    { "marca": "Citroën", "modello": "ë-C3 (elettrica, leasing Easy Go)", "tags": ["nuova"], "prezzo": null, "anticipo": null, "rata": 139, "rate_numero": 35, "maxirata": null, "tan": "0%", "taeg": "2.41%", "note": "Formula di leasing Citroën Easy Go.", "fonte_nome": "Citroën IT", "fonte_url": "https://www.citroen.it/acquista/offerte-privati/e-c3-finanziamento.html" },
-    { "marca": "Toyota", "modello": "Aygo X Hybrid", "tags": ["nuova", "neopatentati"], "prezzo": 17950, "anticipo": 6340, "rata": 118.91, "rate_numero": 47, "maxirata": 9550.01, "tan": "7.25%", "taeg": "9.22%", "note": "Valore Futuro Garantito valido per 10.000 km/anno. Offerta valida fino al 31/08/2026.", "fonte_nome": "Everyeye Auto", "fonte_url": "https://auto.everyeye.it/notizie/toyota-aygo-x-offerta-aprile-2026-17-950-euro-costa-davvero-finanziamento-872345.html" },
-    { "marca": "Renault", "modello": "Clio ECO-G 120cv", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 6850, "rata": 158.87, "rate_numero": 84, "maxirata": null, "tan": "0%", "taeg": null, "note": "Finanziamento a tasso zero, piano lineare 84 rate senza maxirata finale.", "fonte_nome": "Autoappassionati / Tirloni", "fonte_url": "https://www.tirloni.it/offerta-renault-clio-2026-benzina-tasso-0-concessionaria-tirloni/" },
-    { "marca": "Renault", "modello": "Clio Full Hybrid E-Tech 160cv", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 8110, "rata": 128.99, "rate_numero": 84, "maxirata": null, "tan": "0%", "taeg": null, "note": "Finanziamento a tasso zero, piano lineare 84 rate senza maxirata finale.", "fonte_nome": "Autoappassionati / Tirloni", "fonte_url": "https://www.tirloni.it/offerta-renault-clio-2026-benzina-tasso-0-concessionaria-tirloni/" },
-    { "marca": "Dacia", "modello": "Sandero Streetway Essential SCe 65", "tags": ["nuova"], "prezzo": 15800, "anticipo": 4000, "rata": 152, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Importo totale del credito 12.195€. Durata rate non specificata dalla fonte.", "fonte_nome": "NewsAuto", "fonte_url": "https://www.newsauto.it/dacia/dacia-sandero-offerte-prezzi-finanziamenti-2026-593124/" },
-    { "marca": "Dacia", "modello": "Sandero Stepway Essential Eco-G 120", "tags": ["nuova"], "prezzo": 16500, "anticipo": 5000, "rata": 112, "rate_numero": 36, "maxirata": 10065, "tan": null, "taeg": null, "note": "Rata finale corrispondente al Valore Futuro Garantito.", "fonte_nome": "Dacia IT", "fonte_url": "https://www.dacia.it/gamma/sandero-stepway/offerta.html" },
-    { "marca": "Hyundai", "modello": "i10 (\"Hyundai Plus 0%\")", "tags": ["nuova", "neopatentati"], "prezzo": 18500, "anticipo": null, "rata": 84, "rata_label": "79 – 89", "rate_numero": null, "maxirata": null, "tan": "0%", "taeg": null, "note": "Prezzo di listino di partenza; rata indicativa 79-89€/mese secondo allestimento. Idonea a neopatentati in tutte le versioni.", "fonte_nome": "AutoPromoNews", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13627-hyundai-i10-offerte-e-promozioni-agosto-2026-guida-all%E2%80%99acquisto-intelligente" },
-    { "marca": "Kia", "modello": "Picanto 1.0 GDi Urban", "tags": ["nuova", "neopatentati"], "prezzo": 14800, "anticipo": null, "rata": 79, "rate_numero": 35, "maxirata": null, "tan": "3.95%", "taeg": "5.87%", "note": "Prezzo promozionale (listino 17.800€) con finanziamento Scelta Kia e contributo Kia di 1.000-2.000€ per contratti agosto 2026. Idonea a neopatentati.", "fonte_nome": "Everyeye Auto / Campello Motors", "fonte_url": "https://auto.everyeye.it/notizie/offerta-kia-picanto-city-car-svenduta-aprile-2026-costa-fiat-panda-870560.html" },
-    { "marca": "Peugeot", "modello": "208 Turbo Benzina 100 Style", "tags": ["nuova", "neopatentati"], "prezzo": null, "anticipo": 4376, "rata": 99, "rate_numero": 35, "maxirata": 10499, "tan": null, "taeg": null, "note": "Versione consigliata per neopatentati: Peugeot 208 Sole 100cv.", "fonte_nome": "Automoto.it", "fonte_url": "https://www.automoto.it/promozioni/volkswagen-polo-l-offerta-pensata-per-i-neopatentati.html" },
-    { "marca": "Škoda", "modello": "Kamiq Black Dots 1.0 TSI 95cv", "tags": ["nuova", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 165, "rate_numero": 35, "maxirata": null, "tan": "0%", "taeg": null, "note": "Promo estate: anticipo zero, TAN zero, Bonus Carburante 1.000€ incluso. Rata variabile per allestimento (fino a 199€/mese in altre versioni).", "fonte_nome": "Automoto.it / Amicar", "fonte_url": "https://www.automoto.it/promozioni/l-offerta-skoda-per-l-estate-su-fabia-e-kamiq-e-anticipo-e-tan-zero.html" },
-    { "marca": "Škoda", "modello": "Kamiq (finanziamento Clever Value)", "tags": ["nuova", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 269, "rate_numero": 35, "maxirata": null, "tan": "0%", "taeg": "0.94%", "note": "Importo finanziato 25.190€. Prevista maxirata finale (Valore Futuro Garantito) non specificata dalla fonte; manutenzione ordinaria 3 anni inclusa.", "fonte_nome": "AutoVega", "fonte_url": "https://www.autovega.com/content-nuovo-koda-kamiq-tuo-da-90-al-mese_44.cshtml" },
-    { "marca": "MG", "modello": "MG5 S5 EV", "tags": ["nuova", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Una delle poche elettriche con finanziamento anticipo zero nel 2026. Importi rata non pubblicati dalla fonte.", "fonte_nome": "CalcolaCostoAuto", "fonte_url": "https://calcolacostoauto.it/blog/auto-anticipo-zero-2026" },
-    { "marca": "Alfa Romeo", "modello": "Junior Elettrica", "tags": ["nuova"], "prezzo": null, "anticipo": null, "rata": 199, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Rata indicativa mensile; condizioni complete non pubblicate dalla fonte.", "fonte_nome": "alVolante", "fonte_url": "https://www.alvolante.it/listino_auto/offerte-auto-del-mese" },
-    { "marca": "Eurotoscar (multimarca)", "modello": "Pronta consegna – 200 auto", "tags": ["usata", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 29, "rata_label": "da 29", "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Stock di 200 veicoli in pronta consegna (nuovo e usato) con anticipo zero, rate a partire da 29€/mese.", "fonte_nome": "Eurotoscar", "fonte_url": "https://www.autoeurotoscar.it/blog/200-auto-pronta-consegna-anticipo-zero-rate-da-29%E2%82%AC-al-mese" },
-    { "marca": "Multimarca (noleggio)", "modello": "Usato garantito – Noleggio Lungo Termine senza anticipo", "tags": ["usata", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Canone mensile fisso con assicurazione, manutenzione ordinaria/straordinaria e assistenza stradale incluse. Importo del canone variabile per veicolo.", "fonte_nome": "Facile.it", "fonte_url": "https://www.facile.it/noleggio-lungo-termine/news/auto-noleggio-lungo-termine-senza-anticipo-giugno-2026.html" },
-    { "marca": "Multimarca (usato garantito)", "modello": "Usato garantito con anticipo zero", "tags": ["usata", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 187.5, "rata_label": "125 – 250", "rate_numero": 60, "maxirata": null, "tan": null, "taeg": null, "note": "Range indicativo aggregato di offerte usato garantito (1 anno di garanzia), piano tipico 60 mesi senza anticipo.", "fonte_nome": "CalcolaCostoAuto / aggregatori di settore", "fonte_url": "https://calcolacostoauto.it/blog/auto-anticipo-zero-2026" }
+    { "marca": "Jeep", "modello": "Compass Altitude 1.2 e-Hybrid", "tags": ["nuova", "maxirata-zero"], "prezzo": 33900, "anticipo": 14239, "rata": 428, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": "2.32%", "note": "Listino 40.900€. Importo totale del credito 19.932€ (incl. Identicar 12 mesi). Finanziamento tasso zero 48 mesi, senza maxirata finale. Confermata a settembre 2026.", "fonte_nome": "Motorbox", "fonte_url": "https://www.motorbox.com/auto/magazine/vivere-auto/auto-anticipo-zero-promozioni-fiat-dacia-opel-skoda-vw", "tipo": "SUV" },
+    { "marca": "Alfa Romeo", "modello": "Tonale (turbodiesel)", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 18231, "rata": 399, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": null, "note": "Finanziamento tasso zero, senza maxirata finale. Riservata alle vetture in pronta consegna, (verificare condizioni aggiornate in concessionaria per il mese corrente).", "fonte_nome": "ClubAlfa", "fonte_url": "https://www.clubalfa.it/595847-nuova-alfa-romeo-tonale-a-399-euro-al-mese-interessi-zero-e-nessuna-maxirata-finale-ad-agosto-2026", "tipo": "SUV" },
+    { "marca": "Dacia", "modello": "Sandero Streetway 1.0 TCe Expression", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 6650, "rata": 199, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": null, "note": "Lotto limitato di pronta consegna, tasso zero senza maxirata finale. Valida fino al 5/10/2026.", "fonte_nome": "Motorbox / alVolante", "fonte_url": "https://www.alvolante.it/news/offerte-promozioni-auto-luglio-2026-con-tasso-zero416083", "tipo": "Utilitaria" },
+    { "marca": "Lancia", "modello": "Ypsilon Ibrida 1.2", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 11971, "rata": 269, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": null, "note": "Formula \"Zero Pensieri\" (Zero Interessi / Zero Maxirata) a piano lineare, pensata per uso cittadino. Valida fino al 30/09/2026.", "fonte_nome": "AutoPromoNews", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13600-guida-completa-finanziamenti-auto-offerte-luglio-2026,-anticipo-zero-e-tassi-zero", "tipo": "Utilitaria" },
+    { "marca": "EVO", "modello": "EVO5 Essential 1.5 Turbo", "tags": ["nuova", "anticipo-zero", "maxirata-zero"], "prezzo": 15900, "anticipo": 0, "rata": 297, "rate_numero": 60, "maxirata": null, "tan": "0%", "taeg": "4.59%", "note": "Importo finanziato 17.405,07€ (incl. furto/incendio e spese pratica). Totale da rimborsare 17.779,80€, zero interessi, nessuna maxirata. Struttura di finanziamento a tasso 0% fino a 60 mesi della rete concessionari EVO, confermata nel corso del 2026. Combinazione reale di anticipo zero + maxirata zero, rara sul mercato: verificare importi aggiornati in concessionaria.", "fonte_nome": "Rete concessionari EVO", "fonte_url": "https://www.auto-evo.com/finanziamenti/", "tipo": "SUV" },
+    { "marca": "Suzuki", "modello": "Vitara Hybrid 1.4 48V 2WD", "tags": ["nuova"], "prezzo": 25850, "anticipo": 6025, "rata": 199, "rate_numero": 36, "maxirata": 13600, "tan": "6.35%", "taeg": "7.81%", "note": "Promo ricorrente Suzuki (anticipo zero/tasso zero su Vitara e Ignis) confermata nel corso del 2026: verificare condizioni e importi aggiornati in concessionaria.", "fonte_nome": "Motor1 Italia", "fonte_url": "https://it.motor1.com/news/793996/offerta-promozione-suzuki-vitara-aprile-2026/", "tipo": "SUV" },
+    { "marca": "Suzuki", "modello": "Ignis 1.2 Hybrid TOP", "tags": ["nuova", "neopatentati"], "prezzo": 19400, "anticipo": null, "rata": 89, "rate_numero": 35, "maxirata": null, "tan": null, "taeg": null, "note": "Listino 21.400€, sconto 2.000€. Importo finanziato 11.890€; anticipo e rata finale non specificati dalla fonte. Idonea a neopatentati.", "fonte_nome": "Gruppo Farina / Autoimport", "fonte_url": "https://www.gruppofarina.com/suzuki/promozioni/gamma-hybrid-suzuki/", "tipo": "SUV" },
+    { "marca": "Audi", "modello": "A1 Sportback", "tags": ["nuova"], "prezzo": 31930, "anticipo": 5197.71, "rata": 299, "rate_numero": 35, "maxirata": null, "tan": "4.45%", "taeg": "5.54%", "note": "Esempio di finanziamento presso concessionaria; rata finale non specificata dalla fonte.", "fonte_nome": "FinanziamentoImmediato.com", "fonte_url": "https://www.finanziamentoimmediato.com/finanziamento-audi-tasso-zero/", "tipo": "Utilitaria" },
+    { "marca": "Opel", "modello": "Corsa (promo anticipo zero)", "tags": ["nuova", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 229, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Promo agosto 2026 con anticipo zero; durata ed eventuale maxirata non specificate dalla fonte.", "fonte_nome": "Motorionline", "fonte_url": "https://www.motorionline.com/opel-corsa-ad-agosto-in-promozione-da-229-euro-al-mese-e-anticipo-zero/", "tipo": "Utilitaria" },
+    { "marca": "Opel", "modello": "Corsa Edition 1.2 Benzina 100cv", "tags": ["nuova"], "prezzo": 13750, "anticipo": 3098, "rata": 99, "rate_numero": 33, "maxirata": 10701.67, "tan": "7.99%", "taeg": "11.34%", "note": "Prima rata a settembre 2026. Le versioni termiche/Mild Hybrid beneficiano di un contributo statale di circa 2.000€ con rottamazione obbligatoria; la versione Electric fino a 5.000€.", "fonte_nome": "AutoPromoNews / Autouno Group", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13648-occasioni-opel-corsa-agosto-2026-sconti-shock-e-rate-da-139-euro", "tipo": "Utilitaria" },
+    { "marca": "Opel", "modello": "Astra Edition 1.2 Hybrid 145cv", "tags": ["nuova"], "prezzo": 23450, "anticipo": 6648, "rata": 189, "rate_numero": 33, "maxirata": 15319.65, "tan": "7.99%", "taeg": "10.33%", "note": "Finanziamento Scelta Opel Plus, prima rata a settembre 2026, limite 30.000 km.", "fonte_nome": "Autouno Group", "fonte_url": "https://www.gruppoautouno.it/promozione/opel-astra-finanziamento/", "tipo": "Berlina" },
+    { "marca": "Mazda", "modello": "3 2.0 M-Hybrid 140cv Prime Line", "tags": ["nuova"], "prezzo": 24950, "anticipo": null, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Prezzo promozionale con permuta/rottamazione e finanziamento Mazda Advantage. Rata non specificata dalla fonte. Valido fino al 30/06/2026 (verificare proroghe).", "fonte_nome": "Motorbox", "fonte_url": "https://www.motorbox.com/auto/magazine/vivere-auto/offerte-auto-nuove-le-promozioni-fiat-volkswagen-ford-renault", "tipo": "Berlina" },
+    { "marca": "Mazda", "modello": "CX-30", "tags": ["nuova"], "prezzo": 24700, "anticipo": null, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Prezzo promozionale con permuta/rottamazione. Rata non specificata dalla fonte.", "fonte_nome": "Motorbox", "fonte_url": "https://www.motorbox.com/auto/magazine/vivere-auto/offerte-auto-nuove-le-promozioni-fiat-volkswagen-ford-renault", "tipo": "SUV" },
+    { "marca": "Fiat", "modello": "Pandina Hybrid Pop (promo Under 30 / Neopatentati)", "tags": ["nuova", "neopatentati"], "prezzo": null, "anticipo": 3647, "rata": 99, "rate_numero": 35, "maxirata": 8011, "tan": "2.99%", "taeg": "6.67%", "note": "Importo finanziato aggiornato. Include Service Care Plus, Furto e Incendio Plus. Valida per contratti firmati entro il 27/08/2026 (verificare proroghe).", "fonte_nome": "Fiat IT / Automoto.it", "fonte_url": "https://www.fiat.it/lp/promo-offerta-neopatentati", "tipo": "Utilitaria" },
+    { "marca": "Fiat", "modello": "Grande Panda / 500 / 600 / Qubo L", "tags": ["nuova", "neopatentati"], "prezzo": null, "anticipo": null, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Intera gamma certificata per neopatentati su tutte le motorizzazioni. Rata specifica variabile per allestimento: verificare in concessionaria.", "fonte_nome": "Motorbox", "fonte_url": "https://www.motorbox.com/auto/magazine/fiat-pandina-500-grande-panda-600-e-qubo-l-promo-neopatentati", "tipo": "Varie" },
+    { "marca": "Citroën", "modello": "C3 Turbo 100 YOU", "tags": ["nuova"], "prezzo": 15300, "anticipo": 6161, "rata": 49, "rate_numero": 35, "maxirata": 9409.1, "tan": "3.99%", "taeg": "7.50%", "note": "Promo SimplyDrive riservata a chi rottama/permuta. Prezzo scontato di 1.600€.", "fonte_nome": "ClubAlfa", "fonte_url": "https://www.clubalfa.it/596012-citroen-c3-rata-da-appena-49-euro-ad-agosto-2026-costa-1-600-euro-in-meno", "tipo": "Utilitaria" },
+    { "marca": "Citroën", "modello": "ë-C3 (elettrica, leasing Easy Go)", "tags": ["nuova"], "prezzo": null, "anticipo": 9107, "rata": 139, "rate_numero": 35, "maxirata": 10835, "tan": "0%", "taeg": "2.41%", "note": "Formula di leasing Citroën Easy Go, finanziamento a tasso zero. Valido fino a fine agosto 2026.", "fonte_nome": "Citroën IT", "fonte_url": "https://www.citroen.it/acquista/offerte-privati/e-c3-finanziamento.html", "tipo": "Utilitaria" },
+    { "marca": "Toyota", "modello": "Aygo X Hybrid", "tags": ["nuova", "neopatentati"], "prezzo": 17950, "anticipo": 6250, "rata": 118.91, "rate_numero": 47, "maxirata": 9550.01, "tan": "6.99%", "taeg": "8.93%", "note": "Valore Futuro Garantito valido per 10.000 km/anno. Richiede rottamazione/permuta di un veicolo posseduto da almeno 5 mesi. Campagna confermata anche a settembre 2026 con condizioni analoghe.", "fonte_nome": "Everyeye Auto", "fonte_url": "https://auto.everyeye.it/notizie/toyota-aygo-x-offerta-aprile-2026-17-950-euro-costa-davvero-finanziamento-872345.html", "tipo": "Utilitaria" },
+    { "marca": "Renault", "modello": "Clio ECO-G 120cv", "tags": ["nuova", "maxirata-zero"], "prezzo": 19800, "anticipo": 6850, "rata": 158.87, "rate_numero": 84, "maxirata": null, "tan": "0%", "taeg": null, "note": "Finanziamento a tasso zero, piano lineare 84 rate senza maxirata finale. Valido fino al 30/09/2026.", "fonte_nome": "Autoappassionati / Tirloni", "fonte_url": "https://www.tirloni.it/offerta-renault-clio-2026-benzina-tasso-0-concessionaria-tirloni/", "tipo": "Utilitaria" },
+    { "marca": "Renault", "modello": "Clio Full Hybrid E-Tech 160cv", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 8605, "rata": 259, "rate_numero": 60, "maxirata": null, "tan": "0%", "taeg": "1.61%", "note": "Finanziamento a tasso zero, piano lineare 60 rate senza maxirata finale. Valido fino al 30/09/2026.", "fonte_nome": "Autoappassionati / Tirloni", "fonte_url": "https://www.tirloni.it/offerta-renault-clio-2026-benzina-tasso-0-concessionaria-tirloni/", "tipo": "Utilitaria" },
+    { "marca": "Dacia", "modello": "Sandero Streetway Essential SCe 65", "tags": ["nuova"], "prezzo": 15800, "anticipo": 4000, "rata": 152, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Importo totale del credito 12.195€. Durata rate non specificata dalla fonte.", "fonte_nome": "NewsAuto", "fonte_url": "https://www.newsauto.it/dacia/dacia-sandero-offerte-prezzi-finanziamenti-2026-593124/", "tipo": "Utilitaria" },
+    { "marca": "Dacia", "modello": "Sandero Stepway Essential Eco-G 120", "tags": ["nuova"], "prezzo": 16500, "anticipo": 5000, "rata": 112, "rate_numero": 36, "maxirata": 10065, "tan": null, "taeg": null, "note": "Rata finale corrispondente al Valore Futuro Garantito.", "fonte_nome": "Dacia IT", "fonte_url": "https://www.dacia.it/gamma/sandero-stepway/offerta.html", "tipo": "SUV" },
+    { "marca": "Hyundai", "modello": "i10 (\"Hyundai Plus 0%\")", "tags": ["nuova", "neopatentati"], "prezzo": 18500, "anticipo": null, "rata": 84, "rata_label": "79 – 89", "rate_numero": null, "maxirata": null, "tan": "0%", "taeg": null, "note": "Prezzo di listino di partenza; rata indicativa 79-89€/mese secondo allestimento. Idonea a neopatentati in tutte le versioni.", "fonte_nome": "AutoPromoNews", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13627-hyundai-i10-offerte-e-promozioni-agosto-2026-guida-all%E2%80%99acquisto-intelligente", "tipo": "Utilitaria" },
+    { "marca": "Kia", "modello": "Picanto 1.0 GDi Urban", "tags": ["nuova", "neopatentati"], "prezzo": 14800, "anticipo": null, "rata": 79, "rate_numero": 35, "maxirata": null, "tan": "3.95%", "taeg": "5.87%", "note": "Prezzo promozionale (listino 17.800€) con finanziamento Scelta Kia e contributo Kia di 1.000-2.000€ per contratti agosto 2026. Idonea a neopatentati.", "fonte_nome": "Everyeye Auto / Campello Motors", "fonte_url": "https://auto.everyeye.it/notizie/offerta-kia-picanto-city-car-svenduta-aprile-2026-costa-fiat-panda-870560.html", "tipo": "Utilitaria" },
+    { "marca": "Peugeot", "modello": "208 Turbo Benzina 100 Style", "tags": ["nuova", "neopatentati"], "prezzo": null, "anticipo": 4376, "rata": 99, "rate_numero": 35, "maxirata": 10499, "tan": "6.99%", "taeg": "10.42%", "note": "Versione consigliata per neopatentati: Peugeot 208 Sole 100cv.", "fonte_nome": "Automoto.it", "fonte_url": "https://www.automoto.it/promozioni/volkswagen-polo-l-offerta-pensata-per-i-neopatentati.html", "tipo": "Utilitaria" },
+    { "marca": "Škoda", "modello": "Kamiq Black Dots 1.0 TSI 95cv", "tags": ["nuova", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 165, "rate_numero": 35, "maxirata": null, "tan": "0%", "taeg": null, "note": "Promo estate: anticipo zero, TAN zero, Bonus Carburante 1.000€ incluso. Rata variabile per allestimento (fino a 199€/mese in altre versioni).", "fonte_nome": "Automoto.it / Amicar", "fonte_url": "https://www.automoto.it/promozioni/l-offerta-skoda-per-l-estate-su-fabia-e-kamiq-e-anticipo-e-tan-zero.html", "tipo": "SUV" },
+    { "marca": "Škoda", "modello": "Kamiq (finanziamento Clever Value)", "tags": ["nuova", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 269, "rate_numero": 35, "maxirata": null, "tan": "0%", "taeg": "0.94%", "note": "Importo finanziato 25.190€. Prevista maxirata finale (Valore Futuro Garantito) non specificata dalla fonte; manutenzione ordinaria 3 anni inclusa.", "fonte_nome": "AutoVega", "fonte_url": "https://www.autovega.com/content-nuovo-koda-kamiq-tuo-da-90-al-mese_44.cshtml", "tipo": "SUV" },
+    { "marca": "MG", "modello": "MG5 S5 EV", "tags": ["nuova", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Una delle poche elettriche con finanziamento anticipo zero nel 2026. Importi rata non pubblicati dalla fonte.", "fonte_nome": "CalcolaCostoAuto", "fonte_url": "https://calcolacostoauto.it/blog/auto-anticipo-zero-2026", "tipo": "Station Wagon" },
+    { "marca": "Alfa Romeo", "modello": "Junior Elettrica", "tags": ["nuova"], "prezzo": null, "anticipo": null, "rata": 199, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Rata indicativa mensile; condizioni complete non pubblicate dalla fonte.", "fonte_nome": "alVolante", "fonte_url": "https://www.alvolante.it/listino_auto/offerte-auto-del-mese", "tipo": "SUV" },
+    { "marca": "Eurotoscar (multimarca)", "modello": "Pronta consegna – 200 auto", "tags": ["usata", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 29, "rata_label": "da 29", "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Stock di 200 veicoli in pronta consegna (nuovo e usato) con anticipo zero, rate a partire da 29€/mese.", "fonte_nome": "Eurotoscar", "fonte_url": "https://www.autoeurotoscar.it/blog/200-auto-pronta-consegna-anticipo-zero-rate-da-29%E2%82%AC-al-mese", "tipo": "Varie" },
+    { "marca": "Multimarca (noleggio)", "modello": "Usato garantito – Noleggio Lungo Termine senza anticipo", "tags": ["usata", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Canone mensile fisso con assicurazione, manutenzione ordinaria/straordinaria e assistenza stradale incluse. Importo del canone variabile per veicolo.", "fonte_nome": "Facile.it", "fonte_url": "https://www.facile.it/noleggio-lungo-termine/news/auto-noleggio-lungo-termine-senza-anticipo-giugno-2026.html", "tipo": "Varie" },
+    { "marca": "Multimarca (usato garantito)", "modello": "Usato garantito con anticipo zero", "tags": ["usata", "anticipo-zero"], "prezzo": null, "anticipo": 0, "rata": 187.5, "rata_label": "125 – 250", "rate_numero": 60, "maxirata": null, "tan": null, "taeg": null, "note": "Range indicativo aggregato di offerte usato garantito (1 anno di garanzia), piano tipico 60 mesi senza anticipo.", "fonte_nome": "CalcolaCostoAuto / aggregatori di settore", "fonte_url": "https://calcolacostoauto.it/blog/auto-anticipo-zero-2026", "tipo": "Varie" },
+    { "marca": "Ford", "modello": "Puma Titanium 1.0 EcoBoost Hybrid 125cv", "tags": ["nuova"], "prezzo": 21950, "anticipo": 4500, "rata": 136.31, "rate_numero": 48, "maxirata": 13842.5, "tan": "3.95%", "taeg": "5.19%", "note": "Richiede permuta o rottamazione. Finanziamento Ford Go! confermato ad agosto 2026 con Valore Futuro Garantito incluso.", "fonte_nome": "HDmotori", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13672-ford-puma-prezzi,-offerte-e-sconti-reali-ad-agosto-2026", "tipo": "SUV" },
+    { "marca": "Seat", "modello": "Ibiza FR 1.0 TSI 95cv", "tags": ["nuova", "neopatentati", "anticipo-zero"], "prezzo": 19813.2, "anticipo": 0, "rata": 199, "rate_numero": 35, "maxirata": 14237, "tan": "1.95%", "taeg": "3.11%", "note": "Prezzo chiavi in mano, importo finanziato 20.193,20€. Rata finale corrispondente al Valore Futuro Garantito. Idonea a neopatentati. Confermata ad agosto 2026.", "fonte_nome": "Verdana", "fonte_url": "https://www.verdana.it/seat-ibiza-in-promo-fino-al-31-marzo-2026-anticipo-zero-e-rate-da-199-euro-al-mese/", "tipo": "Utilitaria" },
+    { "marca": "Volkswagen", "modello": "T-Cross Edition Plus 1.0 TSI 95cv", "tags": ["nuova"], "prezzo": 23756, "anticipo": 4000, "rata": 99, "rate_numero": 24, "maxirata": 19029, "tan": "2.99%", "taeg": "4.45%", "note": "Listino 27.400€. Finanziamento Progetto Valore Volkswagen (limite 20.000 km); alla scadenza si può riscattare, sostituire o restituire il veicolo.", "fonte_nome": "AutoVega", "fonte_url": "https://www.autovega.com/content-nuova-t-cross-edition-plus-da-99-al-mese-_22.cshtml", "tipo": "SUV" },
+    { "marca": "Nissan", "modello": "Micra Engage", "tags": ["nuova"], "prezzo": null, "anticipo": 6150, "rata": null, "rate_numero": 36, "maxirata": 13570, "tan": null, "taeg": null, "note": "Finanziamento Intelligent Buy Nissan, durata personalizzabile da 2 a 5 anni. Rata mensile non specificata dalla fonte. Promo (verificare condizioni aggiornate in concessionaria per il mese corrente).", "fonte_nome": "Nissan IT", "fonte_url": "https://www.nissan.it/veicoli/veicoli-nuovi/micra/offerte.html", "tipo": "Utilitaria" },
+    { "marca": "Honda", "modello": "Jazz Full Hybrid", "tags": ["nuova"], "prezzo": 21900, "anticipo": null, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Prezzo con 3.800€ di Ecoincentivi Honda in caso di permuta o rottamazione. Rata di finanziamento non specificata dalla fonte.", "fonte_nome": "Sicurauto", "fonte_url": "https://www.sicurauto.it/news/offerte-auto-con-rottamazione-gli-sconti-di-agosto-2026/", "tipo": "Utilitaria" },
+    { "marca": "Honda", "modello": "Jazz Crosstar Full Hybrid", "tags": ["nuova"], "prezzo": 24750, "anticipo": null, "rata": null, "rate_numero": null, "maxirata": null, "tan": null, "taeg": null, "note": "Prezzo con 4.000€ di Ecoincentivi Honda in caso di permuta o rottamazione. Rata di finanziamento non specificata dalla fonte.", "fonte_nome": "Sicurauto", "fonte_url": "https://www.sicurauto.it/news/offerte-auto-con-rottamazione-gli-sconti-di-agosto-2026/", "tipo": "SUV" },
+    { "marca": "Fiat", "modello": "500e Pop (23,8 kWh)", "tags": ["nuova"], "prezzo": 19950, "anticipo": 6960, "rata": 199, "rate_numero": 35, "maxirata": 8896, "tan": "5.99%", "taeg": "9.19%", "note": "Listino 23.900€. Richiede rottamazione di un veicolo omologato fino a Euro 4 e finanziamento Stellantis Financial Services. Include Identicar 12 mesi. Verificare condizioni aggiornate in concessionaria per il mese corrente.", "fonte_nome": "ClubAlfa", "fonte_url": "https://www.clubalfa.it/596008-fiat-500e-quasi-4-000-euro-di-sconto-ad-agosto-2026-il-prezzo-scende-a-19-950-euro", "tipo": "Utilitaria" },
+    { "marca": "Jeep", "modello": "Avenger (Primafila km0)", "tags": ["usata"], "prezzo": 19900, "anticipo": null, "rata": 357, "rate_numero": 72, "maxirata": null, "tan": null, "taeg": null, "note": "Veicolo a km0, programma Primafila. Anticipo e maxirata non specificati dalla fonte.", "fonte_nome": "Gruppo Farina", "fonte_url": "https://www.gruppofarina.com/ricerca-auto/km0/", "tipo": "SUV" },
+    { "marca": "DS", "modello": "N°4 Hybrid 145cv", "tags": ["nuova", "maxirata-zero"], "prezzo": 33428, "anticipo": 17031, "rata": 360, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": null, "note": "Listino 39.000€. Finanziamento a zero interessi, senza maxirata finale. Disponibile anche in versione turbodiesel BlueHDi 131cv a condizioni analoghe.", "fonte_nome": "AutoPromoNews", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13679-finanziamenti-auto-agosto-2026-perch%C3%A9-il-tasso-zero-rischia-di-costarti-migliaia-di-euro-in-pi%C3%B9", "tipo": "SUV" },
+    { "marca": "Hyundai", "modello": "Tucson Dark Line MY26 1.6 T-GDI 150cv", "tags": ["nuova", "anticipo-zero"], "prezzo": 31400, "anticipo": 0, "rata": 330, "rate_numero": 35, "maxirata": 20242, "tan": "0%", "taeg": "0.80%", "note": "Listino 34.900€, vantaggio cliente 3.500€. Rata finale corrispondente al Valore Futuro Garantito. Finanziamento agevolato disponibile su tutte le motorizzazioni Tucson, senza obbligo di permuta/rottamazione.", "fonte_nome": "Automoto.it", "fonte_url": "https://www.automoto.it/promozioni/promozione-hyundai-tucson-tasso-zero-e-anticipo-zero.html", "tipo": "SUV" },
+    { "marca": "Hyundai", "modello": "i20 MY26 Dark Line 1.0 T-GDI MT", "tags": ["nuova"], "prezzo": null, "anticipo": 5846, "rata": 74.91, "rate_numero": 35, "maxirata": 10746, "tan": "7.45%", "taeg": "9.81%", "note": "Finanziamento Hyundai Plus con Valore Futuro Garantito: a fine contratto si può tenere, restituire o sostituire il veicolo.", "fonte_nome": "Hyundai IT", "fonte_url": "https://www.hyundai.com/it/it/promozioni-offerte/Promozioni/gamma-dark-line/promozione-i20-my26.html", "tipo": "Utilitaria" },
+    { "marca": "Hyundai", "modello": "Bayon MY26 Dark Line 1.0 T-GDI MT", "tags": ["nuova"], "prezzo": null, "anticipo": 7242, "rata": 84.91, "rate_numero": 35, "maxirata": 11233, "tan": "7.45%", "taeg": "9.70%", "note": "Vantaggio cliente complessivo di 5.400€. Finanziamento Hyundai Plus con Valore Futuro Garantito, valido dall'1 al 31/08/2026.", "fonte_nome": "De Bona Motors / Hyundai IT", "fonte_url": "https://www.debona.it/hyundai/promo/nuova-hyundai-bayon-dark-line-tua-da-eur-85-al-mese/", "tipo": "SUV" },
+    { "marca": "BYD", "modello": "Dolphin Surf Active", "tags": ["nuova"], "prezzo": 17960, "anticipo": 9360, "rata": 79, "rate_numero": 35, "maxirata": 8113.9, "tan": "5.99%", "taeg": "9.63%", "note": "Listino 19.790€. Leasing privati disponibile solo tramite Santander Consumer Bank. Importo totale dovuto dal consumatore 11.050,59€. Verificare condizioni aggiornate in concessionaria per il mese corrente.", "fonte_nome": "Theorema / Autouno Group", "fonte_url": "https://www.theoremaonline.com/promozioni/dettaglio/19/", "tipo": "Utilitaria" },
+    { "marca": "Renault", "modello": "5 E-Tech Electric Evolution MY26 120cv Urban Range", "tags": ["nuova"], "prezzo": 26050, "anticipo": 10225, "rata": 154.98, "rate_numero": 48, "maxirata": 13136.5, "tan": "7.25%", "taeg": "8.68%", "note": "Prezzo IVA inclusa, IPT e contributo PFU esclusi, con bonus Renault E-Tech di 1.900€. Rata finale corrispondente al Valore Futuro Garantito. Valido fino al 27/08/2026.", "fonte_nome": "MotorisuMotori", "fonte_url": "https://www.motorisumotori.it/renault-5-e-tech-electric-ad-agosto-da-155-euro-al-mese-e-fino-a-25-000-km-di-ricarica-a-casa/192060", "tipo": "Utilitaria" },
+    { "marca": "Renault", "modello": "4 E-Tech Electric (con Ecobonus statale)", "tags": ["nuova", "anticipo-zero"], "prezzo": 17900, "anticipo": 0, "rata": 119, "rate_numero": null, "maxirata": 16146, "tan": "4.50%", "taeg": "5.78%", "note": "Prezzo di 17.900€ (da 29.900€) valido solo con Ecobonus statale: richiede rottamazione di un veicolo fino a Euro 5 posseduto da almeno 6 mesi, residenza in area urbana funzionale ISTAT e mantenimento del veicolo per almeno 24 mesi. Il contributo (9.000-11.000€) varia in base all'ISEE.", "fonte_nome": "Auto.it", "fonte_url": "https://www.auto.it/news/attualita/2025/09/19-8399389/renault-4-5-elettriche-incentivi-2025-offerta", "tipo": "SUV" },
+    { "marca": "Lancia", "modello": "Ypsilon Turbo 100", "tags": ["nuova"], "prezzo": 15950, "anticipo": 4268, "rata": 99, "rate_numero": 35, "maxirata": 11961, "tan": "7.99%", "taeg": "11.13%", "note": "Motore 1.2 turbo benzina 100cv, cambio manuale 6 marce. Richiede rottamazione o permuta. Finanziamento Stellantis Financial Services, valido fino al 31/08/2026.", "fonte_nome": "ClubAlfa", "fonte_url": "https://www.clubalfa.it/595684-lancia-ypsilon-turbo-100-ad-agosto-2026-il-prezzo-scende-a-15-950-euro-bastano-99-euro-al-mese", "tipo": "Utilitaria" },
+    { "marca": "Kia", "modello": "Sportage 1.6 T-GDi 150cv Business", "tags": ["nuova", "anticipo-zero"], "prezzo": 30200, "anticipo": 0, "rata": 299, "rate_numero": 35, "maxirata": 20587, "tan": "0%", "taeg": "0.82%", "note": "Listino 33.750€. Importo totale dovuto dal consumatore 31.259,09€ (anticipo escluso). Include furto/incendio base 12 mesi. Finanziamento Scelta Kia, promo confermata ad agosto 2026.", "fonte_nome": "Kia Italia", "fonte_url": "https://www.kia.com/it/guida-all-acquisto/promozioni/kia-sportage-benzina/", "tipo": "SUV" },
+    { "marca": "Citroën", "modello": "C3 Aircross YOU Turbo 100", "tags": ["nuova", "neopatentati"], "prezzo": 17100, "anticipo": 5338, "rata": 99, "rate_numero": 35, "maxirata": 12062, "tan": "7.99%", "taeg": "11.23%", "note": "Listino 20.400€, prezzo promo 18.100€, ulteriore sconto con finanziamento SimplyDrive D. Cambio manuale. Verificare condizioni aggiornate in concessionaria per il mese corrente.", "fonte_nome": "ClubAlfa", "fonte_url": "https://www.clubalfa.it/596277-citroen-c3-aircross-you-turbo-100-ad-agosto-sconto-di-3-300-euro-e-rate-da-99-euro", "tipo": "SUV" },
+    { "marca": "Toyota", "modello": "Yaris Cross 1.5 Hybrid 115 Active FWD e-CVT", "tags": ["nuova", "neopatentati"], "prezzo": 24450, "anticipo": 7880, "rata": 158.62, "rate_numero": 47, "maxirata": null, "tan": null, "taeg": null, "note": "Esempio di finanziamento Toyota Easy dedicato ai neopatentati. Rata finale (Valore Futuro Garantito) e TAN/TAEG non specificati dalla fonte per questa variante. Valido per contratti firmati entro il 31/08/2026.", "fonte_nome": "NewsAuto", "fonte_url": "https://www.newsauto.it/notizie/toyota-yaris-hybrid-offerte-prezzi-finanziamenti-2026-593140/", "tipo": "SUV" },
+    { "marca": "DR", "modello": "5 1.5 Benzina 116cv", "tags": ["nuova", "maxirata-zero"], "prezzo": null, "anticipo": 11040, "rata": 399, "rate_numero": 36, "maxirata": null, "tan": "0%", "taeg": null, "note": "Campagna tasso zero in collaborazione con CA Auto Bank, piano lineare senza rata finale/Valore Futuro Garantito. Anticipo indicativo (tratto da un'offerta DR5 di un mese vicino): verificare l'importo esatto della campagna corrente in concessionaria.", "fonte_nome": "AutoPromoNews", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13759-offerte-dr5-settembre-2026-costi-reali-e-analisi-finanziaria-tasso-zero", "tipo": "SUV" },
+    { "marca": "Renault", "modello": "Captur Full Hybrid E-Tech", "tags": ["nuova"], "prezzo": null, "anticipo": 7600, "rata": 99, "rate_numero": 36, "maxirata": null, "tan": "7.25%", "taeg": "8.90%", "note": "Rata finale non specificata dalla fonte. Verificare condizioni aggiornate in concessionaria per il mese corrente.", "fonte_nome": "Renault IT", "fonte_url": "https://www.renault.it/veicoli-ibridi/captur/offerta-captur.html", "tipo": "SUV" },
+    { "marca": "Jeep", "modello": "Avenger Longitude 1.2 Turbo 100cv", "tags": ["nuova", "maxirata-zero"], "prezzo": 22450, "anticipo": 8431, "rata": 299, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": "3.33%", "note": "Finanziamento tasso zero su 48 rate senza rata finale, con Stellantis Financial Services. Incentivi Jeep confermati a settembre 2026.", "fonte_nome": "AutoPromoNews", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13697-suv-jeep-in-sconto-tassi-a-0-e-rate-da-149-euro-sulle-offerte-di-agosto-2026", "tipo": "SUV" },
+    { "marca": "Jeep", "modello": "Avenger 4xe Upland 1.2 145cv (trazione integrale)", "tags": ["nuova", "maxirata-zero"], "prezzo": 28700, "anticipo": 14271, "rata": 319, "rate_numero": 48, "maxirata": null, "tan": "0%", "taeg": "3.12%", "note": "Finanziamento tasso zero su 48 rate senza rata finale, con Stellantis Financial Services. Incentivi Jeep prenotabili fino al 26/09/2026.", "fonte_nome": "HDmotori", "fonte_url": "https://www.hdmotori.it/offerta-jeep-avenger-benzina-tasso-zero-finanziamento-rate/", "tipo": "SUV" },
+    { "marca": "Hyundai", "modello": "Kona Electric Exclusive (con Ecobonus statale)", "tags": ["nuova"], "prezzo": 23450, "anticipo": null, "rata": 299, "rate_numero": 35, "maxirata": null, "tan": "4.95%", "taeg": "6.25%", "note": "Vantaggio cliente fino a 18.000€ combinando rottamazione, Ecobonus statale 2025 (veicolo Euro 0-5, listino sotto 35.000€ + IVA) e finanziamento Hyundai Plus. Dopo 3 anni si può sostituire, riscattare o restituire il veicolo. Anticipo e rata finale non specificati dalla fonte.", "fonte_nome": "Hyundai IT", "fonte_url": "https://www.hyundai.com/it/it/promozioni-offerte/Promozioni/promozione-hyundai-kona-ev-ecobonus.html", "tipo": "SUV" },
+    { "marca": "Peugeot", "modello": "208 Turbo Benzina 100 Style (tasso agevolato)", "tags": ["nuova", "neopatentati"], "prezzo": null, "anticipo": 3554, "rata": 88, "rate_numero": 35, "maxirata": 11414, "tan": "0.8%", "taeg": "3.09%", "note": "Formula alternativa a tasso agevolato rispetto alla versione standard (anticipo 4.376€/rata 99€): rata mensile più bassa ma rata finale più alta. Versione consigliata per neopatentati.", "fonte_nome": "NewsAuto", "fonte_url": "https://www.newsauto.it/notizie/peugeot-208-offerte-con-finanziamenti-sconti-promozioni-2026-597529/", "tipo": "Utilitaria" },
+    { "marca": "Jeep", "modello": "Avenger Summit Full-Electric", "tags": ["nuova"], "prezzo": 31400, "anticipo": 12002, "rata": 149, "rate_numero": 35, "maxirata": null, "tan": null, "taeg": null, "note": "Rata finale non specificata dalla fonte. Incentivi Jeep prenotabili fino al 26/09/2026.", "fonte_nome": "AutoPromoNews", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13795-jeep-avenger-offerte,-sconti-e-promozioni-settembre-2026-guida-aggiornata", "tipo": "SUV" },
+    { "marca": "MG", "modello": "MG3 Benzina Standard", "tags": ["nuova", "neopatentati"], "prezzo": 13990, "anticipo": 5920, "rata": 89, "rate_numero": 36, "maxirata": 7645.5, "tan": "7.45%", "taeg": "11.01%", "note": "Listino 16.990€. Spese di istruttoria, incasso rate e altre commissioni incluse nel costo totale del credito. Motore 1.0/1.5 benzina idoneo neopatentati. Offerta valida presso i dealer aderenti fino al 30/09/2026.", "fonte_nome": "MG Motor Italy", "fonte_url": "https://www.mgmotor.it/campaign/nuova-mg3-benzina-standard", "tipo": "Utilitaria" },
+    { "marca": "MG", "modello": "MG3 1.5 Hybrid+ Comfort", "tags": ["nuova"], "prezzo": 16990, "anticipo": 5610, "rata": 95, "rate_numero": 35, "maxirata": 11819.5, "tan": "7.45%", "taeg": "10.02%", "note": "Listino 21.490€. Spese di istruttoria, incasso rate e altre commissioni incluse nel costo totale del credito. Offerta valida presso i dealer aderenti fino al 30/09/2026.", "fonte_nome": "MG Motor Italy", "fonte_url": "https://www.mgmotor.it/campaign/mg3-promo", "tipo": "Utilitaria" },
+    { "marca": "Fiat", "modello": "500 Hybrid Pop 1.0 65cv", "tags": ["nuova", "anticipo-zero"], "prezzo": 16450, "anticipo": 0, "rata": 149, "rate_numero": 35, "maxirata": 12073.6, "tan": "0%", "taeg": "2.07%", "note": "Listino 19.990€, sconto 3.450€ con promo Fiat e rottamazione di un veicolo omologato fino a Euro 4. Valida a settembre 2026.", "fonte_nome": "ClubAlfa", "fonte_url": "https://www.clubalfa.it/598471-fiat-500-hybrid-a-149-euro-al-mese-e-senza-anticipo-a-settembre-2026-torna-lofferta-a-tasso-zero", "tipo": "Utilitaria" },
+    { "marca": "Škoda", "modello": "Kamiq Your Way 1.0 TSI 95cv", "tags": ["nuova", "anticipo-zero"], "prezzo": 22920, "anticipo": 0, "rata": 215, "rate_numero": 35, "maxirata": 15774.96, "tan": "0%", "taeg": null, "note": "Listino 27.150€. Finanziamento Škoda Clever Value, richiede Extended Warranty da 270€. Limite 30.000 km totali. Valida fino al 30/09/2026 su vetture in pronta consegna.", "fonte_nome": "AutoPromoNews", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13846-skoda-kamiq-settembre-2026-offerta-promozione-anticipo-zero-tan-zero-conviene", "tipo": "SUV" },
+    { "marca": "Škoda", "modello": "Fabia Your Way 1.0 TSI 95cv", "tags": ["nuova", "anticipo-zero"], "prezzo": 19708.6, "anticipo": 0, "rata": 185, "rate_numero": 35, "maxirata": 13243.98, "tan": "0%", "taeg": "1.16%", "note": "Listino 22.600€. Importo finanziato 20.088,60€. Limite 30.000 km totali. Valida a settembre 2026.", "fonte_nome": "AutoPromoNews", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13845-skoda-fabia-settembre-2026-offerta-promozione-anticipo-zero-tan-zero-conviene", "tipo": "Utilitaria" },
+    { "marca": "Volkswagen", "modello": "T-Roc Life 1.5 eTSI 115cv DSG", "tags": ["nuova"], "prezzo": 30356, "anticipo": 6000, "rata": 228.99, "rate_numero": 47, "maxirata": 19257.74, "tan": "5.99%", "taeg": "6.97%", "note": "Listino 34.300€. Richiede permuta o rottamazione. Chilometraggio incluso 40.000 km in 4 anni (eccedenza 0,20€/km). Valida fino al 30/09/2026.", "fonte_nome": "AutoPromoNews", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13833-volkswagen-t-roc-settembre-2026-prezzo-promozione-finanziamento-fregature", "tipo": "SUV" },
+    { "marca": "BYD", "modello": "Seal 6 Boost 184cv", "tags": ["nuova"], "prezzo": 30400, "anticipo": 5850, "rata": 249, "rate_numero": 35, "maxirata": 19826, "tan": "5.99%", "taeg": "8.30%", "note": "Listino 38.200€ (sconto 20%). Richiede permuta di un veicolo con almeno 150.000 km. Valida dall'1 al 30/09/2026.", "fonte_nome": "AutoPromoNews / Il Giornale Digitale", "fonte_url": "https://www.ilgiornaledigitale.it/byd-decreto-bonus-permuta-settembre-2026-89682.html", "tipo": "Berlina" },
+    { "marca": "Nissan", "modello": "Juke Hybrid Acenta", "tags": ["nuova"], "prezzo": 25200, "anticipo": 3902, "rata": 249, "rate_numero": 36, "maxirata": 16968, "tan": "5.75%", "taeg": "7.01%", "note": "Listino 30.300€ (sconto 20%). Limite 30.000 km totali. Spese di istruttoria 395€ e bollo 51,96€ addebitati sulla prima rata.", "fonte_nome": "AutoPromoNews", "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13765-offerte-nissan-juke-settembre-2026-prezzi,-sconti,-promozioni-e-finanziamenti", "tipo": "SUV" },
+    { "marca": "Renault", "modello": "Twingo E-Tech Electric", "tags": ["nuova"], "prezzo": 19500, "anticipo": 4853, "rata": 309, "rate_numero": 47, "maxirata": 5528, "tan": "5.00%", "taeg": "7.23%", "note": "Include fino a 30.000 km di ricarica a casa con Enel. Finanziamento Mobilize Financial Services. Valida fino al 30/09/2026.", "fonte_nome": "Motorbox", "fonte_url": "https://www.motorbox.com/auto/magazine/renault-twingo-electric-evolution-prezzo-promo-e-rata-mensile", "tipo": "Utilitaria" },
+    { "marca": "Toyota", "modello": "Yaris Hybrid", "tags": ["nuova"], "prezzo": 19950, "anticipo": 6600, "rata": 129, "rate_numero": 47, "maxirata": null, "tan": null, "taeg": null, "note": "Sconto del 19% sul listino. Rata finale (Valore Futuro Garantito) e TAN/TAEG non specificati dalla fonte.", "fonte_nome": "AlVolante / Motori Magazine", "fonte_url": "https://www.motorimagazine.it/auto-a-tasso-zero-e-sconti-fino-al-38-le-migliori-promozioni-di-settembre-2026/", "tipo": "Utilitaria" },
+    { "marca": "Peugeot", "modello": "2008 Turbo Benzina 100 Style", "tags": ["nuova", "neopatentati"], "prezzo": 19950, "anticipo": 6261, "rata": 109, "rate_numero": 35, "maxirata": 13641, "tan": "6.99%", "taeg": "9.73%", "note": "Richiede permuta/rottamazione, vetture in pronta consegna. Valida fino al 30/09/2026.", "fonte_nome": "Autoblog / AutoPromoNews", "fonte_url": "https://www.autoblog.it/post/peugeot-2008-sconto-a-settembre-il-suv-parte-da-19-950-euro-e-109-euro-al-mese", "tipo": "SUV" },
+    { "marca": "Peugeot", "modello": "3008 Hybrid 145 e-DCS6 Allure", "tags": ["nuova"], "prezzo": null, "anticipo": 5286, "rata": 249, "rate_numero": 35, "maxirata": 23260, "tan": "6.99%", "taeg": "8.64%", "note": "Richiede permuta/rottamazione, vetture in pronta consegna. Disponibile anche in versione Plug-in Hybrid (anticipo 9.090€, TAN 3.75%) ed elettrica E-3008 (anticipo 12.636€, TAN 2.99%) a parità di rata da 249€. Valida fino al 30/09/2026.", "fonte_nome": "ClubAlfa", "fonte_url": "https://www.clubalfa.it/598806-peugeot-3008-sconti-fino-a-8-000-euro-a-settembre-2026-hybrid-plug-in-ed-elettrica-in-offerta", "tipo": "SUV" }
   ]
 };
 
@@ -377,7 +486,7 @@ const CATEGORIES = [
 
 const state = {
   search: "", tags: new Set(), sort: "rata-asc",
-  brands: new Set(), durata: "",
+  brands: new Set(), tipi: new Set(), durata: "",
   rataRange: null, prezzoRange: null
 };
 const rangeSliders = {};
@@ -390,9 +499,11 @@ function loadData(offers) {
     `Ultimo aggiornamento dati: ${DATA.aggiornato_al}. ${DATA.note_generale}`;
   renderChips();
   renderBrandPanel(offers);
+  renderTipoPanel(offers);
   renderDurataFilter(offers);
   setupRangeSlider("rata", computeBounds(offers, "rata"), eur);
   setupRangeSlider("prezzo", computeBounds(offers, "prezzo"), eur);
+  renderCheapest(offers, 6);
   renderAll(offers);
 }
 
@@ -434,6 +545,40 @@ function renderBrandPanel(offers) {
 
 function updateBrandSummary() {
   document.getElementById("brand-count-label").textContent = state.brands.size ? `(${state.brands.size})` : "";
+}
+
+function renderTipoPanel(offers) {
+  const tipi = [...new Set(offers.map(o => o.tipo).filter(Boolean))].sort((a, b) => a.localeCompare(b, "it"));
+  const panel = document.getElementById("tipo-panel");
+  panel.innerHTML = tipi.map(t =>
+    `<label><input type="checkbox" value="${t}" class="tipo-checkbox"> ${t}</label>`
+  ).join("") + `<div class="panel-actions">
+      <button type="button" id="tipo-select-all">Seleziona tutti</button>
+      <button type="button" id="tipo-clear">Deseleziona</button>
+    </div>`;
+
+  panel.querySelectorAll(".tipo-checkbox").forEach(cb => {
+    cb.addEventListener("change", () => {
+      if (cb.checked) state.tipi.add(cb.value); else state.tipi.delete(cb.value);
+      updateTipoSummary();
+      renderAll(DATA.offerte);
+    });
+  });
+  document.getElementById("tipo-select-all").addEventListener("click", () => {
+    panel.querySelectorAll(".tipo-checkbox").forEach(cb => { cb.checked = true; state.tipi.add(cb.value); });
+    updateTipoSummary();
+    renderAll(DATA.offerte);
+  });
+  document.getElementById("tipo-clear").addEventListener("click", () => {
+    panel.querySelectorAll(".tipo-checkbox").forEach(cb => { cb.checked = false; });
+    state.tipi.clear();
+    updateTipoSummary();
+    renderAll(DATA.offerte);
+  });
+}
+
+function updateTipoSummary() {
+  document.getElementById("tipo-count-label").textContent = state.tipi.size ? `(${state.tipi.size})` : "";
 }
 
 function renderDurataFilter(offers) {
@@ -486,12 +631,15 @@ function renderChips() {
   box.innerHTML = "";
   CATEGORIES.forEach((c, i) => {
     const chip = document.createElement("button");
+    chip.type = "button";
     chip.className = "chip";
     chip.dataset.tag = c.id;
+    chip.setAttribute("aria-pressed", "false");
     chip.innerHTML = `<span class="dot" style="background:var(--series-${i + 1})"></span>${c.label}`;
     chip.addEventListener("click", () => {
       if (state.tags.has(c.id)) state.tags.delete(c.id); else state.tags.add(c.id);
       chip.classList.toggle("active");
+      chip.setAttribute("aria-pressed", String(chip.classList.contains("active")));
       renderAll(DATA.offerte);
     });
     box.appendChild(chip);
@@ -510,6 +658,7 @@ function filterOffers(offers) {
       for (const t of state.tags) if (!o.tags.includes(t)) return false;
     }
     if (state.brands.size > 0 && !state.brands.has(o.marca)) return false;
+    if (state.tipi.size > 0 && !state.tipi.has(o.tipo)) return false;
     if (state.durata !== "" && String(o.rate_numero) !== state.durata) return false;
     if (rangeIsActive(state.rataRange)) {
       if (typeof o.rata !== "number" || o.rata < state.rataRange.min || o.rata > state.rataRange.max) return false;
@@ -556,6 +705,24 @@ function renderStats(offers) {
     </div>`).join("");
 }
 
+function renderCheapest(offers, n) {
+  const box = document.getElementById("cheapest");
+  const cheapest = offers
+    .filter(o => typeof o.rata === "number")
+    .sort((a, b) => a.rata - b.rata)
+    .slice(0, n);
+
+  if (!cheapest.length) { box.innerHTML = ""; return; }
+
+  box.innerHTML = cheapest.map((o, i) => `
+    <article class="highlight-card">
+      <div class="hc-rank">#${i + 1} più economica</div>
+      <h4><span class="brand">${o.marca}</span><br>${o.modello}</h4>
+      <div class="hc-rata">${o.rata_label ? o.rata_label + " €" : eur(o.rata)}<span> /mese${o.rate_numero ? ` &times; ${o.rate_numero} rate` : ""}</span></div>
+      <div class="hc-tags">${o.tipo ? `<span class="tag-pill tipo">${o.tipo}</span>` : ""}${o.tags.map(t => `<span class="tag-pill ${t}">${tagLabel(t)}</span>`).join("")}</div>
+    </article>`).join("");
+}
+
 function renderChart(offers) {
   const box = document.getElementById("chart");
   const max = Math.max(1, ...CATEGORIES.map(c => offers.filter(o => o.tags.includes(c.id)).length));
@@ -595,6 +762,7 @@ function renderCards(offers) {
         <h3><span class="brand">${o.marca}</span><br>${o.modello}</h3>
       </div>
       <div class="tag-row">
+        ${o.tipo ? `<span class="tag-pill tipo">${o.tipo}</span>` : ""}
         ${o.tags.map(t => `<span class="tag-pill ${t}">${tagLabel(t)}</span>`).join("")}
       </div>
       <div class="fig-grid">
@@ -632,20 +800,25 @@ document.getElementById("clear-filters").addEventListener("click", () => {
   state.search = "";
   state.tags.clear();
   state.brands.clear();
+  state.tipi.clear();
   state.durata = "";
   document.getElementById("search").value = "";
-  document.querySelectorAll(".chip.active").forEach(c => c.classList.remove("active"));
+  document.querySelectorAll(".chip.active").forEach(c => { c.classList.remove("active"); c.setAttribute("aria-pressed", "false"); });
   document.querySelectorAll(".brand-checkbox").forEach(cb => { cb.checked = false; });
+  document.querySelectorAll(".tipo-checkbox").forEach(cb => { cb.checked = false; });
   updateBrandSummary();
+  updateTipoSummary();
   document.getElementById("durata-filter").value = "";
   Object.values(rangeSliders).forEach(s => s.reset());
   renderAll(DATA.offerte);
 });
 
-// Chiude il pannello marca cliccando fuori
+// Chiude i pannelli marca/tipo cliccando fuori
 document.addEventListener("click", (e) => {
-  const dd = document.getElementById("brand-filter");
-  if (dd.open && !dd.contains(e.target)) dd.removeAttribute("open");
+  ["brand-filter", "tipo-filter"].forEach(id => {
+    const dd = document.getElementById(id);
+    if (dd.open && !dd.contains(e.target)) dd.removeAttribute("open");
+  });
 });
 
 // Prova a caricare i dati esterni (data/offerte.json); usa i dati incorporati come fallback

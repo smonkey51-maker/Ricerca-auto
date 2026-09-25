@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-09-23",
+  "aggiornato_al": "2026-09-25",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -609,14 +609,14 @@
       "tags": [
         "nuova"
       ],
-      "prezzo": 21950,
-      "anticipo": 4500,
+      "prezzo": 21750,
+      "anticipo": 4800,
       "rata": 136.31,
       "rate_numero": 48,
       "maxirata": 13842.5,
-      "tan": "3.95%",
-      "taeg": "5.19%",
-      "note": "Richiede permuta o rottamazione. Finanziamento Ford Go! confermato ad agosto 2026 con Valore Futuro Garantito incluso.",
+      "tan": "6.25%",
+      "taeg": "7.65%",
+      "note": "Richiede permuta o rottamazione. Finanziamento Ford Go!, valido fino al 30/09/2026 con immatricolazione entro il 31/10/2026.",
       "fonte_nome": "HDmotori",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13672-ford-puma-prezzi,-offerte-e-sconti-reali-ad-agosto-2026",
       "tipo": "SUV"
@@ -1302,6 +1302,43 @@
       "note": "Richiede permuta/rottamazione, vetture in pronta consegna. Disponibile anche in versione Plug-in Hybrid (anticipo 9.090€, TAN 3.75%) ed elettrica E-3008 (anticipo 12.636€, TAN 2.99%) a parità di rata da 249€. Valida fino al 30/09/2026.",
       "fonte_nome": "ClubAlfa",
       "fonte_url": "https://www.clubalfa.it/598806-peugeot-3008-sconti-fino-a-8-000-euro-a-settembre-2026-hybrid-plug-in-ed-elettrica-in-offerta",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "Volkswagen",
+      "modello": "Polo (Progetto Valore)",
+      "tags": [
+        "nuova",
+        "neopatentati"
+      ],
+      "prezzo": null,
+      "anticipo": 4000,
+      "rata": 99,
+      "rate_numero": null,
+      "maxirata": null,
+      "tan": "4.99%",
+      "taeg": "6.79%",
+      "note": "Finanziamento Progetto Valore Volkswagen, durata 24 mesi, limite 20.000 km. Al termine si può restituire, sostituire o saldare il veicolo. Vantaggio cliente fino a 5.000€ su un numero limitato di vetture in pronta consegna.",
+      "fonte_nome": "Scotti Ugo Automobili",
+      "fonte_url": "https://www.scottiugo.it/promozioni/nuovo/volkswagen-polo/",
+      "tipo": "Utilitaria"
+    },
+    {
+      "marca": "Ford",
+      "modello": "Kuga Titanium 1.5 EcoBoost 150cv 2WD",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 26950,
+      "anticipo": 5500,
+      "rata": 212.44,
+      "rate_numero": 48,
+      "maxirata": 16560,
+      "tan": null,
+      "taeg": null,
+      "note": "Sconto 25%. Richiede permuta o rottamazione. Spese incasso rata 5€ escluse. Valida fino al 30/09/2026.",
+      "fonte_nome": "AutoPromoNews",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13800-ford-kuga-settembre-2026-offerte,-prezzi-hybrid-e-finanziamenti",
       "tipo": "SUV"
     }
   ]

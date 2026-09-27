@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-09-25",
+  "aggiornato_al": "2026-09-27",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -936,21 +936,21 @@
     },
     {
       "marca": "Toyota",
-      "modello": "Yaris Cross 1.5 Hybrid 115 Active FWD e-CVT",
+      "modello": "Yaris Cross 1.5 Hybrid 130 FWD",
       "tags": [
         "nuova",
         "neopatentati"
       ],
-      "prezzo": 24450,
-      "anticipo": 7880,
-      "rata": 158.62,
+      "prezzo": 24950,
+      "anticipo": 7720,
+      "rata": 158.78,
       "rate_numero": 47,
-      "maxirata": null,
-      "tan": null,
-      "taeg": null,
-      "note": "Esempio di finanziamento Toyota Easy dedicato ai neopatentati. Rata finale (Valore Futuro Garantito) e TAN/TAEG non specificati dalla fonte per questa variante. Valido per contratti firmati entro il 31/08/2026.",
-      "fonte_nome": "NewsAuto",
-      "fonte_url": "https://www.newsauto.it/notizie/toyota-yaris-hybrid-offerte-prezzi-finanziamenti-2026-593140/",
+      "maxirata": 14881.63,
+      "tan": "7.25%",
+      "taeg": "8.64%",
+      "note": "Valore Futuro Garantito valido se si intende mantenere il veicolo. Spese di gestione rata 3,90€/mese + bollo 16€. Importo finanziato 17.625€, totale da rimborsare 22.547,49€. Valida fino al 30/09/2026 nelle concessionarie partecipanti.",
+      "fonte_nome": "AutoPromoNews",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13843-toyota-yaris-cross-130-fwd-settembre-2026-promozione-offerta-conviene-fregatura",
       "tipo": "SUV"
     },
     {
@@ -1251,7 +1251,7 @@
     },
     {
       "marca": "Toyota",
-      "modello": "Yaris Hybrid",
+      "modello": "Yaris 1.5 TNGA HEV 115 E-CVT (5 porte, MY26)",
       "tags": [
         "nuova"
       ],
@@ -1260,11 +1260,11 @@
       "rata": 129,
       "rate_numero": 47,
       "maxirata": null,
-      "tan": null,
-      "taeg": null,
-      "note": "Sconto del 19% sul listino. Rata finale (Valore Futuro Garantito) e TAN/TAEG non specificati dalla fonte.",
-      "fonte_nome": "AlVolante / Motori Magazine",
-      "fonte_url": "https://www.motorimagazine.it/auto-a-tasso-zero-e-sconti-fino-al-38-le-migliori-promozioni-di-settembre-2026/",
+      "tan": "7.25%",
+      "taeg": "8.98%",
+      "note": "Sconto del 19% sul listino. Importo totale da rimborsare per il solo prestito di circa 17.600€. Rata finale (Valore Futuro Garantito) non specificata dalla fonte.",
+      "fonte_nome": "AutoPromoNews",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13844-toyota-yaris-hev-settembre-2026-oferte-promozioni-conviene-fregatura",
       "tipo": "Utilitaria"
     },
     {
@@ -1339,6 +1339,25 @@
       "note": "Sconto 25%. Richiede permuta o rottamazione. Spese incasso rata 5€ escluse. Valida fino al 30/09/2026.",
       "fonte_nome": "AutoPromoNews",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13800-ford-kuga-settembre-2026-offerte,-prezzi-hybrid-e-finanziamenti",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "DR",
+      "modello": "3 1.5 Benzina 116cv",
+      "tags": [
+        "nuova",
+        "maxirata-zero"
+      ],
+      "prezzo": null,
+      "anticipo": 4280,
+      "rata": 399,
+      "rate_numero": 36,
+      "maxirata": null,
+      "tan": "0%",
+      "taeg": null,
+      "note": "Campagna tasso zero in collaborazione con CA Auto Bank, piano lineare senza rata finale/Valore Futuro Garantito, estingue il debito in 3 anni. Spese istruttoria 499€ capitalizzate sul finanziato + 5,95€ a rata per spese di incasso (214,20€ sui 36 mesi): costo totale operazione stimato 18.641,20€, circa 741€ sopra il prezzo di listino.",
+      "fonte_nome": "AutoPromoNews",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13947-offerte-dr3-ottobre-2026-costi-reali-e-analisi-finanziaria",
       "tipo": "SUV"
     }
   ]

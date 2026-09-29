@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-09-27",
+  "aggiornato_al": "2026-09-29",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -258,7 +258,7 @@
       "maxirata": 8011,
       "tan": "2.99%",
       "taeg": "6.67%",
-      "note": "Importo finanziato aggiornato. Include Service Care Plus, Furto e Incendio Plus. Valida per contratti firmati entro il 27/08/2026 (verificare proroghe).",
+      "note": "Iniziativa Fiat dedicata a neopatentati e under 30, accessibile anche senza rottamazione/permuta. Include Service Care Plus, Furto e Incendio Plus. Tassi agevolati a partire dal 2,99% TAN su finanziamenti a 36 mesi, confermati anche a settembre 2026 su tutta la gamma Pandina/500/Grande Panda/600/Qubo L.",
       "fonte_nome": "Fiat IT / Automoto.it",
       "fonte_url": "https://www.fiat.it/lp/promo-offerta-neopatentati",
       "tipo": "Utilitaria"
@@ -1359,6 +1359,43 @@
       "fonte_nome": "AutoPromoNews",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13947-offerte-dr3-ottobre-2026-costi-reali-e-analisi-finanziaria",
       "tipo": "SUV"
+    },
+    {
+      "marca": "Alfa Romeo",
+      "modello": "Junior Ibrida Sprint 1.2 145cv Hybrid eDCT6",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 27950,
+      "anticipo": 6012,
+      "rata": 159,
+      "rate_numero": 35,
+      "maxirata": 20963.2,
+      "tan": "5.75%",
+      "taeg": "7.49%",
+      "note": "Listino 32.950€, sconto 5.000€. Finanziamento Stellantis Financial Services con Valore Futuro Garantito, Identicar 12 mesi incluso, limite 30.000 km. Valida fino al 30/09/2026.",
+      "fonte_nome": "ClubAlfa",
+      "fonte_url": "https://www.clubalfa.it/598287-alfa-romeo-junior-tre-offerte-per-settembre-2026-ibrida-q4-ed-elettrica-con-rate-da-159-euro",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "Fiat",
+      "modello": "Pandina Hybrid 1.0 Mild Hybrid 65cv",
+      "tags": [
+        "nuova",
+        "neopatentati"
+      ],
+      "prezzo": 9950,
+      "anticipo": 1699,
+      "rata": 99,
+      "rate_numero": 35,
+      "maxirata": 8010.6,
+      "tan": "8.99%",
+      "taeg": "13.71%",
+      "note": "Prezzo protetto Fiat, richiede finanziamento Stellantis Financial Services e rottamazione di un veicolo omologato, vettura di pronta consegna. Spese istruttoria 420€. Campagna ricorrente con scadenza rinnovata mensilmente: verificare la data corrente in concessionaria.",
+      "fonte_nome": "L'Indisponente / ClubAlfa",
+      "fonte_url": "https://www.lindisponente.it/2026/09/07/fiat-pandina-9950-euro-offerta-settembre-2026-costo-reale/",
+      "tipo": "Utilitaria"
     }
   ]
 }

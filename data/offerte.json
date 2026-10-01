@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-09-29",
+  "aggiornato_al": "2026-10-01",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -67,15 +67,15 @@
         "maxirata-zero"
       ],
       "prezzo": null,
-      "anticipo": 11971,
+      "anticipo": 9071,
       "rata": 269,
       "rate_numero": 48,
       "maxirata": null,
       "tan": "0%",
-      "taeg": null,
-      "note": "Formula \"Zero Pensieri\" (Zero Interessi / Zero Maxirata) a piano lineare, pensata per uso cittadino. Valida fino al 30/09/2026.",
-      "fonte_nome": "AutoPromoNews",
-      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13600-guida-completa-finanziamenti-auto-offerte-luglio-2026,-anticipo-zero-e-tassi-zero",
+      "taeg": "3.71%",
+      "note": "Finanziamento \"Lancia Zero Pensieri\" (Stellantis Financial Services): zero interessi, zero maxirata, rata finale residua 0€, piano lineare pensato per uso cittadino su una selezione di vetture in pronta consegna. Campagna confermata anche a inizio ottobre 2026: verificare la data di scadenza corrente in concessionaria.",
+      "fonte_nome": "Motori.it",
+      "fonte_url": "https://www.motori.it/lancia-ypsilon-zero-pensieri-ecco-come-averla-senza-maxirata/",
       "tipo": "Utilitaria"
     },
     {
@@ -907,9 +907,9 @@
       "anticipo": 0,
       "rata": 299,
       "rate_numero": 35,
-      "maxirata": 20587,
+      "maxirata": 20679,
       "tan": "0%",
-      "taeg": "0.82%",
+      "taeg": "0.81%",
       "note": "Listino 33.750€. Importo totale dovuto dal consumatore 31.259,09€ (anticipo escluso). Include furto/incendio base 12 mesi. Finanziamento Scelta Kia, promo confermata ad agosto 2026.",
       "fonte_nome": "Kia Italia",
       "fonte_url": "https://www.kia.com/it/guida-all-acquisto/promozioni/kia-sportage-benzina/",
@@ -1190,7 +1190,7 @@
       "maxirata": 19257.74,
       "tan": "5.99%",
       "taeg": "6.97%",
-      "note": "Listino 34.300€. Richiede permuta o rottamazione. Chilometraggio incluso 40.000 km in 4 anni (eccedenza 0,20€/km). Valida fino al 30/09/2026.",
+      "note": "Listino 34.300€. Richiede permuta o rottamazione. Chilometraggio incluso 40.000 km in 4 anni (eccedenza 0,20€/km). Condizioni confermate anche a inizio ottobre 2026.",
       "fonte_nome": "AutoPromoNews",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13833-volkswagen-t-roc-settembre-2026-prezzo-promozione-finanziamento-fregature",
       "tipo": "SUV"

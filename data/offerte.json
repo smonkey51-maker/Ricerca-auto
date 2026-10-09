@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-10-05",
+  "aggiornato_al": "2026-10-09",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -1275,10 +1275,10 @@
         "neopatentati"
       ],
       "prezzo": 19950,
-      "anticipo": 6261,
+      "anticipo": 6239,
       "rata": 109,
       "rate_numero": 35,
-      "maxirata": 13641,
+      "maxirata": 13669,
       "tan": "6.99%",
       "taeg": "9.73%",
       "note": "Richiede permuta/rottamazione, vetture in pronta consegna. Valida fino al 30/09/2026.",
@@ -1366,14 +1366,14 @@
       "tags": [
         "nuova"
       ],
-      "prezzo": 27950,
-      "anticipo": 6012,
+      "prezzo": 29900,
+      "anticipo": 8895,
       "rata": 159,
       "rate_numero": 35,
-      "maxirata": 20963.2,
+      "maxirata": 21428,
       "tan": "5.75%",
       "taeg": "7.49%",
-      "note": "Listino 32.950€, sconto 5.000€. Finanziamento Stellantis Financial Services con Valore Futuro Garantito, Identicar 12 mesi incluso, limite 30.000 km. Valida fino al 30/09/2026.",
+      "note": "Listino 35.950€, vantaggio cliente 6.050€. Finanziamento Stellantis Financial Services con Valore Futuro Garantito, Identicar 12 mesi incluso, limite 30.000 km. Campagna confermata anche a ottobre 2026.",
       "fonte_nome": "ClubAlfa",
       "fonte_url": "https://www.clubalfa.it/598287-alfa-romeo-junior-tre-offerte-per-settembre-2026-ibrida-q4-ed-elettrica-con-rate-da-159-euro",
       "tipo": "SUV"
@@ -1468,6 +1468,61 @@
       "note": "Prezzo promozionale con finanziamento e rottamazione di un veicolo omologato. Valida fino al 28/10/2026.",
       "fonte_nome": "AutoPromoNews",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/14023-fiat-600-benzina-turbo-offerta-ottobre-2026",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "BYD",
+      "modello": "Atto 3 Evo Design",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 36150,
+      "anticipo": 13688,
+      "rata": 269,
+      "rate_numero": 35,
+      "maxirata": 16561,
+      "tan": null,
+      "taeg": null,
+      "note": "Listino 43.800€, sconto rispetto al prezzo pieno. SUV elettrico. Valida a ottobre 2026: verificare condizioni aggiornate in concessionaria.",
+      "fonte_nome": "alVolante",
+      "fonte_url": "https://www.alvolante.it/news/come-acquistare-un-auto-ottobre-2026-e-risparmiare-fino-al-30-percento-420589",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "Opel",
+      "modello": "Mokka",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 21650,
+      "anticipo": 6696,
+      "rata": 139,
+      "rate_numero": 33,
+      "maxirata": 15009,
+      "tan": null,
+      "taeg": null,
+      "note": "Listino 30.850€, sconto del 30% circa. Maxirata corrispondente al Valore Futuro Garantito. Valida a ottobre 2026: verificare condizioni aggiornate in concessionaria.",
+      "fonte_nome": "alVolante",
+      "fonte_url": "https://www.alvolante.it/news/come-acquistare-un-auto-ottobre-2026-e-risparmiare-fino-al-30-percento-420589",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "Hyundai",
+      "modello": "Kona (Km0, promo neopatentati)",
+      "tags": [
+        "usata",
+        "neopatentati"
+      ],
+      "prezzo": 20900,
+      "anticipo": 1000,
+      "rata": 376,
+      "rate_numero": 72,
+      "maxirata": null,
+      "tan": "9.95%",
+      "taeg": "11.61%",
+      "note": "Veicolo a chilometri zero proposto dal Gruppo Farina per neopatentati, durata finanziamento 72 mesi. Verificare limiti tecnici (kW, peso, rapporto potenza/peso) ammessi per neopatentati prima dell'acquisto.",
+      "fonte_nome": "Gruppo Farina",
+      "fonte_url": "https://www.gruppofarina.com/ricerca-auto/km0/",
       "tipo": "SUV"
     }
   ]

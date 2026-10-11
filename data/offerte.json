@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-10-09",
+  "aggiornato_al": "2026-10-11",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -974,20 +974,20 @@
     },
     {
       "marca": "Renault",
-      "modello": "Captur Full Hybrid E-Tech",
+      "modello": "Captur Full Hybrid E-Tech 160 Evolution",
       "tags": [
         "nuova"
       ],
-      "prezzo": null,
-      "anticipo": 7600,
-      "rata": 99,
+      "prezzo": 24900,
+      "anticipo": 7520,
+      "rata": 119,
       "rate_numero": 36,
-      "maxirata": null,
-      "tan": "7.25%",
-      "taeg": "8.90%",
-      "note": "Rata finale non specificata dalla fonte. Verificare condizioni aggiornate in concessionaria per il mese corrente.",
-      "fonte_nome": "Renault IT",
-      "fonte_url": "https://www.renault.it/veicoli-ibridi/captur/offerta-captur.html",
+      "maxirata": 15540,
+      "tan": "3.99%",
+      "taeg": "5.26%",
+      "note": "Prezzo promozionale con bonus di 1.000€ incluso. Anticipo e TAEG possono variare leggermente da concessionario a concessionario. Valida fino al 02/11/2026.",
+      "fonte_nome": "AutoPromoNews",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/14012-renault-captur-hybrid-offerta-ottobre-2026-finanziamento",
       "tipo": "SUV"
     },
     {

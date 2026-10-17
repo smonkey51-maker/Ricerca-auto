@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-10-15",
+  "aggiornato_al": "2026-10-17",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -1525,6 +1525,24 @@
       "fonte_nome": "Gruppo Farina",
       "fonte_url": "https://www.gruppofarina.com/ricerca-auto/km0/",
       "tipo": "SUV"
+    },
+    {
+      "marca": "Lancia",
+      "modello": "Ypsilon Ibrida Mild Hybrid (finanziamento standard)",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 20300,
+      "anticipo": 1981,
+      "rata": 180,
+      "rate_numero": 35,
+      "maxirata": 12854.2,
+      "tan": "0%",
+      "taeg": "1.9%",
+      "note": "Listino 25.200€. Importo totale dovuto 19.201,73€ incl. spese istruttoria 420€ e spese di incasso mensili. Richiede rottamazione di un veicolo omologato fino a Euro 5. Riguarda auto in pronta consegna, da immatricolare entro il 28/10/2026.",
+      "fonte_nome": "Lancia IT",
+      "fonte_url": "https://www.lancia.it/offerte-ypsilon/ypsilon-ibrida-finanziamento",
+      "tipo": "Utilitaria"
     }
   ]
 }

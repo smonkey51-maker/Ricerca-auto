@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-10-17",
+  "aggiornato_al": "2026-10-19",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -289,13 +289,13 @@
         "nuova"
       ],
       "prezzo": 15300,
-      "anticipo": 6161,
+      "anticipo": 6256,
       "rata": 49,
       "rate_numero": 35,
-      "maxirata": 9409.1,
+      "maxirata": 9703,
       "tan": "3.99%",
       "taeg": "7.50%",
-      "note": "Promo SimplyDrive riservata a chi rottama/permuta. Prezzo scontato di 1.600€.",
+      "note": "Finanziamento SimplyDrive Promo. Fonti divergono leggermente su anticipo/TAEG (6.161-6.416€, TAEG 7.40-7.50%): cifre da Citroen.it e alVolante. Valida fino al 31/10/2026.",
       "fonte_nome": "ClubAlfa",
       "fonte_url": "https://www.clubalfa.it/596012-citroen-c3-rata-da-appena-49-euro-ad-agosto-2026-costa-1-600-euro-in-meno",
       "tipo": "Utilitaria"
@@ -307,10 +307,10 @@
         "nuova"
       ],
       "prezzo": null,
-      "anticipo": 9107,
+      "anticipo": 9401,
       "rata": 139,
       "rate_numero": 35,
-      "maxirata": 10835,
+      "maxirata": 10042,
       "tan": "0%",
       "taeg": "2.41%",
       "note": "Formula di leasing Citroën Easy Go, finanziamento a tasso zero. Valido fino a fine agosto 2026.",
@@ -1542,6 +1542,24 @@
       "note": "Listino 25.200€. Importo totale dovuto 19.201,73€ incl. spese istruttoria 420€ e spese di incasso mensili. Richiede rottamazione di un veicolo omologato fino a Euro 5. Riguarda auto in pronta consegna, da immatricolare entro il 28/10/2026.",
       "fonte_nome": "Lancia IT",
       "fonte_url": "https://www.lancia.it/offerte-ypsilon/ypsilon-ibrida-finanziamento",
+      "tipo": "Utilitaria"
+    },
+    {
+      "marca": "Citroën",
+      "modello": "C3 Hybrid Automatico PLUS 110",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": null,
+      "anticipo": 7869,
+      "rata": 99,
+      "rate_numero": 35,
+      "maxirata": 11832,
+      "tan": null,
+      "taeg": "11.28%",
+      "note": "Versione ibrida con cambio automatico. Valida fino al 31/10/2026.",
+      "fonte_nome": "Citroën IT",
+      "fonte_url": "https://www.citroen.it/acquista/offerte-privati.html",
       "tipo": "Utilitaria"
     }
   ]

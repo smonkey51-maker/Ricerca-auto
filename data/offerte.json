@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-10-21",
+  "aggiornato_al": "2026-10-29",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -215,15 +215,15 @@
         "nuova"
       ],
       "prezzo": 24950,
-      "anticipo": null,
-      "rata": null,
-      "rate_numero": null,
+      "anticipo": 8200,
+      "rata": 199,
+      "rate_numero": 36,
       "maxirata": null,
-      "tan": null,
-      "taeg": null,
-      "note": "Prezzo promozionale con permuta/rottamazione e finanziamento Mazda Advantage. Rata non specificata dalla fonte. Valido fino al 30/06/2026 (verificare proroghe).",
-      "fonte_nome": "Motorbox",
-      "fonte_url": "https://www.motorbox.com/auto/magazine/vivere-auto/offerte-auto-nuove-le-promozioni-fiat-volkswagen-ford-renault",
+      "tan": "6.99%",
+      "taeg": "8.74%",
+      "note": "Prezzo promozionale con permuta/rottamazione e finanziamento Mazda Advantage. Campagna rinnovata, valida fino al 04/11/2026.",
+      "fonte_nome": "Lineablu",
+      "fonte_url": "https://lineablu.org/promozioni/nuovo/mazda3/",
       "tipo": "Berlina"
     },
     {
@@ -807,20 +807,20 @@
     },
     {
       "marca": "Hyundai",
-      "modello": "Bayon MY26 Dark Line 1.0 T-GDI MT",
+      "modello": "Bayon MY27 XTech 1.0 T-GDI 90cv MT",
       "tags": [
         "nuova"
       ],
-      "prezzo": null,
-      "anticipo": 7242,
+      "prezzo": 17600,
+      "anticipo": 7066,
       "rata": 84.91,
       "rate_numero": 35,
-      "maxirata": 11233,
-      "tan": "7.45%",
-      "taeg": "9.70%",
-      "note": "Vantaggio cliente complessivo di 5.400€. Finanziamento Hyundai Plus con Valore Futuro Garantito, valido dall'1 al 31/08/2026.",
-      "fonte_nome": "De Bona Motors / Hyundai IT",
-      "fonte_url": "https://www.debona.it/hyundai/promo/nuova-hyundai-bayon-dark-line-tua-da-eur-85-al-mese/",
+      "maxirata": 10507.5,
+      "tan": "7.95%",
+      "taeg": "10.39%",
+      "note": "Listino 23.350€. Finanziamento Hyundai Plus con Valore Futuro Garantito. Campagna rinnovata, dati di ottobre 2026: verificare la scadenza corrente in concessionaria.",
+      "fonte_nome": "Autoblog",
+      "fonte_url": "https://www.autoblog.it/post/hyundai-bayon-in-offerta-a-ottobre-il-suv-costa-17-600-euro-con-rate-da-85-euro-al-mese",
       "tipo": "SUV"
     },
     {
@@ -848,15 +848,15 @@
         "nuova"
       ],
       "prezzo": 26050,
-      "anticipo": 10225,
-      "rata": 154.98,
+      "anticipo": 12019,
+      "rata": 155,
       "rate_numero": 48,
-      "maxirata": 13136.5,
-      "tan": "7.25%",
-      "taeg": "8.68%",
-      "note": "Prezzo IVA inclusa, IPT e contributo PFU esclusi, con bonus Renault E-Tech di 1.900€. Rata finale corrispondente al Valore Futuro Garantito. Valido fino al 27/08/2026.",
-      "fonte_nome": "MotorisuMotori",
-      "fonte_url": "https://www.motorisumotori.it/renault-5-e-tech-electric-ad-agosto-da-155-euro-al-mese-e-fino-a-25-000-km-di-ricarica-a-casa/192060",
+      "maxirata": 13231,
+      "tan": "8.25%",
+      "taeg": "9.80%",
+      "note": "Prezzo IVA inclusa, IPT e contributo PFU esclusi, con bonus Renault E-Tech di 750€. Rata finale corrispondente al Valore Futuro Garantito. Valida fino al 02/11/2026.",
+      "fonte_nome": "Renault IT",
+      "fonte_url": "https://www.renault.it/veicoli-elettrici-ibridi/r5-e-tech-electric/offerta-renault-5-e-tech-electric.html",
       "tipo": "Utilitaria"
     },
     {
@@ -892,7 +892,7 @@
       "maxirata": 12069.2,
       "tan": "0%",
       "taeg": "1.96%",
-      "note": "Motore 1.2 turbo benzina 100cv. Nuova campagna di ottobre: senza anticipo, tasso zero. Richiede rottamazione di un veicolo omologato fino a Euro 5. Riguarda auto in pronta consegna, da immatricolare entro il 28/10/2026.",
+      "note": "Motore 1.2 turbo benzina 100cv. Campagna \"senza anticipo, tasso zero\" ricorrente mensilmente. Richiede rottamazione di un veicolo omologato fino a Euro 5. Verificare la data di scadenza corrente in concessionaria.",
       "fonte_nome": "ClubAlfa",
       "fonte_url": "https://www.clubalfa.it/601821-lancia-ypsilon-senza-anticipo-e-a-tasso-zero-con-la-nuova-offerta-di-ottobre-2026",
       "tipo": "Utilitaria"
@@ -961,16 +961,16 @@
         "nuova",
         "maxirata-zero"
       ],
-      "prezzo": null,
-      "anticipo": 11040,
+      "prezzo": 19900,
+      "anticipo": 6280,
       "rata": 399,
       "rate_numero": 36,
       "maxirata": null,
       "tan": "0%",
-      "taeg": null,
-      "note": "Campagna tasso zero in collaborazione con CA Auto Bank, piano lineare senza rata finale/Valore Futuro Garantito. Anticipo indicativo (tratto da un'offerta DR5 di un mese vicino): verificare l'importo esatto della campagna corrente in concessionaria.",
+      "taeg": "3.53%",
+      "note": "Campagna tasso zero in collaborazione con CA Auto Bank, piano lineare senza rata finale/Valore Futuro Garantito. Spese istruttoria 499€ + 5,95€ a rata per spese di incasso. Cifre confermate costanti da settembre a novembre 2026 su più uscite della stessa fonte.",
       "fonte_nome": "AutoPromoNews",
-      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13759-offerte-dr5-settembre-2026-costi-reali-e-analisi-finanziaria-tasso-zero",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/14127-dr5-offerte-novembre-2026-costi-reali-tasso-zero-taeg",
       "tipo": "SUV"
     },
     {
@@ -1135,7 +1135,7 @@
       "maxirata": 12121,
       "tan": "0%",
       "taeg": "2.07%",
-      "note": "Listino 19.990€, sconto 3.450€ con promo Fiat e rottamazione di un veicolo omologato fino a Euro 4. Campagna rinnovata a ottobre 2026, valida per immatricolazioni entro il 28/10/2026.",
+      "note": "Listino 19.990€, sconto 3.450€ con promo Fiat e rottamazione di un veicolo omologato fino a Euro 4. Campagna ricorrente rinnovata mensilmente da mesi con cifre pressoché costanti: verificare la data di scadenza corrente in concessionaria.",
       "fonte_nome": "Ciociaria24",
       "fonte_url": "https://www.ciociaria24.net/fiat-500-hybrid-a-ottobre-torna-il-tasso-zero-149-euro-al-mese-senza-anticipo-205720.html",
       "tipo": "Utilitaria"
@@ -1355,10 +1355,10 @@
       "rate_numero": 36,
       "maxirata": null,
       "tan": "0%",
-      "taeg": null,
-      "note": "Campagna tasso zero in collaborazione con CA Auto Bank, piano lineare senza rata finale/Valore Futuro Garantito, estingue il debito in 3 anni. Spese istruttoria 499€ capitalizzate sul finanziato + 5,95€ a rata per spese di incasso (214,20€ sui 36 mesi): costo totale operazione stimato 18.641,20€, circa 741€ sopra il prezzo di listino.",
+      "taeg": "3.53%",
+      "note": "Campagna tasso zero in collaborazione con CA Auto Bank, piano lineare senza rata finale/Valore Futuro Garantito, estingue il debito in 3 anni. Spese istruttoria 499€ capitalizzate sul finanziato + 5,95€ a rata per spese di incasso (214,20€ sui 36 mesi): costo totale operazione stimato 18.641,20€, circa 741€ sopra il prezzo di listino. Cifre confermate anche a novembre 2026.",
       "fonte_nome": "AutoPromoNews",
-      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13947-offerte-dr3-ottobre-2026-costi-reali-e-analisi-finanziaria",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/14126-dr3-offerte-novembre-2026-costi-reali-tasso-zero-taeg",
       "tipo": "SUV"
     },
     {
@@ -1466,7 +1466,7 @@
       "maxirata": 11837.2,
       "tan": null,
       "taeg": null,
-      "note": "Prezzo promozionale con finanziamento e rottamazione di un veicolo omologato. Valida fino al 28/10/2026.",
+      "note": "Prezzo promozionale con finanziamento e rottamazione di un veicolo omologato. Campagna ricorrente: verificare la data di scadenza corrente in concessionaria.",
       "fonte_nome": "AutoPromoNews",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/14023-fiat-600-benzina-turbo-offerta-ottobre-2026",
       "tipo": "SUV"
@@ -1539,7 +1539,7 @@
       "maxirata": 12854.2,
       "tan": "0%",
       "taeg": "1.9%",
-      "note": "Listino 25.200€. Importo totale dovuto 19.201,73€ incl. spese istruttoria 420€ e spese di incasso mensili. Richiede rottamazione di un veicolo omologato fino a Euro 5. Riguarda auto in pronta consegna, da immatricolare entro il 28/10/2026.",
+      "note": "Listino 25.200€. Importo totale dovuto 19.201,73€ incl. spese istruttoria 420€ e spese di incasso mensili. Richiede rottamazione di un veicolo omologato fino a Euro 5. Campagna ricorrente: verificare la data di scadenza corrente in concessionaria.",
       "fonte_nome": "Lancia IT",
       "fonte_url": "https://www.lancia.it/offerte-ypsilon/ypsilon-ibrida-finanziamento",
       "tipo": "Utilitaria"

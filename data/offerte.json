@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-10-29",
+  "aggiornato_al": "2026-10-31",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -35,7 +35,7 @@
       "maxirata": null,
       "tan": "0%",
       "taeg": "2.49%",
-      "note": "Finanziamento Stellantis Financial Services a tasso zero, senza maxirata finale. Riservata alle vetture in pronta consegna, TAEG non nullo per spese accessorie di contratto. Campagna confermata anche a ottobre 2026, valida fino al 31/10/2026.",
+      "note": "Finanziamento Stellantis Financial Services a tasso zero, senza maxirata finale. Riservata alle vetture in pronta consegna, TAEG non nullo per spese accessorie di contratto. Campagna mensile ricorrente, scaduta il 31/10/2026: verificare la proroga di novembre in concessionaria.",
       "fonte_nome": "ClubAlfa",
       "fonte_url": "https://www.clubalfa.it/601098-alfa-romeo-tonale-ottobre-2026-6-000-euro-di-vantaggi-e-interessi-zero",
       "tipo": "SUV"
@@ -295,7 +295,7 @@
       "maxirata": 9703,
       "tan": "3.99%",
       "taeg": "7.50%",
-      "note": "Finanziamento SimplyDrive Promo. Fonti divergono leggermente su anticipo/TAEG (6.161-6.416€, TAEG 7.40-7.50%): cifre da Citroen.it e alVolante. Valida fino al 31/10/2026.",
+      "note": "Finanziamento SimplyDrive Promo. Fonti divergono leggermente su anticipo/TAEG (6.161-6.416€, TAEG 7.40-7.50%). Campagna mensile ricorrente, scaduta il 31/10/2026: verificare la proroga di novembre in concessionaria.",
       "fonte_nome": "ClubAlfa",
       "fonte_url": "https://www.clubalfa.it/596012-citroen-c3-rata-da-appena-49-euro-ad-agosto-2026-costa-1-600-euro-in-meno",
       "tipo": "Utilitaria"
@@ -1135,7 +1135,7 @@
       "maxirata": 12121,
       "tan": "0%",
       "taeg": "2.07%",
-      "note": "Listino 19.990€, sconto 3.450€ con promo Fiat e rottamazione di un veicolo omologato fino a Euro 4. Campagna ricorrente rinnovata mensilmente da mesi con cifre pressoché costanti: verificare la data di scadenza corrente in concessionaria.",
+      "note": "Listino 19.990€, sconto 3.450€ con promo Fiat e rottamazione di un veicolo omologato fino a Euro 4. Campagna riconfermata esplicitamente a novembre 2026, valida fino al 30/11/2026.",
       "fonte_nome": "Ciociaria24",
       "fonte_url": "https://www.ciociaria24.net/fiat-500-hybrid-a-ottobre-torna-il-tasso-zero-149-euro-al-mese-senza-anticipo-205720.html",
       "tipo": "Utilitaria"
@@ -1412,7 +1412,7 @@
       "maxirata": null,
       "tan": "0%",
       "taeg": null,
-      "note": "Listino 40.700€, vantaggio cliente 6.000€. Finanziamento Stellantis Financial Services a tasso zero, senza maxirata finale. Riservata a privati, non cumulabile con altre iniziative, salvo approvazione della finanziaria. Valida fino al 31/10/2026.",
+      "note": "Listino 40.700€, vantaggio cliente 6.000€. Finanziamento Stellantis Financial Services a tasso zero, senza maxirata finale. Riservata a privati, non cumulabile con altre iniziative. Campagna mensile ricorrente, scaduta il 31/10/2026: verificare la proroga di novembre in concessionaria.",
       "fonte_nome": "ClubAlfa",
       "fonte_url": "https://www.clubalfa.it/601098-alfa-romeo-tonale-ottobre-2026-6-000-euro-di-vantaggi-e-interessi-zero",
       "tipo": "SUV"
@@ -1466,7 +1466,7 @@
       "maxirata": 11837.2,
       "tan": null,
       "taeg": null,
-      "note": "Prezzo promozionale con finanziamento e rottamazione di un veicolo omologato. Campagna ricorrente: verificare la data di scadenza corrente in concessionaria.",
+      "note": "Prezzo promozionale con finanziamento e rottamazione di un veicolo omologato. Spese istruttoria 420€, imposta sostitutiva 42,27€. Campagna riconfermata a novembre 2026, valida fino al 30/11/2026.",
       "fonte_nome": "AutoPromoNews",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/14023-fiat-600-benzina-turbo-offerta-ottobre-2026",
       "tipo": "SUV"
@@ -1557,7 +1557,7 @@
       "maxirata": 11832,
       "tan": null,
       "taeg": "11.28%",
-      "note": "Versione ibrida con cambio automatico. Valida fino al 31/10/2026.",
+      "note": "Versione ibrida con cambio automatico. Campagna mensile ricorrente, scaduta il 31/10/2026: verificare la proroga di novembre in concessionaria.",
       "fonte_nome": "Citroën IT",
       "fonte_url": "https://www.citroen.it/acquista/offerte-privati.html",
       "tipo": "Utilitaria"
@@ -1576,9 +1576,45 @@
       "maxirata": 10654.8,
       "tan": "0%",
       "taeg": "1.72%",
-      "note": "Listino 20.490€. Importo totale dovuto 17.713,71€, spese istruttoria 499€ + 4,5€ a rata di incasso SDD + imposta sostitutiva 43,76€. Richiede rottamazione. Valida fino al 31/10/2026 presso dealer aderenti.",
+      "note": "Listino 20.490€. Importo totale dovuto 17.713,71€, spese istruttoria 499€ + 4,5€ a rata di incasso SDD + imposta sostitutiva 43,76€. Richiede rottamazione. Campagna mensile ricorrente, scaduta il 31/10/2026: verificare la proroga di novembre presso dealer aderenti.",
       "fonte_nome": "MG Motor IT",
       "fonte_url": "https://www.mgmotor.it/campaign/nuova-mg-zs-benzina-standard",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "Škoda",
+      "modello": "Fabia 1.0 TSI (finanziamento Clever Value 99€)",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 16900,
+      "anticipo": 3243,
+      "rata": 99,
+      "rate_numero": 35,
+      "maxirata": 12850,
+      "tan": "0%",
+      "taeg": "1.19%",
+      "note": "Finanziamento Škoda Clever Value, include manutenzione programmata ed estensione di garanzia. Maxirata (Valore Futuro Garantito) valida per 30.000 km. Richiede rottamazione. Valida a novembre 2026.",
+      "fonte_nome": "AutoPromoNews",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/14164-skoda-fabia-offerte-promozioni-novembre-2026-sconti-finanziamento-tan-zero",
+      "tipo": "Utilitaria"
+    },
+    {
+      "marca": "Škoda",
+      "modello": "Kamiq 1.0 TSI (finanziamento Clever Value 119€)",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 24033,
+      "anticipo": 3514,
+      "rata": 119,
+      "rate_numero": 35,
+      "maxirata": 16734,
+      "tan": "0%",
+      "taeg": "1.01%",
+      "note": "Finanziamento Škoda Clever Value. Maxirata (Valore Futuro Garantito) alla scadenza. Richiede rottamazione. Valida a novembre 2026 (alcune fonti indicano scadenza 31/10/2026: verificare in concessionaria).",
+      "fonte_nome": "AutoPromoNews",
+      "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/14165-skoda-kamiq-offerte-promozioni-novembre-2026-sconti-finanziamento-tan-zero",
       "tipo": "SUV"
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-11-01",
+  "aggiornato_al": "2026-11-03",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -16,7 +16,7 @@
       "maxirata": null,
       "tan": "0%",
       "taeg": "2.32%",
-      "note": "Listino 40.900€. Importo totale del credito 19.932€ (incl. Identicar 12 mesi). Finanziamento tasso zero 48 mesi, senza maxirata finale. Confermata a settembre 2026.",
+      "note": "Listino 40.900€. Importo totale del credito 19.932€ (incl. Identicar 12 mesi). Finanziamento tasso zero 48 mesi, senza maxirata finale. Lotto limitato in pronta consegna, confermata per tutto novembre 2026.",
       "fonte_nome": "Motorbox",
       "fonte_url": "https://www.motorbox.com/auto/magazine/vivere-auto/auto-anticipo-zero-promozioni-fiat-dacia-opel-skoda-vw",
       "tipo": "SUV"
@@ -1005,7 +1005,7 @@
       "maxirata": null,
       "tan": "0%",
       "taeg": "3.33%",
-      "note": "Finanziamento tasso zero su 48 rate senza rata finale, con Stellantis Financial Services. Incentivi Jeep confermati a settembre 2026.",
+      "note": "Finanziamento tasso zero su 48 rate senza rata finale, con Stellantis Financial Services. Listino 25.700€, promo 21.900€, credito 13.740€, spese di incasso mensili 4€ incluse. Confermata dal sito ufficiale Jeep, valida fino al 30/11/2026.",
       "fonte_nome": "AutoPromoNews",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/13697-suv-jeep-in-sconto-tassi-a-0-e-rate-da-149-euro-sulle-offerte-di-agosto-2026",
       "tipo": "SUV"
@@ -1583,7 +1583,7 @@
     },
     {
       "marca": "Škoda",
-      "modello": "Fabia 1.0 TSI (finanziamento Clever Value 99€)",
+      "modello": "Fabia Be More 1.0 TSI 95cv (finanziamento Clever Value 99€)",
       "tags": [
         "nuova"
       ],
@@ -1591,10 +1591,10 @@
       "anticipo": 3243,
       "rata": 99,
       "rate_numero": 35,
-      "maxirata": 12850,
+      "maxirata": 14065,
       "tan": "0%",
       "taeg": "1.19%",
-      "note": "Finanziamento Škoda Clever Value, include manutenzione programmata ed estensione di garanzia. Maxirata (Valore Futuro Garantito) valida per 30.000 km. Richiede rottamazione. Valida a novembre 2026.",
+      "note": "Finanziamento Škoda Clever Value, include manutenzione programmata per 36 mesi. Importo finanziato 17.530,38€. Maxirata confermata da più concessionari (14.065€); alcuni articoli riportano invece 12.850€ per un allestimento diverso. Richiede rottamazione. Valida fino al 30/11/2026.",
       "fonte_nome": "AutoPromoNews",
       "fonte_url": "https://www.autopromonews.it/128-offerte-promozioni-auto-2026/14164-skoda-fabia-offerte-promozioni-novembre-2026-sconti-finanziamento-tan-zero",
       "tipo": "Utilitaria"
@@ -1633,6 +1633,42 @@
       "note": "Listino 25.490€, promo valida solo con finanziamento. Importo del credito 15.489,32€, totale dovuto 19.927,47€. Valida fino al 30/11/2026 presso dealer aderenti.",
       "fonte_nome": "MG Motor IT",
       "fonte_url": "https://www.mgmotor.it/campaign/nuova-mg-zs-hybrid-standard",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "Alfa Romeo",
+      "modello": "Tonale Sprint MHEV",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": null,
+      "anticipo": 15995,
+      "rata": 199,
+      "rate_numero": 35,
+      "maxirata": 16067,
+      "tan": "3.49%",
+      "taeg": "5.32%",
+      "note": "Finanziamento con permuta, su vetture in pronta consegna. Dati dal sito ufficiale Alfa Romeo. Valida fino al 30/11/2026.",
+      "fonte_nome": "Alfa Romeo IT",
+      "fonte_url": "https://www.alfaromeo.it/modelli/tonale",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "Škoda",
+      "modello": "Karoq Executive 1.0 TSI 115cv",
+      "tags": [
+        "nuova"
+      ],
+      "prezzo": 29767.8,
+      "anticipo": 4975.14,
+      "rata": 199,
+      "rate_numero": 35,
+      "maxirata": 18207.67,
+      "tan": "0%",
+      "taeg": "0.89%",
+      "note": "Listino 33.400€, include 36 mesi di manutenzione ordinaria. Finanziamento Škoda Clever Value, richiede permuta/rottamazione ed Extended Warranty da 300€. Valore Futuro Garantito valido per 45.000 km (eccedenza 0,20€/km). Fonte ufficiale indica scadenza 30/11/2026, alcuni concessionari indicano date precedenti: verificare.",
+      "fonte_nome": "Škoda IT",
+      "fonte_url": "https://www.skoda-auto.it/acquisto-promozioni/promo-karoq",
       "tipo": "SUV"
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-11-03",
+  "aggiornato_al": "2026-11-05",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -332,7 +332,7 @@
       "maxirata": 9550.01,
       "tan": "6.99%",
       "taeg": "8.93%",
-      "note": "Valore Futuro Garantito valido per 10.000 km/anno. Richiede rottamazione/permuta di un veicolo posseduto da almeno 5 mesi. Campagna confermata anche a settembre 2026 con condizioni analoghe.",
+      "note": "Valore Futuro Garantito valido per 10.000 km/anno. Richiede rottamazione/permuta di un veicolo posseduto da almeno 5 mesi. Campagna confermata anche a novembre 2026 con condizioni analoghe, valida fino al 30/11/2026.",
       "fonte_nome": "Everyeye Auto",
       "fonte_url": "https://auto.everyeye.it/notizie/toyota-aygo-x-offerta-aprile-2026-17-950-euro-costa-davvero-finanziamento-872345.html",
       "tipo": "Utilitaria"
@@ -1670,6 +1670,65 @@
       "fonte_nome": "Škoda IT",
       "fonte_url": "https://www.skoda-auto.it/acquisto-promozioni/promo-karoq",
       "tipo": "SUV"
+    },
+    {
+      "marca": "DR",
+      "modello": "3 1.5 Benzina 116cv (formula 60 rate Tasso Zero)",
+      "tags": [
+        "nuova",
+        "anticipo-zero",
+        "maxirata-zero"
+      ],
+      "prezzo": 17900,
+      "anticipo": 0,
+      "rata": 299,
+      "rate_numero": 60,
+      "maxirata": null,
+      "tan": "0%",
+      "taeg": "0.86%",
+      "note": "Campagna tasso zero CA Auto Bank, piano lineare a 60 mesi: anticipo zero e nessuna maxirata/Valore Futuro Garantito, l'auto è riscattata al 100% all'ultima rata. Spese di incasso 5,95€ a rata escluse dalla rata pubblicizzata. Combinazione reale di anticipo zero + maxirata zero, rara sul mercato. Valida fino al 30/11/2026 presso dealer aderenti, su stock di rete e casa madre.",
+      "fonte_nome": "DR Automobiles (ufficiale)",
+      "fonte_url": "https://drautomobiles.com/promozione/dr-3-tasso-zero/",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "DR",
+      "modello": "5 Collection (formula 60 rate Tasso Zero)",
+      "tags": [
+        "nuova",
+        "anticipo-zero",
+        "maxirata-zero"
+      ],
+      "prezzo": 19900,
+      "anticipo": 0,
+      "rata": 339,
+      "rate_numero": 60,
+      "maxirata": null,
+      "tan": "0%",
+      "taeg": "1.54%",
+      "note": "Campagna tasso zero CA Auto Bank, piano lineare a 60 mesi: anticipo zero e nessuna maxirata/Valore Futuro Garantito. Credito totale 20.316€ (incl. 400€ spese istruttoria/bollo) + 5,95€ a rata per spese di incasso. Combinazione reale di anticipo zero + maxirata zero, rara sul mercato. Valida fino al 30/11/2026 presso dealer aderenti, su stock di rete e casa madre.",
+      "fonte_nome": "DR Automobiles (ufficiale)",
+      "fonte_url": "https://drautomobiles.com/promozione/dr-5-collection-tasso-zero/",
+      "tipo": "SUV"
+    },
+    {
+      "marca": "Fiat",
+      "modello": "Topolino",
+      "tags": [
+        "nuova",
+        "neopatentati"
+      ],
+      "prezzo": 7550,
+      "anticipo": 3261,
+      "rata": 39,
+      "rate_numero": 35,
+      "maxirata": 4440,
+      "tan": "8.99%",
+      "taeg": "13.43%",
+      "note": "Microcar (quadriciclo leggero), guidabile dai 14 anni con patentino AM. Finanziamento Stellantis Financial Services. Fonti divergono sulla scadenza (31/10 vs 26/11/2026): verificare in concessionaria.",
+      "fonte_nome": "NewsAuto / Fiat IT",
+      "fonte_url": "https://www.newsauto.it/fiat/fiat-topolino-offerta-leasing-finanziamento-novembre-2026-601630/",
+      "tipo": "Varie"
     }
   ]
 }

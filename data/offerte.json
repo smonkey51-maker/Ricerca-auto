@@ -1,5 +1,5 @@
 {
-  "aggiornato_al": "2026-11-05",
+  "aggiornato_al": "2026-11-07",
   "note_generale": "Dati raccolti da fonti giornalistiche e siti di case automobilistiche/concessionarie pubblicamente disponibili. Prezzi, rate e condizioni cambiano mensilmente: verificare sempre l'offerta reale presso il concessionario prima di firmare.",
   "offerte": [
     {
@@ -1729,6 +1729,25 @@
       "fonte_nome": "NewsAuto / Fiat IT",
       "fonte_url": "https://www.newsauto.it/fiat/fiat-topolino-offerta-leasing-finanziamento-novembre-2026-601630/",
       "tipo": "Varie"
+    },
+    {
+      "marca": "BYD",
+      "modello": "Dolphin G DM-i Active",
+      "tags": [
+        "nuova",
+        "anticipo-zero"
+      ],
+      "prezzo": 23141,
+      "anticipo": 0,
+      "rata": 229,
+      "rate_numero": 36,
+      "maxirata": 14915,
+      "tan": "0%",
+      "taeg": "0%",
+      "note": "Plug-in hybrid, prezzo IVA e messa su strada inclusi (IPT esclusa). Finanziamento in collaborazione con Findomestic, salvo approvazione. Promo \"Black Friday\" BYD, valida fino al 30/11/2026. TAEG realmente zero: raro tra le offerte a tasso zero.",
+      "fonte_nome": "Sicurauto / BYD IT",
+      "fonte_url": "https://www.sicurauto.it/news/novita-del-mercato/byd-dolphin-plug-in-offerta-black-friday-con-anticipo-zero-e-tasso-zero/",
+      "tipo": "Utilitaria"
     }
   ]
 }
